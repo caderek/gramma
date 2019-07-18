@@ -2,7 +2,7 @@
 
 ## Notes
 
-This package is in POC stage. It's functional, but limited and not unit tested.
+This package is in a POC stage. It's functional, but limited and not unit tested.
 
 ## Installation
 
@@ -10,7 +10,7 @@ This package is in POC stage. It's functional, but limited and not unit tested.
 
 ## Usage
 
-Print possible mistakes for a sting:
+Print possible mistakes for a string:
 
 `gramma check [text]`
 
