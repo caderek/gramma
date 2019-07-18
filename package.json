@@ -1,0 +1,23 @@
+{
+  "name": "gramma",
+  "version": "0.0.1",
+  "description": "Command line grammar checker",
+  "main": "gramma",
+  "scripts": {
+    "build:binary": "pkg -c package.json --out-path bin gramma"
+  },
+  "keywords": [
+    "grammar",
+    "command-line",
+    "checker"
+  ],
+  "author": "Maciej Cąderek | maciej.caderek@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "yargs": "^13.3.0"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.0"
+  }
+}
