@@ -22,8 +22,9 @@ const highlightMistake = (context, type, offset, length) => {
 
 const print = (result) => {
   if (result.matches.length === 0) {
-    console.log('No mistakes found')
+    console.log(chalk.green('No mistakes found!'))
   } else {
+    console.log(`Found ${result.matches.length} potential mistakes`)
     result.matches.forEach((match) => {
       const context = highlightMistake(
         match.context.text,

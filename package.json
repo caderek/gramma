@@ -5,7 +5,7 @@
   "description": "Command line grammar checker",
   "main": "gramma",
   "scripts": {
-    "build:binary": "pkg -c package.json --out-path bin gramma"
+    "build:binary": "pkg -c package.json --out-path bin cli.js"
   },
   "keywords": [
     "grammar",
@@ -16,9 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.2",
+    "node-fetch": "^2.6.0",
     "yargs": "^13.3.0"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.3.7",
     "pkg": "^4.4.0"
   },
   "bin": "./cli.js"
