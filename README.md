@@ -10,12 +10,12 @@ This package is in a POC stage. It's functional, but limited and not unit tested
 
 ## Usage
 
-### Print possible mistakes for a string:
-
-`gramma check [text]`
-
-Text should be quoted.
-
-### Print possible mistakes for file
+### Print possible mistakes for a file
 
 `gramma check [file]`
+
+### Print possible mistakes for a string
+
+`gramma listen [text]`
+
+Text should be quoted.
