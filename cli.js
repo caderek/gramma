@@ -17,7 +17,7 @@ yargs
         console.info('Interactive mode is not yet available')
       }
 
-      console.info(`👵🏻 Ok dear, checking...`)
+      console.info(`👵🏻 OK dear, checking...`)
 
       const text = fs.readFileSync(argv.file).toString()
 
@@ -33,7 +33,7 @@ yargs
       })
     },
     (argv) => {
-      console.log(`👵🏻 Ok dear, checking...`)
+      console.log(`👵🏻 OK dear, checking...`)
 
       check(argv.text)
     },
