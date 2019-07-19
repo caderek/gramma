@@ -1,14 +1,5 @@
 const checkViaAPI = require('./checkViaAPI')
-const fs = require('fs')
 const chalk = require('chalk')
-
-const save = (json) => {
-  fs.writeFileSync(
-    `./example-responses/${new Date().toISOString()}.json`,
-    JSON.stringify(json),
-  )
-  return json
-}
 
 const highlightMistake = (context, type, offset, length) => {
   const color =
@@ -52,9 +43,7 @@ const print = (result) => {
 }
 
 const check = (text) => {
-  checkViaAPI(text)
-    .then(save)
-    .then(print)
+  checkViaAPI(text).then(print)
 }
 
 // const text = fs.readFileSync('./example.md').toString()
