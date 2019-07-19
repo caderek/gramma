@@ -19,3 +19,7 @@ This package is in a POC stage. It's functional, but limited and not unit tested
 `gramma listen [text]`
 
 Text should be quoted.
+
+### Example output
+
+![example output](example.png)
