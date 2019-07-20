@@ -32,5 +32,8 @@
   "bin": "./cli.js",
   "jest": {
     "testRegex": "src.*.test.js$"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
