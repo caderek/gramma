@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const yargs = require('yargs')
 const fs = require('fs')
-const check = require('./check')
+const check = require('./src/check')
 
 yargs
   .command(

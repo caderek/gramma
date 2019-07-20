@@ -2,3 +2,4 @@ node_modules
 .history
 example-responses
 example.txt
+coverage

@@ -1,11 +1,13 @@
 {
   "name": "gramma",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "repository": "https://github.com/caderek/gramma",
   "description": "Command line grammar checker",
-  "main": "gramma",
+  "main": "cli.js",
   "scripts": {
-    "build:binary": "pkg -c package.json --out-path bin cli.js"
+    "build:binary": "pkg -c package.json --out-path bin cli.js",
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "keywords": [
     "grammar",
@@ -17,11 +19,16 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "node-fetch": "^2.6.0",
+    "prompts": "^2.1.0",
     "yargs": "^13.3.0"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.3.7",
+    "jest": "^24.8.0",
     "pkg": "^4.4.0"
   },
-  "bin": "./cli.js"
+  "bin": "./cli.js",
+  "jest": {
+    "testRegex": "src.*.test.js$"
+  }
 }

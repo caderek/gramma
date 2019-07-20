@@ -22,4 +22,8 @@ Text should be quoted.
 
 ### Example output
 
-![example output](example.png)
+![example output](docs/example.png)
+
+### Licence
+
+Projects is under open, non-restrictive [ISC licence](LICENCE)

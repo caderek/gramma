@@ -1,5 +1,5 @@
 const querystring = require('querystring')
-const settings = require('./settings.json')
+const settings = require('../settings.json')
 const fetch = require('node-fetch')
 
 const checkViaAPI = (text) => {
