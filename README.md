@@ -1,3 +1,5 @@
+![CircleCI](https://img.shields.io/circleci/build/github/caderek/gramma.svg)
+
 # Gramma - command line grammar checker
 
 ## Notes
