@@ -1,20 +1,20 @@
 #!/usr/bin/env node
-const yargs = require('yargs')
-const fs = require('fs')
-const check = require('./src/check')
+const yargs = require("yargs")
+const fs = require("fs")
+const check = require("./src/check")
 
 yargs
   .command(
-    'check [file]',
-    'checks file for writing mistakes',
+    "check [file]",
+    "checks file for writing mistakes",
     (yargs) => {
-      yargs.positional('text', {
-        describe: 'file to check',
+      yargs.positional("text", {
+        describe: "file to check",
       })
     },
     (argv) => {
       if (argv.interactive) {
-        console.info('Interactive mode is not yet available')
+        console.info("Interactive mode is not yet available")
       }
 
       console.info(`👵🏻 OK dear, checking...`)
@@ -25,11 +25,11 @@ yargs
     },
   )
   .command(
-    'listen [text]',
-    'checks text for writing mistakes',
+    "listen [text]",
+    "checks text for writing mistakes",
     (yargs) => {
-      yargs.positional('text', {
-        describe: 'text to check',
+      yargs.positional("text", {
+        describe: "text to check",
       })
     },
     (argv) => {

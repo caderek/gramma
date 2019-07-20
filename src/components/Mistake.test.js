@@ -1,8 +1,8 @@
-const stripStyles = require('../utils/stripStyles')
-const Mistake = require('./Mistake')
+const stripStyles = require("../utils/stripStyles")
+const Mistake = require("./Mistake")
 
-describe('Mistake component', () => {
-  it('renders info about mistake without suggestions', () => {
+describe("Mistake component", () => {
+  it("renders info about mistake without suggestions", () => {
     const expected =
       `-----------------------\n\n` +
       `Issue: non-conformance\n` +
@@ -13,12 +13,12 @@ describe('Mistake component', () => {
       message: 'Did you mean "is"?',
       replacements: [],
       context: {
-        text: ' It are a perfect English sentence. ',
+        text: " It are a perfect English sentence. ",
         offset: 4,
         length: 3,
       },
       rule: {
-        issueType: 'non-conformance',
+        issueType: "non-conformance",
       },
     })
 
@@ -27,7 +27,7 @@ describe('Mistake component', () => {
     expect(rawResult).toEqual(expected)
   })
 
-  it('renders info about mistake with single suggestion', () => {
+  it("renders info about mistake with single suggestion", () => {
     const expected =
       `-----------------------\n\n` +
       `Issue: grammar\n` +
@@ -36,15 +36,15 @@ describe('Mistake component', () => {
       `Explanation: Some message\n`
 
     const result = Mistake({
-      message: 'Some message',
-      replacements: [{ value: 'foo' }],
+      message: "Some message",
+      replacements: [{ value: "foo" }],
       context: {
-        text: 'Some context',
+        text: "Some context",
         offset: 4,
         length: 3,
       },
       rule: {
-        issueType: 'grammar',
+        issueType: "grammar",
       },
     })
 
@@ -53,7 +53,7 @@ describe('Mistake component', () => {
     expect(rawResult).toEqual(expected)
   })
 
-  it('renders info about mistake with multiple suggestions', () => {
+  it("renders info about mistake with multiple suggestions", () => {
     const expected =
       `-----------------------\n\n` +
       `Issue: style\n` +
@@ -62,15 +62,15 @@ describe('Mistake component', () => {
       `Explanation: Some message\n`
 
     const result = Mistake({
-      message: 'Some message',
-      replacements: [{ value: 'foo' }, { value: 'bar' }, { value: 'baz' }],
+      message: "Some message",
+      replacements: [{ value: "foo" }, { value: "bar" }, { value: "baz" }],
       context: {
-        text: 'Some context',
+        text: "Some context",
         offset: 4,
         length: 3,
       },
       rule: {
-        issueType: 'style',
+        issueType: "style",
       },
     })
 

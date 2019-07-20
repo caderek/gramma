@@ -1,7 +1,7 @@
-const chalk = require('chalk')
+const chalk = require("chalk")
 
 const getMistakeColor = (type) =>
-  type === 'grammar' ? 'red' : type === 'style' ? 'blue' : 'yellow'
+  type === "grammar" ? "red" : type === "style" ? "blue" : "yellow"
 
 const highlightMistake = (context, type, offset, length) => {
   const color = getMistakeColor(type)
@@ -25,19 +25,19 @@ const Mistake = (mistake) => {
     .map(
       (replacement, index) => `${index + 1}) ${chalk.green(replacement.value)}`,
     )
-    .join('  ')
+    .join("  ")
 
   const fixes =
     mistake.replacements.length > 0
-      ? `${chalk.bold('Suggested fix:')} ${replacements}\n`
-      : ''
+      ? `${chalk.bold("Suggested fix:")} ${replacements}\n`
+      : ""
 
   return (
     `-----------------------\n\n` +
-    `${chalk.bold('Issue:')} ${mistake.rule.issueType}\n` +
-    `${chalk.bold('Context:')} ${context}\n` +
+    `${chalk.bold("Issue:")} ${mistake.rule.issueType}\n` +
+    `${chalk.bold("Context:")} ${context}\n` +
     `${fixes}` +
-    `${chalk.bold('Explanation:')} ${mistake.message}\n`
+    `${chalk.bold("Explanation:")} ${mistake.message}\n`
   )
 }
 

@@ -7,7 +7,7 @@
   "scripts": {
     "build:binary": "pkg -c package.json --out-path bin cli.js",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
   },
   "keywords": [
     "grammar",
@@ -24,8 +24,10 @@
   },
   "devDependencies": {
     "@types/node-fetch": "^2.3.7",
+    "codacy-coverage": "^3.4.0",
     "jest": "^24.8.0",
-    "pkg": "^4.4.0"
+    "pkg": "^4.4.0",
+    "prettier": "^1.18.2"
   },
   "bin": "./cli.js",
   "jest": {
