@@ -6,8 +6,9 @@
   "main": "cli.js",
   "scripts": {
     "build:binary": "pkg -c package.json --out-path bin cli.js",
-    "test": "jest",
-    "test:coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
+    "test": "jest --verbose",
+    "test:coverage": "jest --verbose --coverage",
+    "test:ci": "jest --coverage --verbose && cat ./coverage/lcov.info | codacy-coverage"
   },
   "keywords": [
     "grammar",
