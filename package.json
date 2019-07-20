@@ -7,7 +7,7 @@
   "scripts": {
     "build:binary": "pkg -c package.json --out-path bin cli.js",
     "test": "jest",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
+    "test:coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
   },
   "keywords": [
     "grammar",
