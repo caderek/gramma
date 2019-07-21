@@ -1,7 +1,8 @@
 {
   "name": "gramma",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "repository": "https://github.com/caderek/gramma",
+  "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",
   "main": "cli.js",
   "scripts": {
