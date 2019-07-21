@@ -1,3 +1,4 @@
+<h1 align="center">Gramma - command line grammar checker</h1>
 <div align="center">
 
 ![npm](https://img.shields.io/npm/v/gramma.svg)
@@ -15,8 +16,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/caderek/gramma.svg)
 
 </div>
-
-# Gramma - command line grammar checker
 
 ## Notes
 
