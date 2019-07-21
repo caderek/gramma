@@ -37,6 +37,6 @@ Text should be quoted.
 
 ![example output](docs/example.png)
 
-### Licence
+### License
 
-Projects is under open, non-restrictive [ISC licence](LICENCE)
+Projects is under open, non-restrictive [ISC license](LICENSE)
