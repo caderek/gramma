@@ -13,13 +13,13 @@ yargs
       })
     },
     (argv) => {
-      if (argv.interactive) {
-        console.info("Interactive mode is not yet available")
-      }
-
       console.info(`👵🏻 OK dear, checking...`)
 
       const text = fs.readFileSync(argv.file).toString()
+
+      if (argv.print) {
+        check(text)
+      }
 
       check(text)
     },
@@ -33,8 +33,37 @@ yargs
       })
     },
     (argv) => {
-      console.log(`👵🏻 OK dear, checking...`)
+      console.info(`👵🏻 OK dear, checking...`)
+
+      if (argv.print) {
+        check(argv.text)
+      }
 
       check(argv.text)
     },
-  ).argv
+  )
+  .command(
+    "commit [text]",
+    "git commit with grammar check",
+    (yargs) => {
+      yargs.positional("text", {
+        describe: "commit message to check",
+      })
+    },
+    (argv) => {
+      console.info(`👵🏻 OK dear, checking...`)
+
+      if (argv.print) {
+        check(argv.text)
+      }
+
+      check(argv.text)
+    },
+  )
+  .option("print", {
+    alias: "p",
+    default: false,
+    describe: "Print mistakes non-interactively",
+  })
+  .alias("help", "h")
+  .alias("version", "v").argv
