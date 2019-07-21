@@ -1,9 +1,9 @@
 const stripStyles = require("./stripStyles")
-const chalk = require("chalk")
+const kleur = require("kleur")
 
 describe("Strips styles from console string", () => {
   it("strips colors", () => {
-    const input = chalk.red("foo")
+    const input = kleur.red("foo")
     const expected = "foo"
     const result = stripStyles(input)
 
@@ -11,7 +11,7 @@ describe("Strips styles from console string", () => {
   })
 
   it("strips background colors", () => {
-    const input = chalk.bgRed("foo")
+    const input = kleur.bgRed("foo")
     const expected = "foo"
     const result = stripStyles(input)
 
@@ -19,7 +19,12 @@ describe("Strips styles from console string", () => {
   })
 
   it("strips font style", () => {
-    const input = chalk.bold.italic.underline.strikethrough.dim("foo")
+    const input = kleur
+      .bold()
+      .italic()
+      .underline()
+      .strikethrough()
+      .dim("foo")
     const expected = "foo"
     const result = stripStyles(input)
 

@@ -1,4 +1,4 @@
-const chalk = require("chalk")
+const kleur = require("kleur")
 const replace = require("../text-manipulation/replace")
 
 const getMistakeColor = (type) =>
@@ -6,7 +6,7 @@ const getMistakeColor = (type) =>
 
 const highlightMistake = (context, type, offset, length) => {
   const color = getMistakeColor(type)
-  const change = (mistake) => chalk[color](mistake)
+  const change = (mistake) => kleur[color](mistake)
 
   return replace(context, change, offset, length)
 }
@@ -21,21 +21,21 @@ const Mistake = (mistake) => {
 
   const replacements = mistake.replacements
     .map(
-      (replacement, index) => `${index + 1}) ${chalk.green(replacement.value)}`,
+      (replacement, index) => `${index + 1}) ${kleur.green(replacement.value)}`,
     )
     .join("  ")
 
   const fixes =
     mistake.replacements.length > 0
-      ? `${chalk.bold("Suggested fix:")} ${replacements}\n`
+      ? `${kleur.bold("Suggested fix:")} ${replacements}\n`
       : ""
 
   return (
     `-----------------------\n\n` +
-    `${chalk.bold("Issue:")} ${mistake.rule.issueType}\n` +
-    `${chalk.bold("Context:")} ${context}\n` +
+    `${kleur.bold("Issue:")} ${mistake.rule.issueType}\n` +
+    `${kleur.bold("Context:")} ${context}\n` +
     `${fixes}` +
-    `${chalk.bold("Explanation:")} ${mistake.message}\n`
+    `${kleur.bold("Explanation:")} ${mistake.message}\n`
   )
 }
 

@@ -1,3 +1,5 @@
+<p style="text-align: center;">
+
 ![npm](https://img.shields.io/npm/v/gramma.svg)
 ![NPM](https://img.shields.io/npm/l/gramma.svg)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/caderek/gramma.svg)
@@ -11,6 +13,8 @@
 ![David](https://img.shields.io/david/caderek/gramma.svg)
 ![GitHub issues](https://img.shields.io/github/issues-raw/caderek/gramma.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/caderek/gramma.svg)
+
+</p>
 
 # Gramma - command line grammar checker
 

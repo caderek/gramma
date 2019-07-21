@@ -18,7 +18,7 @@
   "author": "Maciej Cąderek | maciej.caderek@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.4.2",
+    "kleur": "^3.0.3",
     "node-fetch": "^2.6.0",
     "prompts": "^2.1.0",
     "yargs": "^13.3.0"

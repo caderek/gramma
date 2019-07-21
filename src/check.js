@@ -1,10 +1,10 @@
 const checkViaAPI = require("./checkViaAPI")
-const chalk = require("chalk")
+const kleur = require("kleur")
 const Mistake = require("./components/Mistake")
 
 const print = (result) => {
   if (result.matches.length === 0) {
-    console.log(chalk.green("No mistakes found!"))
+    console.log(kleur.green("No mistakes found!"))
   } else {
     console.log(`Found ${result.matches.length} potential mistakes`)
     console.log()
