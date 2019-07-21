@@ -21,12 +21,4 @@ const mainMenu = () => {
   ])
 }
 
-const main = async () => {
-  const result = await mainMenu()
-
-  console.log(result)
-}
-
-main()
-
 module.exports = mainMenu

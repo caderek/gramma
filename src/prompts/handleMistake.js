@@ -31,6 +31,4 @@ const handleMistake = (fixes) => {
   ])
 }
 
-main()
-
 module.exports = handleMistake

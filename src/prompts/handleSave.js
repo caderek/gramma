@@ -32,12 +32,4 @@ const handleSave = (mode, originalFile = null) => {
   ])
 }
 
-const main = async () => {
-  const result = await handleSave("TEXT")
-
-  console.log(result)
-}
-
-main()
-
 module.exports = handleSave
