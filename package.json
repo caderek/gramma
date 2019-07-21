@@ -1,6 +1,6 @@
 {
   "name": "gramma",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "repository": "https://github.com/caderek/gramma",
   "description": "Command line grammar checker",
   "main": "cli.js",
@@ -24,6 +24,7 @@
     "yargs": "^13.3.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
     "@types/node-fetch": "^2.3.7",
     "codacy-coverage": "^3.4.0",
     "jest": "^24.8.0",

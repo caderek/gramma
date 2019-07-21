@@ -12,8 +12,9 @@ const print = (result) => {
   }
 }
 
-const check = (text) => {
-  checkViaAPI(text).then(print)
+const check = async (text) => {
+  const results = await checkViaAPI(text)
+  print(results)
 }
 
 module.exports = check

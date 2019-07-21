@@ -1,16 +1,14 @@
 const chalk = require("chalk")
+const replace = require("../text-manipulation/replace")
 
 const getMistakeColor = (type) =>
   type === "grammar" ? "red" : type === "style" ? "blue" : "yellow"
 
 const highlightMistake = (context, type, offset, length) => {
   const color = getMistakeColor(type)
+  const change = (mistake) => chalk[color](mistake)
 
-  const before = context.slice(0, offset)
-  const mistake = context.slice(offset, offset + length)
-  const after = context.slice(offset + length)
-
-  return `${before}${chalk[color](mistake)}${after}`
+  return replace(context, change, offset, length)
 }
 
 const Mistake = (mistake) => {
