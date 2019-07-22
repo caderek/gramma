@@ -1,6 +1,7 @@
 const handleSave = require("./prompts/handleSave")
 const path = require("path")
 const fs = require("fs")
+const kleur = require("kleur")
 
 const save = async (text, mode, filePath = null) => {
   const originalFile = filePath ? path.basename(filePath) : null
@@ -13,17 +14,20 @@ const save = async (text, mode, filePath = null) => {
   if (saveOption === "replace") {
     fs.writeFileSync(filePath, text)
     console.clear()
-    console.log(`-----------------------\n\nSaved!`)
+    console.log(`---------------------------------\n\nSaved!`)
   } else if (saveOption === "save-as") {
     const newPath =
       mode === "FILE" ? path.join(originalFolder, fileName) : fileName
     fs.writeFileSync(newPath, text)
     console.clear()
-    console.log(`-----------------------\n\nSaved as ${fileName}`)
+    console.log(`---------------------------------\n\nSaved as ${fileName}`)
   } else {
     console.clear()
     console.log(
-      `-----------------------\n\n${text}\n\n-----------------------\nDone!`,
+      "---------------------------------\n\n" +
+        text +
+        "\n\n---------------------------------\n" +
+        kleur.green("Done!"),
     )
   }
 }

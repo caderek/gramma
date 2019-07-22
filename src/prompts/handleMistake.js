@@ -2,6 +2,8 @@ const prompts = require("prompts")
 const FixMenu = require("../components/FixMenu")
 
 const handleMistake = (fixes) => {
+  console.log("---------------------------------")
+
   const validInputs = [
     ...fixes.map((_, index) => String(index + 1)),
     "0",

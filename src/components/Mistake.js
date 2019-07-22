@@ -21,7 +21,8 @@ const Mistake = (match) => {
 
   const replacements = match.replacements
     .map(
-      (replacement, index) => `${index + 1}) ${kleur.green(replacement.value)}`,
+      (replacement, index) =>
+        `${kleur.bold().green(index + 1)}) ${replacement.value}`,
     )
     .join("  ")
 
@@ -31,11 +32,11 @@ const Mistake = (match) => {
       : ""
 
   return (
-    `-----------------------\n\n` +
-    `${kleur.bold("Issue:")} ${match.rule.issueType}\n` +
+    `---------------------------------\n\n` +
+    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`) +
+    kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`) +
     `${kleur.bold("Context:")} ${context}\n` +
-    `${fixes}` +
-    `${kleur.bold("Explanation:")} ${match.message}\n`
+    `${fixes}`
   )
 }
 
