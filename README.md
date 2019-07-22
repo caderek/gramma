@@ -18,7 +18,7 @@
 
 ## Notes
 
-This package is in a early stage. It's functional, but still limited.
+This package is in an early stage. It's functional, but still limited.
 Feel free to try it for non-critical applications.
 
 It uses [grammarbot.io](https://www.grammarbot.io/) as a backend.

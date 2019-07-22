@@ -71,7 +71,7 @@ yargs
 
         process.stdout.write(output)
       } catch (error) {
-        process.stderr.write(error)
+        process.stderr.write(error.stdout)
       }
     },
   )
