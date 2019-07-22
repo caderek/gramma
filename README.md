@@ -28,7 +28,7 @@ It uses [grammarbot.io](https://www.grammarbot.io/) as a backend.
 
 ## Installation
 
-```sh
+```
 npm i gramma -g
 ```
 
@@ -36,48 +36,76 @@ npm i gramma -g
 
 ### Check file
 
-Interactive fix:
+- Interactive fix:
 
-```sh
-gramma check [file]
-```
+  ```
+  gramma check [file]
+  ```
 
-Just print potential mistakes:
+- Just print potential mistakes:
 
-```sh
-gramma check -p [file]
-```
+  ```
+  gramma check -p [file]
+  ```
+
+- Examples:
+
+  ```sh
+  gramma check path/to/my_file.txt
+  ```
+
+  ```sh
+  gramma check -p path/to/other/file.txt
+  ```
 
 ### Check string
 
-Interactive fix:
+- Interactive fix:
 
-```sh
-gramma listen [text]
-```
+  ```
+  gramma listen [text]
+  ```
 
-Just print potential mistakes:
+- Just print potential mistakes:
 
-```sh
-gramma listen -p [text]
-```
+  ```
+  gramma listen -p [text]
+  ```
 
-Text should be quoted.
+- Examples:
+
+  ```sh
+  gramma listen "This sentence will be checked interactively."
+  ```
+
+  ```sh
+  gramma listen -p "Suggestions for this sentence will be printed."
+  ```
 
 ### Git commit with grammar check
 
-Equivalent to `git commit -m [message]`:
+- Equivalent to `git commit -m [message]`:
 
-```sh
-gramma commit [text]
-```
+  ```
+  gramma commit [text]
+  ```
 
-Equivalent to `git commit -am [message]`:
+- Equivalent to `git commit -am [message]`:
 
-```sh
-gramma commit -a [text]
-```
+  ```
+  gramma commit -a [text]
+  ```
 
-### License
+- Examples:
+
+  ```sh
+  gramma commit "My commit message"
+  ```
+
+  ```sh
+  gramma commit -a "My commit message (changes to cached files added)"
+  ```
+
+## License
 
 Projects is under open, non-restrictive [ISC license](LICENSE)
