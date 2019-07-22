@@ -88,4 +88,5 @@ yargs
     describe: "Adds -a flag to git commit command",
   })
   .alias("help", "h")
-  .alias("version", "v").argv
+  .alias("version", "v")
+  .demandCommand().argv
