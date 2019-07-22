@@ -1,7 +1,7 @@
-const handleSave = require("./prompts/handleSave")
 const path = require("path")
 const fs = require("fs")
 const kleur = require("kleur")
+const handleSave = require("./prompts/handleSave")
 
 const save = async (text, mode, filePath = null) => {
   const originalFile = filePath ? path.basename(filePath) : null
@@ -24,10 +24,10 @@ const save = async (text, mode, filePath = null) => {
   } else {
     console.clear()
     console.log(
-      "---------------------------------\n\n" +
-        text +
-        "\n\n---------------------------------\n" +
-        kleur.green("Done!"),
+      `---------------------------------\n\n${ 
+        text 
+        }\n\n---------------------------------\n${ 
+        kleur.green("Done!")}`,
     )
   }
 }

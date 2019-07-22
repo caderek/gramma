@@ -1,5 +1,5 @@
-const stripStyles = require("./stripStyles")
 const kleur = require("kleur")
+const stripStyles = require("./stripStyles")
 
 describe("Strips styles from console string", () => {
   it("strips colors", () => {

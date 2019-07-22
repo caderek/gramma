@@ -1,5 +1,5 @@
-const checkViaAPI = require("./checkViaAPI")
 const kleur = require("kleur")
+const checkViaAPI = require("./checkViaAPI")
 const Mistake = require("./components/Mistake")
 const handleMistake = require("./prompts/handleMistake")
 const replaceAll = require("./text-manipulation/replaceAll")
@@ -11,11 +11,11 @@ const checkInteractively = async (text) => {
   if (result.matches.length === 0) {
     console.log(kleur.green("No mistakes found!"))
     return { changed: false, text }
-  } else {
+  } 
     console.log(`Found ${result.matches.length} potential mistakes`)
 
     let matches = result.matches
-    let total = matches.length
+    const total = matches.length
     const transformations = []
 
     while (matches.length > 0) {
@@ -68,7 +68,7 @@ const checkInteractively = async (text) => {
     }
 
     return { changed: true, text: replaceAll(text, transformations) }
-  }
+  
 }
 
 module.exports = checkInteractively

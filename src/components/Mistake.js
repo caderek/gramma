@@ -32,10 +32,10 @@ const Mistake = (match) => {
       : ""
 
   return (
-    `---------------------------------\n\n` +
-    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`) +
-    kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`) +
-    `${kleur.bold("Context:")} ${context}\n` +
+    `---------------------------------\n\n${ 
+    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`) 
+    }${kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`) 
+    }${kleur.bold("Context:")} ${context}\n` +
     `${fixes}`
   )
 }

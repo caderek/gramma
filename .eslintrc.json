@@ -1,0 +1,10 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "rules": {
+    "no-console": 0
+  },
+  "env": {
+    "jest": true,
+    "node": true
+  }
+}

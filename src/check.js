@@ -1,5 +1,5 @@
-const checkViaAPI = require("./checkViaAPI")
 const kleur = require("kleur")
+const checkViaAPI = require("./checkViaAPI")
 const Mistake = require("./components/Mistake")
 
 const print = (result) => {
