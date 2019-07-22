@@ -14,6 +14,7 @@
 <img src="https://img.shields.io/github/issues-raw/caderek/gramma.svg" alt="Github issues">
 <img src="https://img.shields.io/github/last-commit/caderek/gramma.svg" alt="Github last commit">
 
+<video style="max-width: 700px" src="docs/example.mp4" type="video/mp4" autoplay loop >
 </div>
 
 ## Notes
