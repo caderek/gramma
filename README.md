@@ -18,23 +18,62 @@
 
 ## Notes
 
-This package is in a POC stage. It's functional, but limited and not unit tested.
+This package is in a early stage. It's functional, but still limited.
+Feel free to try it for non-critical applications.
+
+It uses [grammarbot.io](https://www.grammarbot.io/) as a backend.
 
 ## Installation
 
-`npm i gramma -g`
+```sh
+npm i gramma -g
+```
 
 ## Usage
 
-### Print possible mistakes for a file
+### Check file
 
-`gramma check [file]`
+Interactive fix:
 
-### Print possible mistakes for a string
+```sh
+gramma check [file]
+```
 
-`gramma listen [text]`
+Just print potential mistakes:
+
+```sh
+gramma check -p [file]
+```
+
+### Check string
+
+Interactive fix:
+
+```sh
+gramma listen [text]
+```
+
+Just print potential mistakes:
+
+```sh
+gramma listen -p [text]
+```
 
 Text should be quoted.
+
+### Git commit with grammar check
+
+Equivalent to `git commit -m [message]`:
+
+```sh
+gramma commit [text]
+```
+
+Equivalent to `git commit -am [message]`:
+
+```sh
+gramma commit -a [text]
+```
 
 ### Example output
 

@@ -11,31 +11,31 @@ const highlightMistake = (context, type, offset, length) => {
   return replace(context, change, offset, length)
 }
 
-const Mistake = (mistake) => {
+const Mistake = (match) => {
   const context = highlightMistake(
-    mistake.context.text,
-    mistake.rule.issueType,
-    mistake.context.offset,
-    mistake.context.length,
+    match.context.text,
+    match.rule.issueType,
+    match.context.offset,
+    match.context.length,
   )
 
-  const replacements = mistake.replacements
+  const replacements = match.replacements
     .map(
       (replacement, index) => `${index + 1}) ${kleur.green(replacement.value)}`,
     )
     .join("  ")
 
   const fixes =
-    mistake.replacements.length > 0
+    match.replacements.length > 0
       ? `${kleur.bold("Suggested fix:")} ${replacements}\n`
       : ""
 
   return (
     `-----------------------\n\n` +
-    `${kleur.bold("Issue:")} ${mistake.rule.issueType}\n` +
+    `${kleur.bold("Issue:")} ${match.rule.issueType}\n` +
     `${kleur.bold("Context:")} ${context}\n` +
     `${fixes}` +
-    `${kleur.bold("Explanation:")} ${mistake.message}\n`
+    `${kleur.bold("Explanation:")} ${match.message}\n`
   )
 }
 

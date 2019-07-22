@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 const yargs = require("yargs")
 const fs = require("fs")
+const { execSync } = require("child_process")
 const check = require("./src/check")
+const checkInteractively = require("./src/checkInteractively")
+const save = require("./src/save")
 
 yargs
   .command(
@@ -12,16 +15,19 @@ yargs
         describe: "file to check",
       })
     },
-    (argv) => {
+    async (argv) => {
       console.info(`👵🏻 OK dear, checking...`)
 
-      const text = fs.readFileSync(argv.file).toString()
+      const initialText = fs.readFileSync(argv.file).toString()
 
       if (argv.print) {
-        check(text)
+        check(initialText)
+      } else {
+        const { changed, text } = await checkInteractively(initialText)
+        if (changed) {
+          save(text, "FILE", argv.file)
+        }
       }
-
-      check(text)
     },
   )
   .command(
@@ -32,38 +38,50 @@ yargs
         describe: "text to check",
       })
     },
-    (argv) => {
+    async (argv) => {
       console.info(`👵🏻 OK dear, checking...`)
 
       if (argv.print) {
         check(argv.text)
+      } else {
+        const { changed, text } = await checkInteractively(argv.text)
+        if (changed) {
+          save(text, "TEXT")
+        }
       }
-
-      check(argv.text)
     },
   )
   .command(
     "commit [text]",
-    "git commit with grammar check",
+    "git commit -m with grammar check",
     (yargs) => {
       yargs.positional("text", {
         describe: "commit message to check",
       })
     },
-    (argv) => {
+    async (argv) => {
       console.info(`👵🏻 OK dear, checking...`)
 
-      if (argv.print) {
-        check(argv.text)
-      }
+      const { text } = await checkInteractively(argv.text, "COMMIT")
 
-      check(argv.text)
+      let output = argv.add
+        ? execSync(`git commit -am "${text}"`)
+        : execSync(`git commit -m "${text}"`)
+
+      console.log(output)
     },
   )
   .option("print", {
     alias: "p",
+    type: "boolean",
     default: false,
     describe: "Print mistakes non-interactively",
+  })
+  .option("all", {
+    alias: "a",
+    type: "boolean",
+    default: false,
+    describe: "Adds -a flag to git commit command",
   })
   .alias("help", "h")
   .alias("version", "v").argv

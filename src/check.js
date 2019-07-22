@@ -13,8 +13,8 @@ const print = (result) => {
 }
 
 const check = async (text) => {
-  const results = await checkViaAPI(text)
-  print(results)
+  const result = await checkViaAPI(text)
+  print(result)
 }
 
 module.exports = check
