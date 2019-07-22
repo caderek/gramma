@@ -6,8 +6,8 @@ describe("Mistake component", () => {
     const expected =
       `---------------------------------\n\n` +
       `Issue: non-conformance\n` +
-      `Context:  It are a perfect English sentence. \n` +
-      `Explanation: Did you mean "is"?\n`
+      `Explanation: Did you mean "is"?\n\n` +
+      `Context:  It are a perfect English sentence. \n`
 
     const result = Mistake({
       message: 'Did you mean "is"?',
@@ -31,9 +31,9 @@ describe("Mistake component", () => {
     const expected =
       `---------------------------------\n\n` +
       `Issue: grammar\n` +
+      `Explanation: Some message\n\n` +
       `Context: Some context\n` +
-      `Suggested fix: 1) foo\n` +
-      `Explanation: Some message\n`
+      `Suggested fix: 1) foo\n`
 
     const result = Mistake({
       message: "Some message",
@@ -57,9 +57,9 @@ describe("Mistake component", () => {
     const expected =
       `---------------------------------\n\n` +
       `Issue: style\n` +
+      `Explanation: Some message\n\n` +
       `Context: Some context\n` +
-      `Suggested fix: 1) foo  2) bar  3) baz\n` +
-      `Explanation: Some message\n`
+      `Suggested fix: 1) foo  2) bar  3) baz\n`
 
     const result = Mistake({
       message: "Some message",
