@@ -14,8 +14,7 @@
 <img src="https://img.shields.io/github/issues-raw/caderek/gramma.svg" alt="Github issues">
 <img src="https://img.shields.io/github/last-commit/caderek/gramma.svg" alt="Github last commit">
 
-![example](docs/example.gif)
-
+<img src="docs/example.gif" alt="Example">
 </div>
 
 ## Notes
