@@ -103,7 +103,7 @@ npm i gramma -g
   ```
 
   ```sh
-  gramma commit -a "My commit message (changes to cached files added)"
+  gramma commit -a "Another commit message (files added)"
   ```
 
 ## License
