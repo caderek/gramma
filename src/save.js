@@ -13,12 +13,13 @@ const save = async (text, mode, filePath = null) => {
   if (saveOption === "replace") {
     fs.writeFileSync(filePath, text)
     console.clear()
-    console.log(`-----------------------\n\nSaved in ${path.resolve(filePath)}`)
+    console.log(`-----------------------\n\nSaved!`)
   } else if (saveOption === "save-as") {
-    const newPath = path.join(originalFolder, fileName)
+    const newPath =
+      mode === "FILE" ? path.join(originalFolder, fileName) : fileName
     fs.writeFileSync(newPath, text)
     console.clear()
-    console.log(`-----------------------\n\nSaved in ${path.resolve(newPath)}`)
+    console.log(`-----------------------\n\nSaved as ${fileName}`)
   } else {
     console.clear()
     console.log(
