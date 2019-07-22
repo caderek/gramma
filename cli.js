@@ -64,11 +64,15 @@ yargs
 
       const { text } = await checkInteractively(argv.text, "COMMIT")
 
-      let output = argv.add
-        ? execSync(`git commit -am "${text}"`)
-        : execSync(`git commit -m "${text}"`)
+      try {
+        let output = argv.all
+          ? execSync(`git commit -am "${text}"`)
+          : execSync(`git commit -m "${text}"`)
 
-      console.log(output)
+        process.stdout.write(output)
+      } catch (error) {
+        process.stderr.write(error)
+      }
     },
   )
   .option("print", {
