@@ -40,13 +40,14 @@ const Mistake = (match) => {
       ? `${kleur.bold("Suggested fix:")} ${replacements}\n`
       : ""
 
-  return [
-    `---------------------------------\n\n`,
-    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`),
-    kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`),
-    `${kleur.bold("Context:")} ${context}\n`,
-    `${fixes}`,
-  ].join("")
+  // prettier-ignore
+  return (
+    `---------------------------------\n\n${
+    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`)
+    }${kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`)
+    }${kleur.bold("Context:")} ${context}\n${
+    fixes}`
+  )
 }
 
 module.exports = Mistake

@@ -1,7 +1,7 @@
 const path = require("path")
 const fs = require("fs")
 const kleur = require("kleur")
-const handleSave = require("./prompts/handleSave")
+const handleSave = require("../prompts/handleSave")
 
 const save = async (text, mode, filePath = null) => {
   const originalFile = filePath ? path.basename(filePath) : null

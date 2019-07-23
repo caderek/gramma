@@ -2,16 +2,17 @@
 const yargs = require("yargs")
 const fs = require("fs")
 const { execSync } = require("child_process")
-const check = require("./src/check")
-const checkInteractively = require("./src/checkInteractively")
-const save = require("./src/save")
+const check = require("./commands/check")
+const checkInteractively = require("./commands/checkInteractively")
+const save = require("./commands/save")
 
+// eslint-disable-next-line no-unused-expressions
 yargs
   .command(
     "check [file]",
     "checks file for writing mistakes",
-    (yargs) => {
-      yargs.positional("text", {
+    (yargsCtx) => {
+      yargsCtx.positional("text", {
         describe: "file to check",
       })
     },
@@ -33,8 +34,8 @@ yargs
   .command(
     "listen [text]",
     "checks text for writing mistakes",
-    (yargs) => {
-      yargs.positional("text", {
+    (yargsCtx) => {
+      yargsCtx.positional("text", {
         describe: "text to check",
       })
     },
@@ -54,8 +55,8 @@ yargs
   .command(
     "commit [text]",
     "git commit -m with grammar check",
-    (yargs) => {
-      yargs.positional("text", {
+    (yargsCtx) => {
+      yargsCtx.positional("text", {
         describe: "commit message to check",
       })
     },
@@ -65,7 +66,7 @@ yargs
       const { text } = await checkInteractively(argv.text, "COMMIT")
 
       try {
-        let output = argv.all
+        const output = argv.all
           ? execSync(`git commit -am "${text}"`)
           : execSync(`git commit -m "${text}"`)
 

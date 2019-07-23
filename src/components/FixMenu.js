@@ -13,18 +13,19 @@ const FixOptions = (fixes) => {
 const FixMenu = (fixes) => {
   const defaultFix = kleur.bold().green(fixes.length > 0 ? 1 : 0)
 
-  return [
-    `What do you want to do?\n`,
-    kleur.bold().green("Enter"),
-    kleur.reset(`: default (${defaultFix})\n`),
-    FixOptions(fixes),
-    kleur.bold().green("0"),
-    kleur.reset(`: custom fix\n`),
-    kleur.bold().green("i"),
-    kleur.reset(`: ignore\n`),
-    kleur.bold().green("n"),
-    kleur.reset(`: next\n`),
-  ].join("")
+  // prettier-ignore
+  return (
+    `What do you want to do?\n${ 
+    kleur.bold().green("Enter") 
+    }${kleur.reset(`: default (${defaultFix})\n`) 
+    }${FixOptions(fixes) 
+    }${kleur.bold().green("0") 
+    }${kleur.reset(`: custom fix\n`) 
+    }${kleur.bold().green("i") 
+    }${kleur.reset(`: ignore\n`) 
+    }${kleur.bold().green("n") 
+    }${kleur.reset(`: next\n`)}`
+  )
 }
 
 module.exports = FixMenu

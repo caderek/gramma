@@ -4,7 +4,7 @@
   "repository": "https://github.com/caderek/gramma",
   "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",
-  "main": "cli.js",
+  "main": "src/index.js",
   "scripts": {
     "build:binary": "pkg -c package.json --out-path bin cli.js",
     "format": "prettier --write \"*/**/*.js\"",
@@ -40,7 +40,7 @@
     "pkg": "^4.4.0",
     "prettier": "^1.18.2"
   },
-  "bin": "./cli.js",
+  "bin": "src/cli.js",
   "jest": {
     "testRegex": "src.*.test.js$"
   },

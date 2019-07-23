@@ -1,6 +1,6 @@
 const kleur = require("kleur")
-const checkViaAPI = require("./checkViaAPI")
-const Mistake = require("./components/Mistake")
+const checkViaAPI = require("../requests/checkViaAPI")
+const Mistake = require("../components/Mistake")
 
 const print = (result) => {
   if (result.matches.length === 0) {
