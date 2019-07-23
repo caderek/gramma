@@ -1,4 +1,4 @@
-const deepEqual = require("assert").deepEqual
+const { deepEqual } = require("assert")
 
 const equal = (a, b) => {
   try {

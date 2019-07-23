@@ -1,8 +1,17 @@
 const kleur = require("kleur")
 const replace = require("../text-manipulation/replace")
 
-const getMistakeColor = (type) =>
-  type === "grammar" ? "red" : type === "style" ? "blue" : "yellow"
+const getMistakeColor = (type) => {
+  if (type === "grammar") {
+    return "red"
+  }
+
+  if (type === "style") {
+    return "blue"
+  }
+
+  return "yellow"
+}
 
 const highlightMistake = (context, type, offset, length) => {
   const color = getMistakeColor(type)
@@ -31,13 +40,13 @@ const Mistake = (match) => {
       ? `${kleur.bold("Suggested fix:")} ${replacements}\n`
       : ""
 
-  return (
-    `---------------------------------\n\n${ 
-    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`) 
-    }${kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`) 
-    }${kleur.bold("Context:")} ${context}\n` +
-    `${fixes}`
-  )
+  return [
+    `---------------------------------\n\n`,
+    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`),
+    kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`),
+    `${kleur.bold("Context:")} ${context}\n`,
+    `${fixes}`,
+  ].join("")
 }
 
 module.exports = Mistake

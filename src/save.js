@@ -24,10 +24,9 @@ const save = async (text, mode, filePath = null) => {
   } else {
     console.clear()
     console.log(
-      `---------------------------------\n\n${ 
-        text 
-        }\n\n---------------------------------\n${ 
-        kleur.green("Done!")}`,
+      `---------------------------------\n\n${text}\n\n---------------------------------\n${kleur.green(
+        "Done!",
+      )}`,
     )
   }
 }
