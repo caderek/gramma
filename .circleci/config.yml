@@ -35,3 +35,4 @@ jobs:
 
       # run tests!
       - run: yarn run test:ci
+      - run: yarn run lint
