@@ -1,13 +1,13 @@
 {
   "name": "gramma",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "repository": "https://github.com/caderek/gramma",
   "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",
   "main": "src/index.js",
   "scripts": {
-    "build:binary": "pkg -c package.json --out-path bin cli.js",
-    "format": "prettier --write \"*/**/*.js\"",
+    "build:binary": "pkg -c package.json --out-path bin src/cli.js",
+    "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**",
     "test": "jest --verbose",
     "test:ci": "jest --coverage --verbose && cat ./coverage/lcov.info | codacy-coverage",
@@ -38,7 +38,8 @@
     "eslint-plugin-react": "^7.14.2",
     "jest": "^24.8.0",
     "pkg": "^4.4.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "shelljs": "^0.8.3"
   },
   "bin": "src/cli.js",
   "jest": {

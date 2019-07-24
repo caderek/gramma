@@ -15,6 +15,8 @@ const print = (result) => {
 const check = async (text) => {
   const result = await checkViaAPI(text)
   print(result)
+
+  return result.matches.length === 0 ? 0 : 1
 }
 
 module.exports = check

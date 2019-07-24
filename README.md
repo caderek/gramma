@@ -42,7 +42,7 @@ npm i gramma -g
   gramma check [file]
   ```
 
-- Just print potential mistakes:
+- Just print potential mistakes and return status code:
 
   ```
   gramma check -p [file]
@@ -66,7 +66,7 @@ npm i gramma -g
   gramma listen [text]
   ```
 
-- Just print potential mistakes:
+- Just print potential mistakes and return status code:
 
   ```
   gramma listen -p [text]
@@ -105,6 +105,48 @@ npm i gramma -g
   ```sh
   gramma commit -a "Another commit message (files added)"
   ```
+
+### JS API
+
+In addition to command-line usage, you can use two exposed methods if you want to handle mistakes yourself.
+
+#### check() method
+
+Returns a promise with a raw grammarbot.io response body.
+
+```js
+const { check } = require("gramma")
+
+check("Some text to check.").then(console.log)
+```
+
+#### replaceAll method
+
+Replaces words with provided ones. It takes an array of object in the following format:
+
+```js
+const exampleReplacements = [
+  { offset: 6, length: 3, change: "correct phrase" },
+  { offset: 20, length: 7, change: "another phrase" },
+]
+```
+
+You can find proper `offset` and `length` values in object returned by `check()` method.
+
+Example usage:
+
+```js
+const { check, replaceAll } = require("gramma")
+
+const fix = async (text) => {
+  const { matches } = await check(text)
+  const replacements = prepareReplacements(matches) // your function
+
+  return replaceAll(replacements)
+}
+
+const correctText = fix("Some text to check")
+```
 
 ## License
 

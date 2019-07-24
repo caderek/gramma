@@ -22,7 +22,8 @@ yargs
       const initialText = fs.readFileSync(argv.file).toString()
 
       if (argv.print) {
-        check(initialText)
+        const status = await check(initialText)
+        process.exit(status)
       } else {
         const { changed, text } = await checkInteractively(initialText)
         if (changed) {
@@ -43,7 +44,8 @@ yargs
       console.info(`👵🏻 OK dear, checking...`)
 
       if (argv.print) {
-        check(argv.text)
+        const status = await check(argv.text)
+        process.exit(status)
       } else {
         const { changed, text } = await checkInteractively(argv.text)
         if (changed) {
