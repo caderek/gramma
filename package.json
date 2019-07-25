@@ -9,9 +9,8 @@
     "build:binary": "pkg -c package.json --out-path bin src/cli.js",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**",
-    "test": "jest --verbose",
-    "test:ci": "jest --coverage --verbose && cat ./coverage/lcov.info | codacy-coverage",
-    "test:coverage": "jest --verbose --coverage"
+    "test": "jest",
+    "test:ci": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
   },
   "keywords": [
     "grammar",
@@ -43,7 +42,10 @@
   },
   "bin": "src/cli.js",
   "jest": {
-    "testRegex": "src.*.test.js$"
+    "verbose": true,
+    "testMatch": [
+      "**/?(*.)(spec|test).?(m)js"
+    ]
   },
   "engines": {
     "node": ">=8.0.0"

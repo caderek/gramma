@@ -9,6 +9,26 @@ const save = require("./commands/save")
 // eslint-disable-next-line no-unused-expressions
 yargs
   .command(
+    "*",
+    "check from stream",
+    () => {},
+    (argv) => {
+      process.stdin.on("data", async (data) => {
+        const initialText = data.toString()
+
+        if (argv.print) {
+          const status = await check(initialText, false)
+          process.exit(status)
+        } else {
+          const { changed, text } = await checkInteractively(initialText)
+          if (changed) {
+            save(text, "TEXT")
+          }
+        }
+      })
+    },
+  )
+  .command(
     "check [file]",
     "checks file for writing mistakes",
     (yargsCtx) => {

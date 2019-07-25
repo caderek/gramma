@@ -120,7 +120,7 @@ const { check } = require("gramma")
 check("Some text to check.").then(console.log)
 ```
 
-#### replaceAll method
+#### replaceAll() method
 
 Replaces words with provided ones. It takes an array of object in the following format:
 
