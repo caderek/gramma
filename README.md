@@ -110,7 +110,7 @@ npm i gramma -g
 
 ### I/O Redirection
 
-You can also use Gramma as standard unix tool, working with stdin and stdout. There is no interactive mode in this approach (at least for now).
+You can also use Gramma as standard shell tool, working with stdin and stdout. There is no interactive mode in this approach (at least for now).
 
 #### Examples
 
@@ -160,14 +160,24 @@ Example usage:
 ```js
 const { check, replaceAll } = require("gramma")
 
+/** Your custom function **/
+const prepareReplacements = (matches) => {
+  // your code...
+}
+
 const fix = async (text) => {
   const { matches } = await check(text)
-  const replacements = prepareReplacements(matches) // your function
+  const replacements = prepareReplacements(matches)
 
   return replaceAll(replacements)
 }
 
-const correctText = fix("Some text to check")
+const main = () => {
+  const correctText = await fix("Some text to check")
+  console.log(correctText)
+}
+
+main()
 ```
 
 ## License
