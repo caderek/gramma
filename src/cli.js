@@ -14,7 +14,7 @@ yargs
     "*",
     "check from I/O stream",
     () => {},
-    async (argv) => {
+    async () => {
       const data = await new Promise((resolve) => {
         process.stdin.on("data", resolve)
       })
