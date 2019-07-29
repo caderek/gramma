@@ -20,6 +20,7 @@
   "author": "Maciej Cąderek | maciej.caderek@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "intercept-stdout": "^0.1.2",
     "kleur": "^3.0.3",
     "node-fetch": "^2.6.0",
     "prompts": "^2.1.0",

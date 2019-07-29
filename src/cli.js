@@ -2,30 +2,28 @@
 const yargs = require("yargs")
 const fs = require("fs")
 const { execSync } = require("child_process")
+const intercept = require("intercept-stdout")
 const check = require("./commands/check")
 const checkInteractively = require("./commands/checkInteractively")
 const save = require("./commands/save")
+const stripStyles = require("./utils/stripStyles")
 
 // eslint-disable-next-line no-unused-expressions
 yargs
   .command(
     "*",
-    "check from stream",
+    "check from I/O stream",
     () => {},
-    (argv) => {
-      process.stdin.on("data", async (data) => {
-        const initialText = data.toString()
-
-        if (argv.print) {
-          const status = await check(initialText, false)
-          process.exit(status)
-        } else {
-          const { changed, text } = await checkInteractively(initialText)
-          if (changed) {
-            save(text, "TEXT")
-          }
-        }
+    async (argv) => {
+      const data = await new Promise((resolve) => {
+        process.stdin.on("data", resolve)
       })
+
+      const initialText = data.toString()
+
+      intercept(stripStyles)
+      const status = await check(initialText)
+      process.exit(status)
     },
   )
   .command(
