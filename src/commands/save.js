@@ -6,7 +6,6 @@ const handleSave = require("../prompts/handleSave")
 
 const save = async (text, mode, filePath = null) => {
   const originalFile = filePath ? path.basename(filePath) : null
-  const originalFolder = filePath ? path.dirname(filePath) : "."
 
   console.clear()
   console.log("All mistakes fixed!")
