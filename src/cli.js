@@ -2,6 +2,7 @@
 const yargs = require("yargs")
 const fs = require("fs")
 const { execSync } = require("child_process")
+const path = require("path")
 const intercept = require("intercept-stdout")
 const check = require("./commands/check")
 const checkInteractively = require("./commands/checkInteractively")
@@ -97,6 +98,10 @@ yargs
       )
 
       try {
+        if (fs.existsSync(path.join(process.cwd(), ".gramma.json"))) {
+          execSync(`git add .gramma.json`)
+        }
+
         const output = argv.all
           ? execSync(`git commit -am "${text}"`)
           : execSync(`git commit -m "${text}"`)
