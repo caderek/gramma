@@ -42,17 +42,31 @@ It uses [grammarbot.io](https://www.grammarbot.io/) as a backend.
 
 ## Installation
 
-Global:
+### Via NPM
+
+This is recommended way for people who have Node.js and NPM already installed (or are willing to do so).
+
+#### Global installation:
 
 ```sh
 npm i gramma -g
 ```
 
-Local (as a dev tool for your project):
+#### Local installation (as a dev tool for your project):
 
 ```sh
 npm i gramma -D
 ```
+
+### Via binary package
+
+If you prefer a single binary file (Node.js included) you can download it for the most popular platforms:
+
+- [gramma-linux64.zip](https://github.com/caderek/gramma/releases/download/v0.7.0-beta/gramma-linux64.zip)
+- [gramma-macos.zip](https://github.com/caderek/gramma/releases/download/v0.7.0-beta/gramma-macos.zip)
+- [gramma-windows64.zip](https://github.com/caderek/gramma/releases/download/v0.7.0-beta/gramma-windows64.zip)
+
+After downloading and unpacking the binary add it to your PATH or create a symlink to your executable directory (depending on the platform).
 
 <a id='usage'></a>
 
