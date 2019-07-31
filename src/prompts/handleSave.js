@@ -27,7 +27,7 @@ const handleSave = (mode, originalFile = null) => {
       type: (prev) => (prev === "save-as" ? "text" : null),
       name: "fileName",
       initial: initialFileName(originalFile),
-      message: "Chose file name",
+      message: "Please provide a file path",
     },
   ])
 }

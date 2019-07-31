@@ -1,12 +1,15 @@
 {
   "name": "gramma",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "repository": "https://github.com/caderek/gramma",
   "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",
   "main": "src/index.js",
   "scripts": {
-    "build:binary": "pkg -c package.json --out-path bin src/cli.js",
+    "build": "yarn run build:win64; yarn run build:macos; yarn run build:linux64",
+    "build:win64": "pkg -c package.json -t node10-win-x64 --out-path bin/windows64 src/cli.js",
+    "build:macos": "pkg -c package.json -t node10-macos-x64 --out-path bin/macos src/cli.js",
+    "build:linux64": "pkg -c package.json -t node10-linux-x64 --out-path bin/linux64 src/cli.js",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**",
     "test": "jest",

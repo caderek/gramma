@@ -1,6 +1,7 @@
 const path = require("path")
 const fs = require("fs")
 const kleur = require("kleur")
+const { homedir } = require("os")
 const handleSave = require("../prompts/handleSave")
 
 const save = async (text, mode, filePath = null) => {
@@ -16,11 +17,13 @@ const save = async (text, mode, filePath = null) => {
     console.clear()
     console.log(`---------------------------------\n\nSaved!`)
   } else if (saveOption === "save-as") {
-    const newPath =
-      mode === "FILE" ? path.join(originalFolder, fileName) : fileName
+    const resolvedFileName = fileName.replace("~", homedir())
+    const newPath = path.resolve(process.cwd(), resolvedFileName)
+
     fs.writeFileSync(newPath, text)
+
     console.clear()
-    console.log(`---------------------------------\n\nSaved as ${fileName}`)
+    console.log(`---------------------------------\n\nSaved as ${newPath}`)
   } else {
     console.clear()
     console.log(
