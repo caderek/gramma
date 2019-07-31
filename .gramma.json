@@ -1,5 +1,6 @@
 {
   "dictionary": [
+    "Bugfix",
     "Codacy",
     "Github",
     "Gramma",
@@ -11,6 +12,7 @@
     "api_key",
     "async",
     "backend",
+    "cfg",
     "config",
     "const",
     "correctText",
