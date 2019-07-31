@@ -142,15 +142,14 @@ npm i gramma -D
 
 #### Gramma configuration
 
-With Gramma, you can use global and local configuration file. Local config override global properties - it is useful when you want to have dedicated config per project (for example to share it in Git repository). When nether file is present, default config will be used.
+With Gramma, you can use a global and local configuration file. Local config overrides global properties - it is useful when you want to have dedicated config per project (for example to share it in Git repository). When neither file is present, the default config will be used.
 
-Gramma will automatically generate configuration files when you run add something to your config via `gramma config` command.
+Gramma will automatically generate configuration files when you add something to your config via `gramma config` command.
 
-If you want to manually initialize local config, you can run `gramma init` command in your project's root directory. It is useful when you want to just override global dictionary with local, empty one - so your project is not dependent on your private dictionary.
+If you want to manually initialize local config, you can run `gramma init` command in your project's root directory. It is useful when you want to just override the global dictionary with local, empty one - so your project is not dependent on your private dictionary.
 
-Local configuration file name: `.gramma.json`
-
-You can check path to the global config via `gramma paths` command.
+You can check the path to the global configuration file via `gramma paths` command.
+The local configuration file is created in your working directory under `.gramma.json` name.
 
 - Adding API key
 
@@ -167,9 +166,9 @@ You can check path to the global config via `gramma paths` command.
   gramma config api_key YYYYYYYY
   ```
 
-- Adding word to a dictionary
+- Adding a word to the dictionary
 
-  Usually you will add custom words to local or global dictionary via interactive menu during fix process, but you can also make it via separate command:
+  Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
 
   ```sh
   # Add a word to the local dictionary
@@ -190,16 +189,16 @@ You can also use Gramma as standard shell tool, working with stdin and stdout. T
 #### Examples
 
 ```sh
-# check string and print result on screen:
+# check a string and print the result on the screen:
 echo "Some text" | gramma
 
-# check string and save result to a file:
+# check a string and save the result to a file:
 echo "Some text" | gramma > myFile.txt
 
-# check file and print result on screen:
+# check a file and print the result on the screen:
 gramma < myInputFile.txt
 
-# check file and save result to a file:
+# check a file and save the result to a file:
 gramma < myInputFile.txt > myOutputFile.txt
 ```
 
@@ -238,7 +237,7 @@ const exampleReplacements = [
 ]
 ```
 
-You can find proper `offset` and `length` values in object returned by `check()` method.
+You can find proper `offset` and `length` values in the object returned by `check()` method.
 
 Example usage:
 
