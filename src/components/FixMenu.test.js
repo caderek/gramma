@@ -48,4 +48,21 @@ describe("FixMenu component", () => {
 
     expect(rawResult).toEqual(expected)
   })
+
+  it("renders dictionary options on spelling mistake", () => {
+    const expected =
+      "What do you want to do?\n" +
+      "Enter: default (0)\n" +
+      "0: custom fix\n" +
+      "i: ignore\n" +
+      "l: add to local dictionary\n" +
+      "g: add to global dictionary\n" +
+      "n: next\n"
+
+    const result = FixMenu([], "misspelling")
+
+    const rawResult = stripStyles(result)
+
+    expect(rawResult).toEqual(expected)
+  })
 })

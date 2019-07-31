@@ -21,20 +21,46 @@
 
 ## Notes
 
-This package is in an early stage. It's functional, but still limited.
+This package is in an early stage. It's functional, but still needs more testing and some refactoring.
 Feel free to try it for non-critical applications.
+
+## Table of contents
+
+1. [Installation](#installation)
+1. [Usage](#usage)
+   1. [Check file](#check)
+   1. [Check string](#listen)
+   1. [Git commit with grammar check](#commit)
+   1. [Configuration](#config)
+   1. [I/O redirection](#io)
+   1. [JS API](#js)
+1. [License](#license)
 
 It uses [grammarbot.io](https://www.grammarbot.io/) as a backend.
 
+<a id='installation'></a>
+
 ## Installation
 
-```
+Global:
+
+```sh
 npm i gramma -g
 ```
+
+Local (as a dev tool for your project):
+
+```sh
+npm i gramma -D
+```
+
+<a id='usage'></a>
 
 ## Usage
 
 ### Git-like commands
+
+<a id='check'></a>
 
 #### Check file
 
@@ -60,6 +86,8 @@ npm i gramma -g
   gramma check -p path/to/other/file.txt
   ```
 
+<a id='listen'></a>
+
 #### Check string
 
 - Interactive fix:
@@ -83,6 +111,8 @@ npm i gramma -g
   ```sh
   gramma listen -p "Suggestions for this sentence will be printed."
   ```
+
+<a id='commit'></a>
 
 #### Git commit with grammar check
 
@@ -108,6 +138,51 @@ npm i gramma -g
   gramma commit -a "Another commit message (files added)"
   ```
 
+<a id='config'></a>
+
+#### Gramma configuration
+
+With Gramma, you can use global and local configuration file. Local config override global properties - it is useful when you want to have dedicated config per project (for example to share it in Git repository). When nether file is present, default config will be used.
+
+Gramma will automatically generate configuration files when you run add something to your config via `gramma config` command.
+
+If you want to manually initialize local config, you can run `gramma init` command in your project's root directory. It is useful when you want to just override global dictionary with local, empty one - so your project is not dependent on your private dictionary.
+
+Local configuration file name: `.gramma.json`
+
+You can check path to the global config via `gramma paths` command.
+
+- Adding API key
+
+By default, gramma uses a blank key, that gives you 100 checks per day.
+  You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free). When you register, you will receive an API key that you can use in Gramma. For example, adding "XXXXXXXX" API key to global config will look like this:
+
+  ```sh
+  gramma config -g api_key XXXXXXXX
+  ```
+
+  If you want to add different key locally just skip the `-g` (`--global`) flag:
+
+  ```sh
+  gramma config api_key YYYYYYYY
+  ```
+
+- Adding word to a dictionary
+
+  Usually you will add custom words to local or global dictionary via interactive menu during fix process, but you can also make it via separate command:
+
+  ```sh
+  # Add a word to the local dictionary
+  gramma config dictionary MyWord
+
+  # Add a word to the global dictionary
+  gramma config -g dictionary MyWord
+  ```
+
+  You can also add custom words directly to the config file, it's an array under `dictionary` key.
+
+<a id='io'></a>
+
 ### I/O Redirection
 
 You can also use Gramma as standard shell tool, working with stdin and stdout. There is no interactive mode in this approach (at least for now).
@@ -128,13 +203,15 @@ gramma < myInputFile.txt
 gramma < myInputFile.txt > myOutputFile.txt
 ```
 
+<a id='js'></a>
+
 ### JS API
 
 In addition to command-line usage, you can use two exposed methods if you want to handle mistakes yourself.
 
 #### check() method
 
-Returns a promise with a raw grammarbot.io response body.
+Returns a promise with a check result.
 
 ```js
 const { check } = require("gramma")
@@ -142,9 +219,17 @@ const { check } = require("gramma")
 check("Some text to check.").then(console.log)
 ```
 
+You can also pass a second argument: dictionary, an array of words that should be whitelisted.
+
+```js
+const { check } = require("gramma")
+
+check("Some text to check.", ["npm", "gramma"]).then(console.log)
+```
+
 #### replaceAll() method
 
-Replaces words with provided ones. It takes an array of object in the following format:
+Replace words with provided ones. It takes an array of object in the following format:
 
 ```js
 const exampleReplacements = [
@@ -179,6 +264,8 @@ const main = () => {
 
 main()
 ```
+
+<a id='license'></a>
 
 ## License
 

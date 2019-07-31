@@ -4,9 +4,10 @@ const Mistake = require("../components/Mistake")
 const handleMistake = require("../prompts/handleMistake")
 const replaceAll = require("../text-manipulation/replaceAll")
 const equal = require("../utils/equal")
+const configure = require("../commands/configure")
 
-const checkInteractively = async (text) => {
-  const result = await checkViaAPI(text)
+const checkInteractively = async (text, dictionary) => {
+  const result = await checkViaAPI(text, dictionary)
 
   if (result.matches.length === 0) {
     console.log(kleur.green("No mistakes found!"))
@@ -30,9 +31,16 @@ const checkInteractively = async (text) => {
     // eslint-disable-next-line no-await-in-loop
     const { option, replacement } = await handleMistake(
       currentMatch.replacements,
+      currentMatch.rule.issueType,
     )
 
-    if (option === "i") {
+    if (option === "l") {
+      configure("dictionary", currentMatch.word, false)
+    } else if (option === "g") {
+      configure("dictionary", currentMatch.word, true)
+    }
+
+    if (["i", "l", "g"].includes(option)) {
       matches = matches.filter((match) => {
         return !equal(
           [
@@ -41,6 +49,7 @@ const checkInteractively = async (text) => {
             match.replacements,
             match.type,
             match.rule,
+            match.word,
           ],
           [
             currentMatch.message,
@@ -48,6 +57,7 @@ const checkInteractively = async (text) => {
             currentMatch.replacements,
             currentMatch.type,
             currentMatch.rule,
+            currentMatch.word,
           ],
         )
       })

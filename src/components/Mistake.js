@@ -20,7 +20,7 @@ const highlightMistake = (context, type, offset, length) => {
   return replace(context, change, offset, length)
 }
 
-const Mistake = (match) => {
+const Mistake = (match, style = true) => {
   const context = highlightMistake(
     match.context.text,
     match.rule.issueType,
@@ -40,11 +40,14 @@ const Mistake = (match) => {
       ? `${kleur.bold("Suggested fix:")} ${replacements}\n`
       : ""
 
+  const word = style ? "" : `Word: ${match.word}\n`
+
   // prettier-ignore
   return (
     `---------------------------------\n\n${
     kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`)
     }${kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`)
+    }${word
     }${kleur.bold("Context:")} ${context}\n${
     fixes}`
   )

@@ -1,13 +1,15 @@
 const prompts = require("prompts")
 const FixMenu = require("../components/FixMenu")
 
-const handleMistake = (fixes) => {
+const handleMistake = (fixes, issue) => {
   console.log("---------------------------------")
 
+  const dictionaryOptions = issue === "misspelling" ? ["l", "g"] : []
   const validInputs = [
     ...fixes.map((_, index) => String(index + 1)),
     "0",
     "i",
+    ...dictionaryOptions,
     "n",
   ]
 
@@ -17,7 +19,7 @@ const handleMistake = (fixes) => {
     {
       type: "text",
       name: "option",
-      message: FixMenu(fixes),
+      message: FixMenu(fixes, issue),
       initial: initialInput,
       validate(input) {
         return validInputs.includes(input)
