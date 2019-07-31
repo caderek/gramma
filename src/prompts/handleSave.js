@@ -3,7 +3,7 @@ const { platform } = require("os")
 
 const initialFileName = (originalFile) => {
   const date =
-    platform === "win32"
+    platform() === "win32"
       ? new Date().toISOString().replace(/[.:-]/g, "")
       : new Date().toISOString()
 
