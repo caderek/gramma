@@ -154,7 +154,7 @@ You can check path to the global config via `gramma paths` command.
 
 - Adding API key
 
-By default, gramma uses a blank key, that gives you 100 checks per day.
+  By default, gramma uses a blank key, that gives you 100 checks per day.
   You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free). When you register, you will receive an API key that you can use in Gramma. For example, adding "XXXXXXXX" API key to global config will look like this:
 
   ```sh
