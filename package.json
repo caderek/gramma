@@ -1,6 +1,6 @@
 {
   "name": "gramma",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "repository": "https://github.com/caderek/gramma",
   "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",

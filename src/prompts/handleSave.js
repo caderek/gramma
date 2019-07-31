@@ -1,7 +1,11 @@
 const prompts = require("prompts")
+const { platform } = require("os")
 
 const initialFileName = (originalFile) => {
-  const date = new Date().toISOString()
+  const date =
+    platform === "win32"
+      ? new Date().toISOString().replace(/[.:-]/g, "")
+      : new Date().toISOString()
 
   return originalFile ? `${date}-${originalFile}` : `${date}-gramma.txt`
 }
