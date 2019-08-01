@@ -198,7 +198,9 @@ The local configuration file is created in your working directory under `.gramma
 
 ### I/O Redirection
 
-You can also use Gramma as standard shell tool, working with stdin and stdout. There is no interactive mode in this approach (at least for now).
+You can also use Gramma as standard shell tool by running it without arguments and working with stdin and stdout. There is no interactive mode in this approach (at least for now).
+
+When you simply type `gramma` and press Enter, Gramma will open an input stream where you can type your phrase. After accepting it with Enter, Gramma will list all potential mistakes. This behavior is not very useful by itself, but when you combine it with pipes and redirection it becomes a convenient tool for usage inside a CI pipeline, etc.
 
 #### Examples
 
