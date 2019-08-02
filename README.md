@@ -1,10 +1,10 @@
 <h1 align="center">Gramma - command-line grammar checker</h1>
 <div align="center">
-Gramma is an interactive tool that helps you find and fix grammatical mistakes in files, strings, and input streams. You can also use it in a non-interactive way, as a simple linter for automation processes.
+<p align="center">Gramma is an interactive tool that helps you find and fix grammatical mistakes in files, strings, and input streams. You can also use it in a non-interactive way, as a simple linter for automation processes.</p>
 
-Gramma works on Linux, Windows, and macOS.
+<p align="center">Gramma works on Linux, Windows, and macOS.</p>
 
-Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.
+<p align="center">Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.</p>
 
 <br>
 <br>
