@@ -1,5 +1,6 @@
 const { exec } = require("child_process")
 const kleur = require("kleur")
+const { platform } = require("os")
 const config = require("../config")
 const configure = require("../commands/configure")
 
@@ -7,7 +8,10 @@ const stopServer = async (isGlobal) => {
   const cfg = isGlobal ? config.global : config.local
 
   if (cfg.server_pid) {
-    const command = `kill ${cfg.server_pid}`
+    const command =
+      platform() === "win32"
+        ? `taskkill /PID ${cfg.server_pid} /F`
+        : `kill ${cfg.server_pid}`
 
     return new Promise((resolve, reject) => {
       exec(command, (error) => {
