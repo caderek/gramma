@@ -50,7 +50,7 @@ const startServer = async (isGlobal, viaCommand = false) => {
 
   const [command, ...params] = prepareCommand(cfg.server_command)
 
-  const server = spawn(command, params, { windowsHide: true })
+  const server = spawn(command, params, { windowsHide: true, detached: true })
 
   server.on("error", (error) => {
     if (error) {
