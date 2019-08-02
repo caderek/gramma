@@ -1,5 +1,5 @@
 const kleur = require("kleur")
-const checkViaAPI = require("../requests/checkViaAPI")
+const checkWithFallback = require("../requests/checkWithFallback")
 const Mistake = require("../components/Mistake")
 const handleMistake = require("../prompts/handleMistake")
 const replaceAll = require("../text-manipulation/replaceAll")
@@ -7,13 +7,17 @@ const equal = require("../utils/equal")
 const configure = require("../commands/configure")
 
 const checkInteractively = async (text, dictionary) => {
-  const result = await checkViaAPI(text, dictionary)
+  const result = await checkWithFallback(text, dictionary)
 
   if (result.matches.length === 0) {
     console.log(kleur.green("No mistakes found!"))
     return { changed: false, text }
   }
-  console.log(`Found ${result.matches.length} potential mistakes`)
+  console.log(
+    `Found ${result.matches.length} potential mistake${
+      result.matches.length === 1 ? "" : "s"
+    }`,
+  )
 
   let { matches } = result
   const total = matches.length

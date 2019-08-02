@@ -1,12 +1,16 @@
 const kleur = require("kleur")
-const checkViaAPI = require("../requests/checkViaAPI")
+const checkWithFallback = require("../requests/checkWithFallback")
 const Mistake = require("../components/Mistake")
 
 const print = (result, styles) => {
   if (result.matches.length === 0) {
     console.log(kleur.green("No mistakes found!"))
   } else {
-    console.log(`Found ${result.matches.length} potential mistakes`)
+    console.log(
+      `Found ${result.matches.length} potential mistake${
+        result.matches.length === 1 ? "" : "s"
+      }`,
+    )
     console.log()
     console.log(
       result.matches.map((match) => Mistake(match, styles)).join("\n"),
@@ -15,7 +19,7 @@ const print = (result, styles) => {
 }
 
 const check = async (text, dictionary, styles = true) => {
-  const result = await checkViaAPI(text, dictionary)
+  const result = await checkWithFallback(text, dictionary)
   print(result, styles)
 
   return result.matches.length === 0 ? 0 : 1

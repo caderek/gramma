@@ -1,7 +1,14 @@
 const fs = require("fs")
 const config = require("../config")
 
-const availableOptions = ["api_key", "dictionary"]
+const availableOptions = [
+  "api_key",
+  "api_url",
+  "dictionary",
+  "server_command",
+  "server_once",
+  "server_pid",
+]
 
 const addToDictionary = (dictionary, word) => {
   const dict = Array.isArray(dictionary) ? dictionary : []

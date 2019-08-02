@@ -10,6 +10,9 @@ const save = require("./commands/save")
 const configure = require("./commands/configure")
 const stripStyles = require("./utils/stripStyles")
 const config = require("./config")
+const startServer = require("./server/startServer")
+const stopServer = require("./server/stopServer")
+const getServerPID = require("./server/getServerPID")
 
 // eslint-disable-next-line no-unused-expressions
 yargs
@@ -153,6 +156,31 @@ yargs
     () => {
       console.log(`Global config: ${config.paths.globalConfigFile}`)
       console.log(`App location:  ${__dirname}`)
+    },
+  )
+  .command(
+    "server [action]",
+    "manages local API server",
+    (yargsCtx) => {
+      yargsCtx.positional("action", {
+        describe: "action to take (start / stop / pid)",
+      })
+    },
+    async (argv) => {
+      if (argv.action === "start") {
+        await startServer(argv.global, true)
+        process.exit()
+      }
+
+      if (argv.action === "stop") {
+        await stopServer(argv.global)
+        process.exit()
+      }
+
+      if (argv.action === "pid") {
+        getServerPID(argv.global)
+        process.exit()
+      }
     },
   )
   .option("print", {

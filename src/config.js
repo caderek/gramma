@@ -16,7 +16,8 @@ const configFilePath = path.join(configDirPath, "gramma.json")
 
 const localConfigFilePath = path.join(process.cwd(), ".gramma.json")
 
-const defaultConfig = {
+const initialConfig = {
+  api_url: "http://api.grammarbot.io/v2/check",
   api_key: "",
   dictionary: [],
 }
@@ -30,12 +31,13 @@ const localConfig = fs.existsSync(localConfigFilePath)
   : {}
 
 const sessionConfig = {
-  ...defaultConfig,
+  ...initialConfig,
   ...globalConfig,
   ...localConfig,
 }
 
 const config = {
+  initial: initialConfig,
   global: globalConfig,
   local: localConfig,
   session: sessionConfig,
