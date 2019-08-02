@@ -58,7 +58,7 @@ Feel free to try it for non-critical applications.
 
 ### Via NPM
 
-This is recommended way for people who have Node.js and NPM already installed (or are willing to do so).
+This is a recommended way for people who have Node.js and NPM already installed (or are willing to do so).
 
 #### Global installation:
 
@@ -257,7 +257,7 @@ The local configuration file is created in your working directory under `.gramma
 
 ### I/O Redirection
 
-You can also use Gramma as standard shell tool by running it without arguments and working with stdin and stdout. There is no interactive mode in this approach (at least for now).
+You can also use Gramma as standard shell tool by running it without arguments and working with stdin and stdout. There is no interactive mode in this approach. There are also no colors in the output, just plain text.
 
 When you simply type `gramma` and press Enter, Gramma will open an input stream where you can type your phrase. After accepting it with Enter, Gramma will list all potential mistakes. This behavior is not very useful by itself, but when you combine it with pipes and redirection it becomes a convenient tool for usage inside a CI pipeline, etc.
 
