@@ -4,8 +4,9 @@ Gramma is an interactive tool that helps you find and fix grammatical mistakes i
 
 Gramma works on Linux, Windows, and macOS.
 
-Gramma works out-of-the-box, communicating with [grammarbot.io](https://www.grammarbot.io/), but can also be easily configured to work with other compatible APIs, including local or remote [LanguageTool](http://wiki.languagetool.org/http-server) server.
+Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.
 
+<br>
 <br>
 
 </div>
