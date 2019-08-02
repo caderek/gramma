@@ -56,6 +56,7 @@ yargs
         if (changed) {
           save(text, "FILE", argv.file)
         }
+        process.exit()
       }
     },
   )
@@ -81,6 +82,7 @@ yargs
         if (changed) {
           save(text, "TEXT")
         }
+        process.exit()
       }
     },
   )
@@ -113,6 +115,7 @@ yargs
       } catch (error) {
         process.stderr.write(error.stdout)
       }
+      process.exit()
     },
   )
   .command(
