@@ -1,5 +1,17 @@
-<h1 align="center">Gramma - command line grammar checker</h1>
+<h1 align="center">Gramma - command-line grammar checker</h1>
 <div align="center">
+Gramma is an interactive tool that helps you find and fix grammatical mistakes in files, strings, and input streams. You can also use it in a non-interactive way, as a simple linter for automation processes.
+
+Gramma works on Linux, Windows, and macOS.
+
+Gramma works out-of-the-box, communicating with [grammarbot.io](https://www.grammarbot.io/), but can also be easily configured to work with other compatible APIs, including local or remote [LanguageTool](http://wiki.languagetool.org/http-server) server.
+
+<br>
+
+</div>
+
+<div align="center">
+
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
 <img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
 <img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
@@ -19,13 +31,9 @@
 <img src="docs/example.gif" alt="Example">
 </div>
 
-## Notes
-
-This package is in an early stage. It's functional, but still needs more testing and some refactoring.
-Feel free to try it for non-critical applications.
-
 ## Table of contents
 
+1. [Notes](#notes)
 1. [Installation](#installation)
 1. [Usage](#usage)
    1. [Check file](#check)
@@ -33,10 +41,16 @@ Feel free to try it for non-critical applications.
    1. [Git commit with grammar check](#commit)
    1. [Configuration](#config)
    1. [I/O redirection](#io)
+   1. [Managing a custom API server](#server)
    1. [JS API](#js)
 1. [License](#license)
 
-It uses [grammarbot.io](https://www.grammarbot.io/) as a backend.
+<a id='notes'></a>
+
+## Notes
+
+This package is in an early stage. It's functional, but still needs more testing and some refactoring.
+Feel free to try it for non-critical applications.
 
 <a id='installation'></a>
 
@@ -165,7 +179,52 @@ If you want to manually initialize local config, you can run `gramma init` comma
 You can check the path to the global configuration file via `gramma paths` command.
 The local configuration file is created in your working directory under `.gramma.json` name.
 
-- Adding API key
+- Using a custom API server
+
+  To use locally installed, open-source LanguageTool server, follow the instructions on this site: [LanguageTool server](http://wiki.languagetool.org/http-server)
+
+  After that, you can change default API endpoint (`http://api.grammarbot.io/v2/check`) by running this command:
+
+  ```sh
+  gramma config -g api_url <custom_api_url>
+  ```
+
+  For example, for local installation of LanguageTool, default setup looks like this:
+
+  ```sh
+  gramma config -g api_url http://localhost:8081/v2/check
+  ```
+
+  <hr>
+
+  Additionally, Gramma can start the API server automatically for you!
+  Just add starting command to your config:
+
+  ```sh
+  gramma config -g server_command <starting_command>
+  ```
+
+  For example:
+
+  ```sh
+  gramma config -g server_command "java -cp ~/Other/LanguageTool/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081"
+  ```
+
+  Remember to quote the command and provide the full path to `languagetool-server.jar` file!
+
+  <hr>
+
+  If you do not want the server to run all the time, you can configure Gramma to run it only when needed (run -> check -> close):
+
+  ```sh
+  gramma config -g server_once true
+  ```
+
+  You can skip `-g` flags to add this setup locally for your project.
+
+  That's it. Gramma will now take care of running the server!
+
+* Adding API key (grammarbot.io only)
 
   By default, gramma uses a blank key, that gives you 100 checks per day.
   You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free). When you register, you will receive an API key that you can use in Gramma. For example, adding "XXXXXXXX" API key to global config will look like this:
@@ -180,7 +239,7 @@ The local configuration file is created in your working directory under `.gramma
   gramma config api_key YYYYYYYY
   ```
 
-- Adding a word to the dictionary
+* Adding a word to the dictionary
 
   Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
 
@@ -217,6 +276,34 @@ gramma < myInputFile.txt
 # check a file and save the result to a file:
 gramma < myInputFile.txt > myOutputFile.txt
 ```
+
+<a id='server'></a>
+
+### Managing custom API server
+
+If you [configured custom API server](#config), Gramma will manage server automatically, nevertheless there might be situations, when you want to manage server manually. Gramma simplifies this by integrating basic server commands:
+
+- Starting server
+
+  ```sh
+  gramma server start -g
+  ```
+
+  Note: When you use this command, Gramma will ignore `server_once` config option. This is the expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check.
+
+- Stopping server
+
+  ```sh
+  gramma server stop -g
+  ```
+
+- Getting server PID
+
+  ```sh
+  gramma server pid -g
+  ```
+
+You should skip the `-g` flag if you want to menage server dedicated to the project, not a global one.
 
 <a id='js'></a>
 
