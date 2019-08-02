@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const yargs = require("yargs")
+const kleur = require("kleur")
 const fs = require("fs")
 const { execSync } = require("child_process")
 const path = require("path")
@@ -41,7 +42,15 @@ yargs
       })
     },
     async (argv) => {
-      console.info(`Checking...`)
+      if (!argv.file) {
+        console.log(kleur.red("Please provide a file path."))
+        process.exit(1)
+      }
+
+      if (!fs.existsSync(argv.file)) {
+        console.log(kleur.red("There is no such file!"))
+        process.exit(1)
+      }
 
       const initialText = fs.readFileSync(argv.file).toString()
 
@@ -69,8 +78,6 @@ yargs
       })
     },
     async (argv) => {
-      console.info(`Checking...`)
-
       if (argv.print) {
         const status = await check(argv.text, config.session.dictionary)
         process.exit(status)
@@ -95,8 +102,6 @@ yargs
       })
     },
     async (argv) => {
-      console.info(`Checking...`)
-
       const { text } = await checkInteractively(
         argv.text,
         config.session.dictionary,

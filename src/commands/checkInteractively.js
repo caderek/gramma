@@ -12,6 +12,8 @@ const checkInteractively = async (text, dictionary) => {
     return { changed: false }
   }
 
+  console.info(`Checking...`)
+
   const result = await checkWithFallback(text, dictionary)
 
   if (result.matches.length === 0) {

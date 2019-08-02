@@ -24,6 +24,8 @@ const check = async (text, dictionary, styles = true) => {
     return 0
   }
 
+  console.info(`Checking...`)
+
   const result = await checkWithFallback(text, dictionary)
   print(result, styles)
 
