@@ -19,7 +19,7 @@ const print = (result, styles) => {
 }
 
 const check = async (text, dictionary, styles = true) => {
-  if (text.trim().length === 0) {
+  if (!text || text.trim().length === 0) {
     console.log(kleur.yellow("Nothing to check!"))
     return 0
   }

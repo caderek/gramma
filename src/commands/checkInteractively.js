@@ -7,7 +7,7 @@ const equal = require("../utils/equal")
 const configure = require("../commands/configure")
 
 const checkInteractively = async (text, dictionary) => {
-  if (text.trim().length === 0) {
+  if (!text || text.trim().length === 0) {
     console.log(kleur.yellow("Nothing to check!"))
     return { changed: false }
   }
