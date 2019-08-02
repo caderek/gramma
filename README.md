@@ -75,13 +75,13 @@ npm i gramma -D
 
 ### Via binary package
 
-If you prefer a single binary file (Node.js included) you can download it for the most popular platforms:
+If you prefer a single binary file (Node.js included), you can download it for the most popular platforms:
 
 - [gramma-linux64-v0.8.0.zip](https://github.com/caderek/gramma/releases/download/v0.8-beta.2/gramma-linux64-v0.8.0.zip)
 - [gramma-macos-v0.8.0.zip](https://github.com/caderek/gramma/releases/download/v0.8-beta.2/gramma-macos-v0.8.0.zip)
 - [gramma-windows64-v0.8.0.zip](https://github.com/caderek/gramma/releases/download/v0.8-beta.2/gramma-windows64-v0.8.0.zip)
 
-After downloading and unpacking the binary add it to your PATH or create a symlink to your executable directory (depending on the platform).
+After downloading and unpacking the binary, add it to your PATH or create a symlink to your executable directory (depending on the platform).
 
 <a id='usage'></a>
 
@@ -225,7 +225,7 @@ The local configuration file is created in your working directory under `.gramma
 
   That's it. Gramma will now take care of running the server!
 
-* Adding API key (grammarbot.io only)
+- Adding API key (grammarbot.io only)
 
   By default, gramma uses a blank key, that gives you 100 checks per day.
   You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free). When you register, you will receive an API key that you can use in Gramma. For example, adding "XXXXXXXX" API key to global config will look like this:
@@ -234,13 +234,13 @@ The local configuration file is created in your working directory under `.gramma
   gramma config -g api_key XXXXXXXX
   ```
 
-  If you want to add different key locally just skip the `-g` (`--global`) flag:
+  If you want to add different key locally, just skip the `-g` (`--global`) flag:
 
   ```sh
   gramma config api_key YYYYYYYY
   ```
 
-* Adding a word to the dictionary
+- Adding a word to the dictionary
 
   Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
 
@@ -282,7 +282,7 @@ gramma < myInputFile.txt > myOutputFile.txt
 
 ### Managing custom API server
 
-If you [configured custom API server](#config), Gramma will manage server automatically, nevertheless there might be situations, when you want to manage server manually. Gramma simplifies this by integrating basic server commands:
+If you [configured a custom API server](#config), Gramma will manage the server automatically, nevertheless there might be situations, when you want to manage server manually. Gramma simplifies this by integrating basic server commands:
 
 - Starting server
 
@@ -304,7 +304,7 @@ If you [configured custom API server](#config), Gramma will manage server automa
   gramma server pid -g
   ```
 
-You should skip the `-g` flag if you want to menage server dedicated to the project, not a global one.
+You should skip the `-g` flag if you want to manage a server dedicated to the project, not a global one.
 
 <a id='js'></a>
 
@@ -372,4 +372,4 @@ main()
 
 ## License
 
-Projects is under open, non-restrictive [ISC license](LICENSE)
+Project is under open, non-restrictive [ISC license](LICENSE).
