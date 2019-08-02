@@ -54,7 +54,7 @@ yargs
           config.session.dictionary,
         )
         if (changed) {
-          save(text, "FILE", argv.file)
+          await save(text, "FILE", argv.file)
         }
         process.exit()
       }
@@ -80,7 +80,7 @@ yargs
           config.session.dictionary,
         )
         if (changed) {
-          save(text, "TEXT")
+          await save(text, "TEXT")
         }
         process.exit()
       }
