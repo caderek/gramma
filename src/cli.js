@@ -41,7 +41,7 @@ yargs
       })
     },
     async (argv) => {
-      console.info(`👵🏻 OK dear, checking...`)
+      console.info(`Checking...`)
 
       const initialText = fs.readFileSync(argv.file).toString()
 
@@ -69,7 +69,7 @@ yargs
       })
     },
     async (argv) => {
-      console.info(`👵🏻 OK dear, checking...`)
+      console.info(`Checking...`)
 
       if (argv.print) {
         const status = await check(argv.text, config.session.dictionary)
@@ -95,7 +95,7 @@ yargs
       })
     },
     async (argv) => {
-      console.info(`👵🏻 OK dear, checking...`)
+      console.info(`Checking...`)
 
       const { text } = await checkInteractively(
         argv.text,
