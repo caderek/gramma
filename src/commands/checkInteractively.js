@@ -7,6 +7,11 @@ const equal = require("../utils/equal")
 const configure = require("../commands/configure")
 
 const checkInteractively = async (text, dictionary) => {
+  if (text.trim().length === 0) {
+    console.log(kleur.yellow("Nothing to check!"))
+    return { changed: false }
+  }
+
   const result = await checkWithFallback(text, dictionary)
 
   if (result.matches.length === 0) {
