@@ -159,6 +159,18 @@ yargs
       })
     },
     async (argv) => {
+      const availableOptions = ["start", "stop", "pid"]
+
+      if (!availableOptions.includes(argv.action)) {
+        console.log(kleur.red("There is no such command!"))
+        console.log(
+          `Available options for gramma server: ${availableOptions.join(
+            " | ",
+          )}`,
+        )
+        process.exit(1)
+      }
+
       if (argv.action === "start") {
         await startServer(argv.global, true)
         process.exit()
