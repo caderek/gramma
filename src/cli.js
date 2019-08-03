@@ -18,22 +18,6 @@ const getServerPID = require("./server/getServerPID")
 // eslint-disable-next-line no-unused-expressions
 yargs
   .command(
-    "*",
-    "check from I/O stream",
-    () => {},
-    async () => {
-      const data = await new Promise((resolve) => {
-        process.stdin.on("data", resolve)
-      })
-
-      const initialText = data.toString()
-
-      intercept(stripStyles)
-      const status = await check(initialText, config.session.dictionary, false)
-      process.exit(status)
-    },
-  )
-  .command(
     "check [file]",
     "checks file for writing mistakes",
     (yargsCtx) => {
@@ -189,6 +173,27 @@ yargs
         getServerPID(argv.global)
         process.exit()
       }
+    },
+  )
+  .command(
+    "$0",
+    "check from I/O stream",
+    () => {},
+    async (argv) => {
+      if (argv._.length > 0) {
+        console.log(kleur.red("There is no such command!"))
+        process.exit(1)
+      }
+
+      const data = await new Promise((resolve) => {
+        process.stdin.on("data", resolve)
+      })
+
+      const initialText = data.toString()
+
+      intercept(stripStyles)
+      const status = await check(initialText, config.session.dictionary, false)
+      process.exit(status)
     },
   )
   .option("print", {
