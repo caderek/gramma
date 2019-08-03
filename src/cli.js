@@ -14,6 +14,7 @@ const config = require("./config")
 const startServer = require("./server/startServer")
 const stopServer = require("./server/stopServer")
 const getServerPID = require("./server/getServerPID")
+const { version } = require("../package")
 
 // eslint-disable-next-line no-unused-expressions
 yargs
@@ -227,5 +228,6 @@ yargs
     describe: "When used with 'config' command uses global config",
   })
   .alias("help", "h")
+  .version(`v${version}`)
   .alias("version", "v")
   .demandCommand().argv
