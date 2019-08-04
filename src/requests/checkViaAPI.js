@@ -30,7 +30,7 @@ const removeFalsePositives = (matches, dictionary) => {
 const checkViaAPI = async (text, dictionary = []) => {
   const postData = querystring.stringify({
     api_key: session.api_key,
-    language: "en-US",
+    language: session.language,
     // Grammarbot API have problems with some special characters and requires additional encoding
     text: session.api_url === initial.api_url ? encodeURIComponent(text) : text,
   })

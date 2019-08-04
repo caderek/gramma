@@ -10,7 +10,7 @@ const configBasePath = {
   win32: "AppData/Roaming",
 }
 
-const configDirPath = path.join(home, configBasePath[platform], "gramma")
+const configDirPath = path.join(home, configBasePath[platform()], "gramma")
 
 const configFilePath = path.join(configDirPath, "gramma.json")
 
@@ -20,6 +20,7 @@ const initialConfig = {
   api_url: "http://api.grammarbot.io/v2/check",
   api_key: "",
   dictionary: [],
+  language: "en-US",
 }
 
 const globalConfig = fs.existsSync(configFilePath)

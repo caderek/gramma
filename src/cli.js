@@ -16,6 +16,9 @@ const stopServer = require("./server/stopServer")
 const getServerPID = require("./server/getServerPID")
 const { version } = require("../package")
 
+const load = require("./boot/load")
+const debug = require("./actions/debug")
+
 // eslint-disable-next-line no-unused-expressions
 yargs
   .command(
@@ -125,6 +128,7 @@ yargs
       }
     },
   )
+  .command("debug", "debug", {}, load(debug))
   .command(
     "config [key] [value]",
     "configures Gramma",
@@ -226,6 +230,18 @@ yargs
     type: "boolean",
     default: false,
     describe: "When used with 'config' command uses global config",
+  })
+  .option("language", {
+    alias: "l",
+    type: "string",
+    default: null,
+    describe: "Sets the language of the text",
+  })
+  .option("disable", {
+    alias: "d",
+    type: "string",
+    default: {},
+    describe: "Enables or disables specific rules",
   })
   .alias("help", "h")
   .version(`v${version}`)

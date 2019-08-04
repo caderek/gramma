@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CASING",
+    "description": "Rules about detecting uppercase words where lowercase is required and vice versa."
+  },
+  {
+    "id": "COLLOQUIALISMS",
+    "description": "Colloquial style."
+  },
+  {
+    "id": "COMPOUNDING",
+    "description": "Rules about spelling terms as one word or as as separate words."
+  },
+  {
+    "id": "CONFUSED_WORDS",
+    "description": "Words that are easily confused, like 'there' and 'their' in English."
+  },
+  {
+    "id": "FALSE_FRIENDS",
+    "description": "Words easily confused by language learners because a similar word exists in their native language."
+  },
+  {
+    "id": "GENDER_NEUTRALITY ",
+    "description": ""
+  },
+  {
+    "id": "GRAMMAR ",
+    "description": ""
+  },
+  {
+    "id": "MISC",
+    "description": "Miscellaneous rules that don't fit elsewhere."
+  },
+  {
+    "id": "PUNCTUATION ",
+    "description": ""
+  },
+  {
+    "id": "REDUNDANCY ",
+    "description": ""
+  },
+  {
+    "id": "REGIONALISMS",
+    "description": "Words used only in another language variant or used with different meanings."
+  },
+  {
+    "id": "REPETITIONS ",
+    "description": ""
+  },
+  {
+    "id": "SEMANTICS",
+    "description": "Logic, content, and consistency problems."
+  },
+  {
+    "id": "STYLE",
+    "description": "General style issues not covered by other categories, like overly verbose wording."
+  },
+  {
+    "id": "TYPOGRAPHY",
+    "description": "Problems like incorrectly used dash or quote characters."
+  },
+  {
+    "id": "TYPOS",
+    "description": "Spelling issues."
+  }
+]
