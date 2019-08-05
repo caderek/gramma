@@ -2,8 +2,7 @@ const { spawn } = require("child_process")
 const { homedir } = require("os")
 const kleur = require("kleur")
 const fetch = require("node-fetch")
-const config = require("../config")
-const configure = require("../commands/configure")
+const configure = require("../actions/configure")
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -14,9 +13,9 @@ const prepareCommand = (commandWithArgs) => {
     .map((item) => (item[0] === "~" ? item.replace("~", homedir()) : item))
 }
 
-const pingServer = async (cfg) => {
+const pingServer = async (usedCfg) => {
   console.log("Waiting for local API server...")
-  const response = await fetch(`${cfg.api_url}?language=en-US&text=`).catch(
+  const response = await fetch(`${usedCfg.api_url}?language=en-US&text=`).catch(
     () => {
       return {
         status: 500,
@@ -29,17 +28,17 @@ const pingServer = async (cfg) => {
   }
 
   await delay(1000)
-  await pingServer(cfg)
+  await pingServer(usedCfg)
 }
 
-const startServer = async (isGlobal, viaCommand = false) => {
-  const cfg = isGlobal ? config.global : config.local
+const startServer = async (cfg, viaCommand = false) => {
+  const usedCfg = cfg.modifiers.global ? cfg.global : cfg.local
 
-  if (!cfg.server_command || !cfg.api_url) {
+  if (!usedCfg.server_command || !usedCfg.api_url) {
     console.log(
       kleur.red(
         `Please configure "server_command" and "api_url" for ${
-          isGlobal ? "global" : "local"
+          cfg.modifiers.global ? "global" : "local"
         } config!`,
       ),
     )
@@ -48,7 +47,7 @@ const startServer = async (isGlobal, viaCommand = false) => {
 
   console.log("Starting local API server...")
 
-  const [command, ...params] = prepareCommand(cfg.server_command)
+  const [command, ...params] = prepareCommand(usedCfg.server_command)
 
   const server = spawn(command, params, { windowsHide: true, detached: true })
 
@@ -60,10 +59,10 @@ const startServer = async (isGlobal, viaCommand = false) => {
     }
   })
 
-  await pingServer(cfg)
+  await pingServer(usedCfg)
 
-  if (cfg.server_once !== "true" || viaCommand) {
-    configure("server_pid", server.pid, isGlobal)
+  if (usedCfg.server_once !== "true" || viaCommand) {
+    configure("server_pid", server.pid, cfg, cfg.modifiers.global)
   }
 
   console.log(kleur.green(`API server started! PID: ${server.pid}`))

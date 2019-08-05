@@ -20,11 +20,11 @@
     "description": "Words easily confused by language learners because a similar word exists in their native language."
   },
   {
-    "id": "GENDER_NEUTRALITY ",
+    "id": "GENDER_NEUTRALITY",
     "description": ""
   },
   {
-    "id": "GRAMMAR ",
+    "id": "GRAMMAR",
     "description": ""
   },
   {
@@ -32,11 +32,11 @@
     "description": "Miscellaneous rules that don't fit elsewhere."
   },
   {
-    "id": "PUNCTUATION ",
+    "id": "PUNCTUATION",
     "description": ""
   },
   {
-    "id": "REDUNDANCY ",
+    "id": "REDUNDANCY",
     "description": ""
   },
   {
@@ -44,7 +44,7 @@
     "description": "Words used only in another language variant or used with different meanings."
   },
   {
-    "id": "REPETITIONS ",
+    "id": "REPETITIONS",
     "description": ""
   },
   {

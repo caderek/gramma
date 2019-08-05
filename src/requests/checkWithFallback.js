@@ -1,13 +1,13 @@
 const kleur = require("kleur")
-const { session, initial, local } = require("../config")
 const startServer = require("../server/startServer")
 const checkViaAPI = require("./checkViaAPI")
 
-const checkWithFallback = async (text, dictionary = []) => {
+const checkWithFallback = async (text, cfg) => {
+  const { session, initial, local } = cfg
   let response
 
   try {
-    response = await checkViaAPI(text, dictionary)
+    response = await checkViaAPI(text, session)
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
       if (
@@ -16,9 +16,9 @@ const checkWithFallback = async (text, dictionary = []) => {
         session.api_url !== initial.api_url
       ) {
         const isGlobal = !local.server_command
-        const server = await startServer(isGlobal)
+        const server = await startServer(cfg)
         console.clear()
-        response = await checkViaAPI(text, dictionary)
+        response = await checkViaAPI(text, session)
 
         if (session.server_once === "true") {
           server.kill()

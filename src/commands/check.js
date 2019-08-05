@@ -1,35 +1,32 @@
 const kleur = require("kleur")
-const checkWithFallback = require("../requests/checkWithFallback")
-const Mistake = require("../components/Mistake")
+const fs = require("fs")
+const checkNonInteractively = require("../actions/checkNonInteractively")
+const checkInteractively = require("../actions/checkInteractively")
+const save = require("../actions/save")
 
-const print = (result, styles) => {
-  if (result.matches.length === 0) {
-    console.log(kleur.green("No mistakes found!"))
+const check = async (argv, cfg) => {
+  if (!argv.file) {
+    console.log(kleur.red("Please provide a file path."))
+    process.exit(1)
+  }
+
+  if (!fs.existsSync(argv.file)) {
+    console.log(kleur.red("There is no such file!"))
+    process.exit(1)
+  }
+
+  const initialText = fs.readFileSync(argv.file).toString()
+
+  if (argv.print) {
+    const status = await checkNonInteractively(initialText, cfg.session)
+    process.exit(status)
   } else {
-    console.log(
-      `Found ${result.matches.length} potential mistake${
-        result.matches.length === 1 ? "" : "s"
-      }`,
-    )
-    console.log()
-    console.log(
-      result.matches.map((match) => Mistake(match, styles)).join("\n"),
-    )
+    const { changed, text } = await checkInteractively(initialText, cfg.session)
+    if (changed) {
+      await save(text, "FILE", argv.file)
+    }
+    process.exit()
   }
-}
-
-const check = async (text, dictionary, styles = true) => {
-  if (!text || text.trim().length === 0) {
-    console.log(kleur.yellow("Nothing to check!"))
-    return 0
-  }
-
-  console.info(`Checking...`)
-
-  const result = await checkWithFallback(text, dictionary)
-  print(result, styles)
-
-  return result.matches.length === 0 ? 0 : 1
 }
 
 module.exports = check

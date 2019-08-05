@@ -3,6 +3,7 @@ const initialConfig = {
   api_key: "",
   dictionary: [],
   language: "en-US",
+  rules: {},
 }
 
 module.exports = initialConfig

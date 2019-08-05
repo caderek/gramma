@@ -63,13 +63,13 @@ This is a recommended way for people who have Node.js and NPM already installed 
 
 #### Global installation:
 
-```sh
+```
 npm i gramma -g
 ```
 
 #### Local installation (as a dev tool for your project):
 
-```sh
+```
 npm i gramma -D
 ```
 
@@ -107,11 +107,11 @@ After downloading and unpacking the binary, add it to your PATH or create a syml
 
 - Examples:
 
-  ```sh
+  ```
   gramma check path/to/my_file.txt
   ```
 
-  ```sh
+  ```
   gramma check -p path/to/other/file.txt
   ```
 
@@ -133,11 +133,11 @@ After downloading and unpacking the binary, add it to your PATH or create a syml
 
 - Examples:
 
-  ```sh
+  ```
   gramma listen "This sentence will be checked interactively."
   ```
 
-  ```sh
+  ```
   gramma listen -p "Suggestions for this sentence will be printed."
   ```
 
@@ -159,11 +159,11 @@ After downloading and unpacking the binary, add it to your PATH or create a syml
 
 - Examples:
 
-  ```sh
+  ```
   gramma commit "My commit message"
   ```
 
-  ```sh
+  ```
   gramma commit -a "Another commit message (files added)"
   ```
 
@@ -186,13 +186,13 @@ The local configuration file is created in your working directory under `.gramma
 
   After that, you can change default API endpoint (`http://api.grammarbot.io/v2/check`) by running this command:
 
-  ```sh
+  ```
   gramma config -g api_url <custom_api_url>
   ```
 
   For example, for local installation of LanguageTool, default setup looks like this:
 
-  ```sh
+  ```
   gramma config -g api_url http://localhost:8081/v2/check
   ```
 
@@ -201,13 +201,13 @@ The local configuration file is created in your working directory under `.gramma
   Additionally, Gramma can start the API server automatically for you!
   Just add starting command to your config:
 
-  ```sh
+  ```
   gramma config -g server_command <starting_command>
   ```
 
   For example:
 
-  ```sh
+  ```
   gramma config -g server_command "java -cp ~/Other/LanguageTool/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081"
   ```
 
@@ -217,7 +217,7 @@ The local configuration file is created in your working directory under `.gramma
 
   If you do not want the server to run all the time, you can configure Gramma to run it only when needed (run -> check -> close):
 
-  ```sh
+  ```
   gramma config -g server_once true
   ```
 
@@ -230,13 +230,13 @@ The local configuration file is created in your working directory under `.gramma
   By default, gramma uses a blank key, that gives you 100 checks per day.
   You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free). When you register, you will receive an API key that you can use in Gramma. For example, adding "XXXXXXXX" API key to global config will look like this:
 
-  ```sh
+  ```
   gramma config -g api_key XXXXXXXX
   ```
 
   If you want to add different key locally, just skip the `-g` (`--global`) flag:
 
-  ```sh
+  ```
   gramma config api_key YYYYYYYY
   ```
 
@@ -244,7 +244,7 @@ The local configuration file is created in your working directory under `.gramma
 
   Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
 
-  ```sh
+  ```
   # Add a word to the local dictionary
   gramma config dictionary MyWord
 
@@ -264,7 +264,7 @@ When you simply type `gramma` and press Enter, Gramma will open an input stream 
 
 #### Examples
 
-```sh
+```
 # check a string and print the result on the screen:
 echo "Some text" | gramma
 
@@ -286,7 +286,7 @@ If you [configured a custom API server](#config), Gramma will manage the server 
 
 - Starting server
 
-  ```sh
+  ```
   gramma server start -g
   ```
 
@@ -294,13 +294,13 @@ If you [configured a custom API server](#config), Gramma will manage the server 
 
 - Stopping server
 
-  ```sh
+  ```
   gramma server stop -g
   ```
 
 - Getting server PID
 
-  ```sh
+  ```
   gramma server pid -g
   ```
 
@@ -308,7 +308,7 @@ You should skip the `-g` flag if you want to manage a server dedicated to the pr
 
 <a id='js'></a>
 
-### JS API
+### JS API @todo update docs !!!!!!!!!!!!!!!!!!
 
 In addition to command-line usage, you can use two exposed methods if you want to handle mistakes yourself.
 
@@ -322,12 +322,27 @@ const { check } = require("gramma")
 check("Some text to check.").then(console.log)
 ```
 
-You can also pass a second argument: dictionary, an array of words that should be whitelisted.
+You can also pass a second argument: an options object. Available options:
+
+- `api_url`: url to non-default API server
+- `api_key`: server API key
+- `dictionary`: array of words that should be whitelisted
+- `language`: language code to specify text language
+- `rules`: object defining which rules should be disabled
 
 ```js
 const { check } = require("gramma")
 
-check("Some text to check.", ["npm", "gramma"]).then(console.log)
+check("Some text to check.", {
+  api_url: "http://my-custom-language-tool-server.xyz/v2/check",
+  api_key: "SOME_API_KEY",
+  dictionary: ["npm", "gramma"],
+  language: "pl_PL",
+  rules: {
+    typography: false,
+    casing: false,
+  },
+}).then(console.log)
 ```
 
 #### replaceAll() method

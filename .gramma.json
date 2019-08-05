@@ -13,7 +13,7 @@
     "api_key",
     "async",
     "backend",
-    "cfg",
+    "usedCfg",
     "config",
     "const",
     "correctText",

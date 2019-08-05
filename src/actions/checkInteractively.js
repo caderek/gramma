@@ -4,9 +4,9 @@ const Mistake = require("../components/Mistake")
 const handleMistake = require("../prompts/handleMistake")
 const replaceAll = require("../text-manipulation/replaceAll")
 const equal = require("../utils/equal")
-const configure = require("../commands/configure")
+const configure = require("../actions/configure")
 
-const checkInteractively = async (text, dictionary) => {
+const checkInteractively = async (text, cfg) => {
   if (!text || text.trim().length === 0) {
     console.log(kleur.yellow("Nothing to check!"))
     return { changed: false }
@@ -14,7 +14,7 @@ const checkInteractively = async (text, dictionary) => {
 
   console.info(`Checking...`)
 
-  const result = await checkWithFallback(text, dictionary)
+  const result = await checkWithFallback(text, cfg)
 
   if (result.matches.length === 0) {
     console.log(kleur.green("No mistakes found!"))
@@ -46,9 +46,9 @@ const checkInteractively = async (text, dictionary) => {
     )
 
     if (option === "l") {
-      configure("dictionary", currentMatch.word, false)
+      configure("dictionary", currentMatch.word, cfg, false)
     } else if (option === "g") {
-      configure("dictionary", currentMatch.word, true)
+      configure("dictionary", currentMatch.word, cfg, true)
     }
 
     if (["i", "l", "g"].includes(option)) {

@@ -1,23 +1,22 @@
 #!/usr/bin/env node
 const yargs = require("yargs")
-const kleur = require("kleur")
-const fs = require("fs")
-const { execSync } = require("child_process")
-const path = require("path")
-const intercept = require("intercept-stdout")
-const check = require("./commands/check")
-const checkInteractively = require("./commands/checkInteractively")
-const save = require("./commands/save")
-const configure = require("./commands/configure")
-const stripStyles = require("./utils/stripStyles")
-const config = require("./config")
-const startServer = require("./server/startServer")
-const stopServer = require("./server/stopServer")
-const getServerPID = require("./server/getServerPID")
 const { version } = require("../package")
-
+const languages = require("./data/languages.json")
+const rules = require("./data/rules.json")
 const load = require("./boot/load")
-const debug = require("./actions/debug")
+
+const debug = require("./commands/debug")
+const check = require("./commands/check")
+const listen = require("./commands/listen")
+const commit = require("./commands/commit")
+const init = require("./commands/init")
+const config = require("./commands/config")
+const paths = require("./commands/paths")
+const server = require("./commands/server")
+const pipe = require("./commands/pipe")
+
+const languagesOptions = languages.map((item) => item.longCode)
+const rulesOptions = rules.map((rule) => rule.id.toLowerCase())
 
 // eslint-disable-next-line no-unused-expressions
 yargs
@@ -29,33 +28,7 @@ yargs
         describe: "file to check",
       })
     },
-    async (argv) => {
-      if (!argv.file) {
-        console.log(kleur.red("Please provide a file path."))
-        process.exit(1)
-      }
-
-      if (!fs.existsSync(argv.file)) {
-        console.log(kleur.red("There is no such file!"))
-        process.exit(1)
-      }
-
-      const initialText = fs.readFileSync(argv.file).toString()
-
-      if (argv.print) {
-        const status = await check(initialText, config.session.dictionary)
-        process.exit(status)
-      } else {
-        const { changed, text } = await checkInteractively(
-          initialText,
-          config.session.dictionary,
-        )
-        if (changed) {
-          await save(text, "FILE", argv.file)
-        }
-        process.exit()
-      }
-    },
+    load(check),
   )
   .command(
     "listen [text]",
@@ -65,21 +38,7 @@ yargs
         describe: "text to check",
       })
     },
-    async (argv) => {
-      if (argv.print) {
-        const status = await check(argv.text, config.session.dictionary)
-        process.exit(status)
-      } else {
-        const { changed, text } = await checkInteractively(
-          argv.text,
-          config.session.dictionary,
-        )
-        if (changed) {
-          await save(text, "TEXT")
-        }
-        process.exit()
-      }
-    },
+    load(listen),
   )
   .command(
     "commit [text]",
@@ -89,49 +48,18 @@ yargs
         describe: "commit message to check",
       })
     },
-    async (argv) => {
-      const { text } = await checkInteractively(
-        argv.text,
-        config.session.dictionary,
-      )
-
-      try {
-        if (fs.existsSync(path.join(process.cwd(), ".gramma.json"))) {
-          execSync(`git add .gramma.json`)
-        }
-
-        const output = argv.all
-          ? execSync(`git commit -am "${text}"`)
-          : execSync(`git commit -m "${text}"`)
-
-        process.stdout.write(output)
-      } catch (error) {
-        process.stderr.write(error.stdout)
-      }
-      process.exit()
-    },
+    load(commit),
   )
   .command(
     "init",
     "creates local config with empty dictionary",
     () => {},
-    async () => {
-      const localConfig = JSON.stringify(
-        {
-          dictionary: [],
-        },
-        null,
-        2,
-      )
-      if (!fs.existsSync(config.paths.localConfigFile)) {
-        fs.writeFileSync(config.paths.localConfigFile, localConfig)
-      }
-    },
+    load(init),
   )
   .command("debug", "debug", {}, load(debug))
   .command(
     "config [key] [value]",
-    "configures Gramma",
+    "sets config entries",
     (yargsCtx) => {
       yargsCtx
         .positional("key", {
@@ -141,20 +69,9 @@ yargs
           describe: "value of the config entry",
         })
     },
-    async (argv) => {
-      configure(argv.key, argv.value, argv.global)
-      console.log("Done!")
-    },
+    load(config),
   )
-  .command(
-    "paths",
-    "show paths used by Gramma",
-    () => {},
-    () => {
-      console.log(`Global config: ${config.paths.globalConfigFile}`)
-      console.log(`App location:  ${__dirname}`)
-    },
-  )
+  .command("paths", "show paths used by Gramma", () => {}, load(paths))
   .command(
     "server [action]",
     "manages local API server",
@@ -163,56 +80,9 @@ yargs
         describe: "action to take (start / stop / pid)",
       })
     },
-    async (argv) => {
-      const availableOptions = ["start", "stop", "pid"]
-
-      if (!availableOptions.includes(argv.action)) {
-        console.log(kleur.red("There is no such command!"))
-        console.log(
-          `Available options for gramma server: ${availableOptions.join(
-            " | ",
-          )}`,
-        )
-        process.exit(1)
-      }
-
-      if (argv.action === "start") {
-        await startServer(argv.global, true)
-        process.exit()
-      }
-
-      if (argv.action === "stop") {
-        await stopServer(argv.global)
-        process.exit()
-      }
-
-      if (argv.action === "pid") {
-        getServerPID(argv.global)
-        process.exit()
-      }
-    },
+    load(server),
   )
-  .command(
-    "$0",
-    "check from I/O stream",
-    () => {},
-    async (argv) => {
-      if (argv._.length > 0) {
-        console.log(kleur.red("There is no such command!"))
-        process.exit(1)
-      }
-
-      const data = await new Promise((resolve) => {
-        process.stdin.on("data", resolve)
-      })
-
-      const initialText = data.toString()
-
-      intercept(stripStyles)
-      const status = await check(initialText, config.session.dictionary, false)
-      process.exit(status)
-    },
-  )
+  .command("$0", "check from I/O stream", () => {}, load(pipe))
   .option("print", {
     alias: "p",
     type: "boolean",
@@ -234,16 +104,24 @@ yargs
   .option("language", {
     alias: "l",
     type: "string",
-    default: null,
+    default: "CONFIG",
     describe: "Sets the language of the text",
+    choices: ["CONFIG", ...languagesOptions],
   })
   .option("disable", {
     alias: "d",
     type: "string",
-    default: {},
-    describe: "Enables or disables specific rules",
+    describe: "Disables specific rule",
+    choices: rulesOptions,
+  })
+  .option("enable", {
+    alias: "e",
+    type: "string",
+    describe: "Enables specific rule",
+    choices: rulesOptions,
   })
   .alias("help", "h")
   .version(`v${version}`)
   .alias("version", "v")
+  .showHelpOnFail(false, "Specify --help or -h for available options")
   .demandCommand().argv

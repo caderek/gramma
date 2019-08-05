@@ -1,6 +1,6 @@
 const querystring = require("querystring")
 const fetch = require("node-fetch")
-const { session, initial } = require("../config")
+const initialConfig = require("../initialConfig")
 
 const addWordFields = (matches) => {
   return matches.map((match) => {
@@ -25,17 +25,26 @@ const removeFalsePositives = (matches, dictionary) => {
 
 /**
  * @param {string} text text to check
+ * @param {Object} options session config
+ * @param {string} options.api_url
+ * @param {string} options.api_key
+ * @param {string} options.language
+ * @param {Object} options.rules
+ * @param {string[]} options.dictionary
  * @returns {Promise<Object>}
  */
-const checkViaAPI = async (text, dictionary = []) => {
+const checkViaAPI = async (text, options) => {
+  const cfg = { ...initialConfig, ...options }
+
   const postData = querystring.stringify({
-    api_key: session.api_key,
-    language: session.language,
+    api_key: cfg.api_key,
+    language: cfg.language,
     // Grammarbot API have problems with some special characters and requires additional encoding
-    text: session.api_url === initial.api_url ? encodeURIComponent(text) : text,
+    text:
+      cfg.api_url === initialConfig.api_url ? encodeURIComponent(text) : text,
   })
 
-  const response = await fetch(session.api_url, {
+  const response = await fetch(cfg.api_url, {
     credentials: "include",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

@@ -1,8 +1,8 @@
 const prepareConfig = require("./prepareConfig")
 
 const load = (action) => (argv) => {
-  const config = prepareConfig(argv)
-  action(argv, config)
+  const cfg = prepareConfig(argv)
+  action(argv, cfg)
 }
 
 module.exports = load

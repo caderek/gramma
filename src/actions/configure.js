@@ -1,5 +1,4 @@
 const fs = require("fs")
-const config = require("../config")
 
 const availableOptions = [
   "api_key",
@@ -20,7 +19,7 @@ const addToDictionary = (dictionary, word) => {
   return [...dict, word].sort()
 }
 
-const configure = (key, value, global = false) => {
+const configure = (key, value, cfg, isGlobal = false) => {
   if (!availableOptions.includes(key)) {
     console.log(`There is no '${key}' option!`)
     console.log("Available options:")
@@ -28,14 +27,14 @@ const configure = (key, value, global = false) => {
     return
   }
 
-  if (global && !fs.existsSync(config.paths.globalConfigDir)) {
-    fs.mkdirSync(config.paths.globalConfigDir, { recursive: true })
+  if (isGlobal && !fs.existsSync(cfg.paths.globalConfigDir)) {
+    fs.mkdirSync(cfg.paths.globalConfigDir, { recursive: true })
   }
 
-  const currentConfig = global ? config.global : config.local
-  const configFilePath = global
-    ? config.paths.globalConfigFile
-    : config.paths.localConfigFile
+  const currentConfig = isGlobal ? cfg.global : cfg.local
+  const configFilePath = isGlobal
+    ? cfg.paths.globalConfigFile
+    : cfg.paths.localConfigFile
 
   const entry =
     key === "dictionary"
@@ -44,10 +43,10 @@ const configure = (key, value, global = false) => {
 
   const updatedConfig = { ...currentConfig, ...entry }
 
-  if (global) {
-    config.global = updatedConfig
+  if (isGlobal) {
+    cfg.global = updatedConfig
   } else {
-    config.local = updatedConfig
+    cfg.local = updatedConfig
   }
 
   fs.writeFileSync(configFilePath, JSON.stringify(updatedConfig, null, 2))
