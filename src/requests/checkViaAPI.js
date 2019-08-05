@@ -35,6 +35,7 @@ const removeFalsePositives = (matches, dictionary) => {
  */
 const checkViaAPI = async (text, options) => {
   const cfg = { ...initialConfig, ...options }
+  console.log(cfg)
 
   const postData = querystring.stringify({
     api_key: cfg.api_key,
@@ -57,7 +58,10 @@ const checkViaAPI = async (text, options) => {
 
   const resultWithWords = {
     ...result,
-    matches: removeFalsePositives(addWordFields(result.matches), dictionary),
+    matches: removeFalsePositives(
+      addWordFields(result.matches),
+      cfg.dictionary,
+    ),
   }
 
   return resultWithWords
