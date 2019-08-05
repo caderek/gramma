@@ -9,11 +9,11 @@ const pipe = async (argv, cfg) => {
     process.exit(1)
   }
 
-  const data = await new Promise((resolve) => {
+  const text = await new Promise((resolve) => {
     process.stdin.on("data", resolve)
   })
 
-  const initialText = data.toString()
+  const initialText = text.toString()
 
   intercept(stripStyles)
   const status = await checkNonInteractively(

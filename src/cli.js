@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const yargs = require("yargs")
 const { version } = require("../package")
-const languages = require("./data/languages.json")
-const rules = require("./data/rules.json")
+const languages = require("../data/languages.json")
+const rules = require("../data/rules.json")
 const load = require("./boot/load")
 
 const debug = require("./commands/debug")

@@ -3,7 +3,7 @@ const startServer = require("../server/startServer")
 const checkViaAPI = require("./checkViaAPI")
 
 const checkWithFallback = async (text, cfg) => {
-  const { session, initial, local } = cfg
+  const { session, initial } = cfg
   let response
 
   try {
@@ -15,7 +15,6 @@ const checkWithFallback = async (text, cfg) => {
         session.api_url &&
         session.api_url !== initial.api_url
       ) {
-        const isGlobal = !local.server_command
         const server = await startServer(cfg)
         console.clear()
         response = await checkViaAPI(text, session)

@@ -44,8 +44,10 @@ const configure = (key, value, cfg, isGlobal = false) => {
   const updatedConfig = { ...currentConfig, ...entry }
 
   if (isGlobal) {
+    // eslint-disable-next-line no-param-reassign
     cfg.global = updatedConfig
   } else {
+    // eslint-disable-next-line no-param-reassign
     cfg.local = updatedConfig
   }
 
