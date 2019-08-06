@@ -45,7 +45,7 @@ const Mistake = (match, style = true) => {
   // prettier-ignore
   return (
     `---------------------------------\n\n${
-    kleur.dim(`${kleur.bold("Issue:")} ${match.rule.issueType}\n`)
+    kleur.dim(`${kleur.bold("Rule:")} ${match.rule.category.id.toLowerCase()}\n`)
     }${kleur.dim(`${kleur.bold("Explanation:")} ${match.message}\n\n`)
     }${word
     }${kleur.bold("Context:")} ${context}\n${

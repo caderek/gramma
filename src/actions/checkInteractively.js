@@ -12,7 +12,7 @@ const checkInteractively = async (text, cfg) => {
     return { changed: false }
   }
 
-  console.info(`Checking...`)
+  console.info(`Checking via ${cfg.session.api_url}...`)
 
   const result = await checkWithFallback(text, cfg)
 
@@ -32,6 +32,7 @@ const checkInteractively = async (text, cfg) => {
 
   while (matches.length > 0) {
     console.clear()
+    console.log(`Language: ${result.language.name}`)
     console.log(
       `Resolved: ${total - matches.length} | Pending: ${matches.length}`,
     )

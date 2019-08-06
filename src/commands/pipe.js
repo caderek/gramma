@@ -16,11 +16,7 @@ const pipe = async (argv, cfg) => {
   const initialText = text.toString()
 
   intercept(stripStyles)
-  const status = await checkNonInteractively(
-    initialText,
-    cfg.session.dictionary,
-    false,
-  )
+  const status = await checkNonInteractively(initialText, cfg, false)
   process.exit(status)
 }
 

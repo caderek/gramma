@@ -15,7 +15,9 @@ const removeData = () => {
 
 describe("'listen' command", () => {
   it("prints potential mistakes with '--print' option", () => {
-    const result = shell.exec("node src/cli.js listen --print 'Mistkae'")
+    const result = shell.exec(
+      "node src/cli.js listen --print 'There is a mistkae'",
+    )
 
     expect(result.code).toEqual(1)
     expect(result.stderr).toEqual("")
@@ -24,7 +26,7 @@ describe("'listen' command", () => {
   })
 
   it("prints potential mistakes with '-p' option", () => {
-    const result = shell.exec("node src/cli.js listen -p 'Mistkae'")
+    const result = shell.exec("node src/cli.js listen -p 'There is a mistkae'")
 
     expect(result.code).toEqual(1)
     expect(result.stderr).toEqual("")
@@ -33,7 +35,9 @@ describe("'listen' command", () => {
   })
 
   it("prints no mistakes with '--print' option", () => {
-    const result = shell.exec("node src/cli.js listen --print 'No mistake'")
+    const result = shell.exec(
+      "node src/cli.js listen --print 'There are no mistakes'",
+    )
 
     expect(result.code).toEqual(0)
     expect(result.stderr).toEqual("")
@@ -41,7 +45,9 @@ describe("'listen' command", () => {
   })
 
   it("prints no mistakes with '-p' option", () => {
-    const result = shell.exec("node src/cli.js listen -p 'No mistake'")
+    const result = shell.exec(
+      "node src/cli.js listen -p 'There are no mistakes'",
+    )
 
     expect(result.code).toEqual(0)
     expect(result.stderr).toEqual("")
@@ -51,7 +57,7 @@ describe("'listen' command", () => {
 
 describe("'check' command", () => {
   it("prints potential mistakes with '--print' option", () => {
-    prepareData("Mistkae")
+    prepareData("There is a mistkae")
     const result = shell.exec(
       "node src/cli.js check --print test-temp/example.txt",
     )
@@ -64,7 +70,7 @@ describe("'check' command", () => {
   })
 
   it("prints potential mistakes with '-p' option", () => {
-    prepareData("Mistkae")
+    prepareData("There is a mistkae")
     const result = shell.exec("node src/cli.js check -p test-temp/example.txt")
 
     expect(result.code).toEqual(1)
@@ -75,7 +81,7 @@ describe("'check' command", () => {
   })
 
   it("prints no mistakes with '--print' option", () => {
-    prepareData("No mistake")
+    prepareData("There are no mistakes")
     const result = shell.exec(
       "node src/cli.js check --print test-temp/example.txt",
     )
@@ -87,7 +93,7 @@ describe("'check' command", () => {
   })
 
   it("prints no mistakes with '-p' option", () => {
-    prepareData("No mistake")
+    prepareData("There are no mistakes")
     const result = shell.exec("node src/cli.js check -p test-temp/example.txt")
 
     expect(result.code).toEqual(0)

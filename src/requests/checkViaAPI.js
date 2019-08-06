@@ -13,9 +13,10 @@ const addWordFields = (matches) => {
   })
 }
 
-const removeFalsePositives = (matches, dictionary) => {
+const removeFalsePositives = (matches, dictionary, disabledRules) => {
   return matches.filter(
     (match) =>
+      !disabledRules.includes(match.rule.category.id) &&
       !(
         match.rule.issueType === "misspelling" &&
         dictionary.includes(match.word)
@@ -35,7 +36,14 @@ const removeFalsePositives = (matches, dictionary) => {
  */
 const checkViaAPI = async (text, options) => {
   const cfg = { ...initialConfig, ...options }
-  console.log(cfg)
+  const disabledRules = Object.entries(options.rules)
+    .filter(([rule, value]) => value === false)
+    .map(([rule]) => rule.toUpperCase())
+
+  const disabledRulesEntry =
+    disabledRules.length === 0 || cfg.api_url === initialConfig.api_url
+      ? {}
+      : { disabledCategories: disabledRules.join(",") }
 
   const postData = querystring.stringify({
     api_key: cfg.api_key,
@@ -43,6 +51,7 @@ const checkViaAPI = async (text, options) => {
     // Grammarbot API have problems with some special characters and requires additional encoding
     text:
       cfg.api_url === initialConfig.api_url ? encodeURIComponent(text) : text,
+    ...disabledRulesEntry,
   })
 
   const response = await fetch(cfg.api_url, {
@@ -61,6 +70,7 @@ const checkViaAPI = async (text, options) => {
     matches: removeFalsePositives(
       addWordFields(result.matches),
       cfg.dictionary,
+      cfg.api_url === initialConfig.api_url ? disabledRules : [],
     ),
   }
 

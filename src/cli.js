@@ -104,21 +104,23 @@ yargs
   .option("language", {
     alias: "l",
     type: "string",
-    default: "CONFIG",
+    default: "config",
     describe: "Sets the language of the text",
-    choices: ["CONFIG", ...languagesOptions],
+    choices: ["config", "auto", ...languagesOptions],
   })
   .option("disable", {
     alias: "d",
     type: "string",
     describe: "Disables specific rule",
     choices: rulesOptions,
+    default: [],
   })
   .option("enable", {
     alias: "e",
     type: "string",
     describe: "Enables specific rule",
     choices: rulesOptions,
+    default: [],
   })
   .alias("help", "h")
   .version(`v${version}`)

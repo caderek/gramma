@@ -1,4 +1,7 @@
 const fs = require("fs")
+const kleur = require("kleur")
+const { isRule, ruleOptions } = require("../validators/rules")
+const { isLanguage, languageOptions } = require("../validators/languages")
 
 const availableOptions = [
   "api_key",
@@ -7,6 +10,9 @@ const availableOptions = [
   "server_command",
   "server_once",
   "server_pid",
+  "language",
+  "enable",
+  "disable",
 ]
 
 const addToDictionary = (dictionary, word) => {
@@ -17,6 +23,34 @@ const addToDictionary = (dictionary, word) => {
   }
 
   return [...dict, word].sort()
+}
+
+const changeRule = (rules, ruleName, isEnabled) => {
+  return { ...rules, [ruleName]: isEnabled }
+}
+
+const prepareEntry = (key, value, cfg) => {
+  if (key === "dictionary") {
+    return { dictionary: addToDictionary(cfg.dictionary, value) }
+  }
+
+  if (key === "enable" || key === "disable") {
+    if (!isRule(value)) {
+      console.log(kleur.red("There is no such rule"))
+      console.log(`Available options: ${ruleOptions.join(", ")}`)
+      process.exit(1)
+    }
+
+    return { rules: changeRule(cfg.rules, value, key === "enable") }
+  }
+
+  if (key === "language" && !isLanguage(value)) {
+    console.log(kleur.red("There is no such language option"))
+    console.log(`Available options: ${languageOptions.join(", ")}`)
+    process.exit(1)
+  }
+
+  return { [key]: value }
 }
 
 const configure = (key, value, cfg, isGlobal = false) => {
@@ -36,10 +70,7 @@ const configure = (key, value, cfg, isGlobal = false) => {
     ? cfg.paths.globalConfigFile
     : cfg.paths.localConfigFile
 
-  const entry =
-    key === "dictionary"
-      ? { dictionary: addToDictionary(currentConfig.dictionary, value) }
-      : { [key]: value }
+  const entry = prepareEntry(key, value, currentConfig)
 
   const updatedConfig = { ...currentConfig, ...entry }
 

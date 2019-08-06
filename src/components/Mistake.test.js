@@ -5,7 +5,7 @@ describe("Mistake component", () => {
   it("renders info about mistake without suggestions", () => {
     const expected =
       `---------------------------------\n\n` +
-      `Issue: non-conformance\n` +
+      `Rule: typos\n` +
       `Explanation: Did you mean "is"?\n\n` +
       `Context:  It are a perfect English sentence. \n`
 
@@ -18,7 +18,9 @@ describe("Mistake component", () => {
         length: 3,
       },
       rule: {
-        issueType: "non-conformance",
+        category: {
+          id: "typos",
+        },
       },
     })
 
@@ -30,7 +32,7 @@ describe("Mistake component", () => {
   it("renders info about mistake with single suggestion", () => {
     const expected =
       `---------------------------------\n\n` +
-      `Issue: grammar\n` +
+      `Rule: typos\n` +
       `Explanation: Some message\n\n` +
       `Context: Some context\n` +
       `Suggested fix: 1) foo\n`
@@ -44,7 +46,9 @@ describe("Mistake component", () => {
         length: 3,
       },
       rule: {
-        issueType: "grammar",
+        category: {
+          id: "typos",
+        },
       },
     })
 
@@ -56,7 +60,7 @@ describe("Mistake component", () => {
   it("renders info about mistake with multiple suggestions", () => {
     const expected =
       `---------------------------------\n\n` +
-      `Issue: style\n` +
+      `Rule: typos\n` +
       `Explanation: Some message\n\n` +
       `Context: Some context\n` +
       `Suggested fix: 1) foo  2) bar  3) baz\n`
@@ -70,7 +74,9 @@ describe("Mistake component", () => {
         length: 3,
       },
       rule: {
-        issueType: "style",
+        category: {
+          id: "typos",
+        },
       },
     })
 

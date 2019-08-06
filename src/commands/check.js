@@ -18,10 +18,10 @@ const check = async (argv, cfg) => {
   const initialText = fs.readFileSync(argv.file).toString()
 
   if (argv.print) {
-    const status = await checkNonInteractively(initialText, cfg.session)
+    const status = await checkNonInteractively(initialText, cfg)
     process.exit(status)
   } else {
-    const { changed, text } = await checkInteractively(initialText, cfg.session)
+    const { changed, text } = await checkInteractively(initialText, cfg)
     if (changed) {
       await save(text, "FILE", argv.file)
     }

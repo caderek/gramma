@@ -4,10 +4,10 @@ const save = require("../actions/save")
 
 const listen = async (argv, cfg) => {
   if (argv.print) {
-    const status = await checkNonInteractively(argv.text, cfg.session)
+    const status = await checkNonInteractively(argv.text, cfg)
     process.exit(status)
   } else {
-    const { changed, text } = await checkInteractively(argv.text, cfg.session)
+    const { changed, text } = await checkInteractively(argv.text, cfg)
     if (changed) {
       await save(text, "TEXT")
     }

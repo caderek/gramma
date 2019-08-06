@@ -4,7 +4,7 @@ const path = require("path")
 const checkInteractively = require("../actions/checkInteractively")
 
 const commit = async (argv, cfg) => {
-  const { text } = await checkInteractively(argv.text, cfg.session)
+  const { text } = await checkInteractively(argv.text, cfg)
 
   try {
     if (fs.existsSync(path.join(process.cwd(), ".gramma.json"))) {

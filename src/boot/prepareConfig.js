@@ -62,7 +62,7 @@ const prepareConfig = (paths) => (argv) => {
   const sessionConfig = {
     ...cfg,
     language:
-      argvConfig.language === "CONFIG" ? argvConfig.language : cfg.language,
+      argvConfig.language === "config" ? cfg.language : argvConfig.language,
     rules: { ...cfg.rules, ...argvConfig.rules },
     modifiers: argvConfig.modifiers,
   }

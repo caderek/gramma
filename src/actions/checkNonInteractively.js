@@ -24,9 +24,11 @@ const checkNonInteractively = async (text, cfg, styles = true) => {
     return 0
   }
 
-  console.info(`Checking...`)
+  console.info(`Checking via ${cfg.session.api_url}...`)
 
   const result = await checkWithFallback(text, cfg)
+  console.log(`Language: ${result.language.name}`)
+
   print(result, styles)
 
   return result.matches.length === 0 ? 0 : 1
