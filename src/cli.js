@@ -10,7 +10,6 @@ const init = require("./commands/init")
 const config = require("./commands/config")
 const paths = require("./commands/paths")
 const server = require("./commands/server")
-const pipe = require("./commands/pipe")
 
 // eslint-disable-next-line no-unused-expressions
 yargs
