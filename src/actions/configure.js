@@ -2,14 +2,13 @@ const fs = require("fs")
 const kleur = require("kleur")
 const { isRule, ruleOptions } = require("../validators/rules")
 const { isLanguage, languageOptions } = require("../validators/languages")
+const initialConfig = require("../initialConfig")
 
 const availableOptions = [
   "api_key",
   "api_url",
   "dictionary",
-  "server_command",
   "server_once",
-  "server_pid",
   "language",
   "enable",
   "disable",
@@ -53,11 +52,18 @@ const prepareEntry = (key, value, cfg) => {
   return { [key]: value }
 }
 
-const configure = (key, value, cfg, isGlobal = false) => {
-  if (!availableOptions.includes(key)) {
-    console.log(`There is no '${key}' option!`)
+const configure = (key, value, cfg, isGlobal = false, internal = false) => {
+  if (!availableOptions.includes(key) && !internal) {
+    console.log(kleur.red(`There is no '${key}' option!`))
     console.log("Available options:")
-    console.dir(availableOptions, { colors: true, depth: 1 })
+    console.log(availableOptions.join("\n"))
+    return
+  }
+
+  if (key === "server_once" && !isGlobal) {
+    console.log(
+      kleur.red("This setting can be used only with -g (--global) flag"),
+    )
     return
   }
 
@@ -65,10 +71,18 @@ const configure = (key, value, cfg, isGlobal = false) => {
     fs.mkdirSync(cfg.paths.globalConfigDir, { recursive: true })
   }
 
-  const currentConfig = isGlobal ? cfg.global : cfg.local
+  let currentConfig = isGlobal ? cfg.global : cfg.local
   const configFilePath = isGlobal
     ? cfg.paths.globalConfigFile
     : cfg.paths.localConfigFile
+
+  if (Object.keys(currentConfig).length === 0) {
+    currentConfig = initialConfig
+
+    if (!isGlobal) {
+      currentConfig = { ...currentConfig, api_url: "inherit" }
+    }
+  }
 
   const entry = prepareEntry(key, value, currentConfig)
 

@@ -42,10 +42,12 @@
    1. [Check file](#check)
    1. [Check string](#listen)
    1. [Git commit with grammar check](#commit)
-   1. [Configuration](#config)
    1. [I/O redirection](#io)
-   1. [Managing a custom API server](#server)
    1. [JS API](#js)
+1. [Configuration](#config)
+   1. [Local server]()
+   2. []
+1. [Managing a custom API server](#server)
 1. [License](#license)
 
 <a id='notes'></a>
@@ -54,6 +56,11 @@
 
 This package is in an early stage. It's functional, but still needs more testing and some refactoring.
 Feel free to try it for non-critical applications.
+
+<details>
+    <summary style="outline: none; cursor: pointer">Details</summary>
+    Something small enough to escape casual notice.
+</details>
 
 <a id='installation'></a>
 
@@ -173,14 +180,31 @@ After downloading and unpacking the binary, add it to your PATH or create a syml
 
 #### Gramma configuration
 
-With Gramma, you can use a global and local configuration file. Local config overrides global properties - it is useful when you want to have dedicated config per project (for example to share it in Git repository). When neither file is present, the default config will be used.
+With Gramma, you can use a global and local configuration file. Gramma will use a proper config file following their priority:
+
+1. local config (if exists in current directory)
+2. global config (if exists)
+3. default config
 
 Gramma will automatically generate configuration files when you add something to your config via `gramma config` command.
 
-If you want to manually initialize local config, you can run `gramma init` command in your project's root directory. It is useful when you want to just override the global dictionary with local, empty one - so your project is not dependent on your private dictionary.
+If you want to manually initialize local config, you can run following command in your project's root directory:
 
-You can check the path to the global configuration file via `gramma paths` command.
+```
+gramma init
+```
+
+It is recommended when you start a new project, that you want to share with others, so it does not depend on your user's setting.
+
+You can check the path to the global configuration file via following command:
+
+```
+gramma paths
+```
+
 The local configuration file is created in your working directory under `.gramma.json` name.
+
+<hr>
 
 - Using a custom API server
 
@@ -255,6 +279,10 @@ The local configuration file is created in your working directory under `.gramma
   ```
 
   You can also add custom words directly to the config file, it's an array under `dictionary` key.
+
+- Changing default language
+
+  By default Gramma uses
 
 <a id='io'></a>
 

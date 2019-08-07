@@ -56,6 +56,15 @@ const prepareConfig = (paths) => (argv) => {
     ...fileConfig,
   }
 
+  // If local config has api_url set to 'inherit'
+  // then Gramma will use global settings (if set) or initial settings.
+  // This allows to use dynamic url of the local server
+  // eslint-disable-next-line camelcase
+  const api_url =
+    cfg.api_url === "inherit"
+      ? (globalConfig || {}).api_url || initialConfig.api_url
+      : cfg.api_url
+
   // Argv config alters nested values,
   // so you can change some rules for specific checks,
   // without erasing other rules defined in config files
@@ -65,6 +74,7 @@ const prepareConfig = (paths) => (argv) => {
       argvConfig.language === "config" ? cfg.language : argvConfig.language,
     rules: { ...cfg.rules, ...argvConfig.rules },
     modifiers: argvConfig.modifiers,
+    api_url,
   }
 
   return {
@@ -81,4 +91,5 @@ module.exports = prepareConfig({
   globalConfigFile,
   localConfigFile,
   home,
+  serverDownload: "https://languagetool.org/download/LanguageTool-stable.zip",
 })

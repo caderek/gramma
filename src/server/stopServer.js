@@ -4,13 +4,11 @@ const { platform } = require("os")
 const configure = require("../actions/configure")
 
 const stopServer = async (cfg) => {
-  const usedCfg = cfg.modifiers.global ? cfg.global : cfg.local
-
-  if (usedCfg.server_pid) {
+  if (cfg.global.server_pid) {
     const command =
       platform() === "win32"
-        ? `taskkill /PID ${usedCfg.server_pid} /F`
-        : `kill ${usedCfg.server_pid}`
+        ? `taskkill /PID ${cfg.global.server_pid} /F`
+        : `kill ${cfg.global.server_pid}`
 
     return new Promise((resolve, reject) => {
       exec(command, (error) => {
@@ -28,7 +26,7 @@ const stopServer = async (cfg) => {
         console.log(kleur.yellow("API server is not running!"))
       })
       .then(() => {
-        configure("server_pid", "", cfg, cfg.modifiers.global)
+        configure("server_pid", "", cfg, true, true)
       })
   }
 

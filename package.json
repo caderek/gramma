@@ -23,10 +23,16 @@
   "author": "Maciej Cąderek | maciej.caderek@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "cli-progress": "^2.1.1",
+    "decompress": "^4.2.0",
+    "decompress-unzip": "^4.0.1",
     "intercept-stdout": "^0.1.2",
     "kleur": "^3.0.3",
     "node-fetch": "^2.6.0",
+    "portfinder": "^1.0.21",
+    "progress-stream": "^2.0.0",
     "prompts": "^2.1.0",
+    "rimraf": "^2.6.3",
     "yargs": "^13.3.0"
   },
   "devDependencies": {

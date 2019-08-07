@@ -3,30 +3,28 @@ const startServer = require("../server/startServer")
 const checkViaAPI = require("./checkViaAPI")
 
 const checkWithFallback = async (text, cfg) => {
-  const { session, initial } = cfg
+  const { session, global } = cfg
   let response
 
   try {
     response = await checkViaAPI(text, session)
   } catch (error) {
-    if (error.code === "ECONNREFUSED") {
-      if (
-        session.server_command &&
-        session.api_url &&
-        session.api_url !== initial.api_url
-      ) {
-        const server = await startServer(cfg)
+    if (error.code === "ECONNREFUSED" || cfg.session.api_url === "localhost") {
+      if (global.server_path) {
+        // eslint-disable-next-line camelcase
+        const { server, api_url } = await startServer(cfg)
         console.clear()
-        response = await checkViaAPI(text, session)
+        const updatedSession = { ...session, api_url }
+        response = await checkViaAPI(text, updatedSession)
 
-        if (session.server_once === "true") {
+        if (global.server_once === "true") {
           server.kill()
         }
       } else {
         console.log(kleur.red(`API server ${session.api_url} not available!`))
         console.log("Please make sure that the server is running.")
         console.log(
-          'TIP: Gramma is able to automatically start custom API server if you configure "server_command" and "api_url" options.',
+          "TIP: Gramma is able to automatically start local API server if you install it via: gramma server install",
         )
         process.exit()
       }
