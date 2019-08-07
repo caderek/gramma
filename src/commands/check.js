@@ -1,8 +1,10 @@
+const intercept = require("intercept-stdout")
 const kleur = require("kleur")
 const fs = require("fs")
 const checkNonInteractively = require("../actions/checkNonInteractively")
 const checkInteractively = require("../actions/checkInteractively")
 const save = require("../actions/save")
+const stripStyles = require("../utils/stripStyles")
 
 const check = async (argv, cfg) => {
   if (!argv.file) {
@@ -18,7 +20,13 @@ const check = async (argv, cfg) => {
   const initialText = fs.readFileSync(argv.file).toString()
 
   if (argv.print) {
-    const status = await checkNonInteractively(initialText, cfg)
+    const noColors = argv["no-colors"]
+
+    if (noColors) {
+      intercept(stripStyles)
+    }
+
+    const status = await checkNonInteractively(initialText, cfg, !noColors)
     process.exit(status)
   } else {
     const { changed, text } = await checkInteractively(initialText, cfg)

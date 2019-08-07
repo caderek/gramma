@@ -1,4 +1,5 @@
-<h1 align="center">Gramma - command-line grammar checker</h1>
+<h1 align="center" style="border: none">Gramma - command-line grammar checker</h1>
+<hr style="background: linear-gradient(to right, #0066ff, #cc6699); height: 5px; margin-bottom: 30px;">
 <div align="center">
 <p align="center">Gramma is an interactive tool that helps you find and fix grammatical mistakes in files, strings, and input streams. You can also use it in a non-interactive way, as a simple linter for automation processes.</p>
 
@@ -29,44 +30,40 @@
 <!-- <a href="https://www.codacy.com/app/caderek/gramma?utm_source=github.com&utm_medium=referral&utm_content=caderek/gramma&utm_campaign=Badge_Coverage" target="_blank"><img src="https://img.shields.io/codacy/coverage/47a1c8bb12644bd6a0303d642db1cdae.svg" alt="Codacy coverage"></a> -->
 <!-- <a href="https://discord.gg/6RjmNx6" target="_blank"><img src="https://img.shields.io/discord/602308081279303692.svg" alt="discord"></a> -->
 <!-- <img src="https://img.shields.io/github/languages/code-size/caderek/gramma.svg" alt="GitHub code size in bytes"> -->
-<hr>
+<br>
 
-<img src="docs/example.gif" alt="Example">
+<img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
-## Table of contents
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Contents</h2>
 
 1. [Notes](#notes)
 1. [Installation](#installation)
 1. [Usage](#usage)
-   1. [Check file](#check)
-   1. [Check string](#listen)
-   1. [Git commit with grammar check](#commit)
-   1. [I/O redirection](#io)
-   1. [JS API](#js)
+   - [Check file](#usage-check)
+   - [Check string](#usage-listen)
+   - [Git commit with grammar check](#usage-commit)
+   - [Command-line options](#usage-options)
 1. [Configuration](#config)
-   1. [Local server]()
-   2. []
-1. [Managing a custom API server](#server)
+   - [Introduction](#config-intro)
+   - [Checker settings](#config-checker)
+   - [Customizing API server](#config-server)
+1. [Managing a local server](#server)
+1. [JS API](#js)
 1. [License](#license)
 
 <a id='notes'></a>
 
-## Notes
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Notes</h2>
 
-This package is in an early stage. It's functional, but still needs more testing and some refactoring.
+This package is in **beta stage**. It's fully functional, but still needs more testing, some refactoring, and some minor tweaks.
 Feel free to try it for non-critical applications.
-
-<details>
-    <summary style="outline: none; cursor: pointer">Details</summary>
-    Something small enough to escape casual notice.
-</details>
 
 <a id='installation'></a>
 
-## Installation
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Installation</h2>
 
-### Via NPM
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Via NPM</h3>
 
 This is a recommended way for people who have Node.js and NPM already installed (or are willing to do so).
 
@@ -82,7 +79,7 @@ npm i gramma -g
 npm i gramma -D
 ```
 
-### Via binary package
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Via binary package</h3>
 
 If you prefer a single binary file (Node.js included), you can download it for the most popular platforms:
 
@@ -92,111 +89,150 @@ If you prefer a single binary file (Node.js included), you can download it for t
 
 After downloading and unpacking the binary, add it to your PATH or create a symlink to your executable directory (depending on the platform).
 
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Installing local server</h3>
+
+If you don't want to use a public API, you can install a local LanguageTool server:
+
+```
+gramma server install
+```
+
+For this to work, you have to install Java 1.8 or higher (you can find it [here](https://jdk.java.net/12/) or [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)). You can check if you have it already installed by running:
+
+```
+java -version
+```
+
+That's it - Gramma will now use and manage the local server automatically.
+
 <a id='usage'></a>
 
-## Usage
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Usage</h2>
 
-### Git-like commands
+<a id='usage-check'></a>
 
-<a id='check'></a>
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Check file</h3>
 
-#### Check file
+Interactive fix:
 
-- Interactive fix:
+```
+gramma check [file]
+```
 
-  ```
-  gramma check [file]
-  ```
+Just print potential mistakes and return status code:
 
-- Just print potential mistakes and return status code:
+```
+gramma check -p [file]
+```
 
-  ```
-  gramma check -p [file]
-  ```
+Examples:
 
-- Examples:
+```
+gramma check path/to/my_file.txt
+```
 
-  ```
-  gramma check path/to/my_file.txt
-  ```
+```
+gramma check -p path/to/other/file.txt
+```
 
-  ```
-  gramma check -p path/to/other/file.txt
-  ```
+<a id='usage-listen'></a>
 
-<a id='listen'></a>
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Check string</h3>
 
-#### Check string
+Interactive fix:
 
-- Interactive fix:
+```
+gramma listen [text]
+```
 
-  ```
-  gramma listen [text]
-  ```
+Just print potential mistakes and return status code:
 
-- Just print potential mistakes and return status code:
+```
+gramma listen -p [text]
+```
 
-  ```
-  gramma listen -p [text]
-  ```
+Examples:
 
-- Examples:
+```
+gramma listen "This sentence will be checked interactively."
+```
 
-  ```
-  gramma listen "This sentence will be checked interactively."
-  ```
+```
+gramma listen -p "Suggestions for this sentence will be printed."
+```
 
-  ```
-  gramma listen -p "Suggestions for this sentence will be printed."
-  ```
+<a id='usage-commit'></a>
 
-<a id='commit'></a>
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Git commit with grammar check</h3>
 
-#### Git commit with grammar check
+Equivalent to `git commit -m [message]`:
 
-- Equivalent to `git commit -m [message]`:
+```
+gramma commit [text]
+```
 
-  ```
-  gramma commit [text]
-  ```
+Equivalent to `git commit -am [message]`:
 
-- Equivalent to `git commit -am [message]`:
+```
+gramma commit -a [text]
+```
 
-  ```
-  gramma commit -a [text]
-  ```
+Examples:
 
-- Examples:
+```
+gramma commit "My commit message"
+```
 
-  ```
-  gramma commit "My commit message"
-  ```
+```
+gramma commit -a "Another commit message (files added)"
+```
 
-  ```
-  gramma commit -a "Another commit message (files added)"
-  ```
+<a id='usage-options'></a>
+
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Command-line options</h3>
+
+_Note: In this section, I describe options for grammar-checking commands only. Options specific to other commands are described in their respectful sections of this document._
+
+- `-p / --print` - check text in the non-interactive mode
+- `-n / --no-colors` - when paired with the `-p` flag, removes colors from output
+- `-d / --disable <rule>` - disables specific [rule](#available-rules)
+- `-e / --enable <rule>` - enables specific [rule](#available-rules)
+- `-l / --language <language_code>` - marks a text as written in provided [language](#available-languages)
+
+You can enable or disable multiple rules in one command by using a corresponding option multiple times. You can also compound boolean options if you use their short version.
+
+Example:
+
+```
+gramma listen "I like making mistkaes!" -pn -d typos -d typography -e casing -l en-GB
+```
 
 <a id='config'></a>
 
-#### Gramma configuration
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Configuration</h2>
+
+<a id='config-intro'></a>
+
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Introduction</h3>
 
 With Gramma, you can use a global and local configuration file. Gramma will use a proper config file following their priority:
 
-1. local config (if exists in current directory)
-2. global config (if exists)
-3. default config
+1. Command-line options
+2. Local config
+3. Global config
+4. Default config
 
 Gramma will automatically generate configuration files when you add something to your config via `gramma config` command.
 
-If you want to manually initialize local config, you can run following command in your project's root directory:
+If you want to manually initialize local config with default options, you can run the following command in your project's root directory:
 
 ```
 gramma init
 ```
 
-It is recommended when you start a new project, that you want to share with others, so it does not depend on your user's setting.
+By doing so, your project will not depend on your user's setting. It is useful when you want to share your project with others (i.e. via Git repository).
 
-You can check the path to the global configuration file via following command:
+You can check the path to the global configuration file (as well as other paths used by Gramma) via the following command:
 
 ```
 gramma paths
@@ -204,143 +240,207 @@ gramma paths
 
 The local configuration file is created in your working directory under `.gramma.json` name.
 
-<hr>
-
-- Using a custom API server
-
-  To use locally installed, open-source LanguageTool server, follow the instructions on this site: [LanguageTool server](http://wiki.languagetool.org/http-server)
-
-  After that, you can change default API endpoint (`http://api.grammarbot.io/v2/check`) by running this command:
-
-  ```
-  gramma config -g api_url <custom_api_url>
-  ```
-
-  For example, for local installation of LanguageTool, default setup looks like this:
-
-  ```
-  gramma config -g api_url http://localhost:8081/v2/check
-  ```
-
-  <hr>
-
-  Additionally, Gramma can start the API server automatically for you!
-  Just add starting command to your config:
-
-  ```
-  gramma config -g server_command <starting_command>
-  ```
-
-  For example:
-
-  ```
-  gramma config -g server_command "java -cp ~/Other/LanguageTool/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081"
-  ```
-
-  Remember to quote the command and provide the full path to `languagetool-server.jar` file!
-
-  <hr>
-
-  If you do not want the server to run all the time, you can configure Gramma to run it only when needed (run -> check -> close):
-
-  ```
-  gramma config -g server_once true
-  ```
-
-  You can skip `-g` flags to add this setup locally for your project.
-
-  That's it. Gramma will now take care of running the server!
-
-- Adding API key (grammarbot.io only)
-
-  By default, gramma uses a blank key, that gives you 100 checks per day.
-  You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free). When you register, you will receive an API key that you can use in Gramma. For example, adding "XXXXXXXX" API key to global config will look like this:
-
-  ```
-  gramma config -g api_key XXXXXXXX
-  ```
-
-  If you want to add different key locally, just skip the `-g` (`--global`) flag:
-
-  ```
-  gramma config api_key YYYYYYYY
-  ```
-
-- Adding a word to the dictionary
-
-  Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
-
-  ```
-  # Add a word to the local dictionary
-  gramma config dictionary MyWord
-
-  # Add a word to the global dictionary
-  gramma config -g dictionary MyWord
-  ```
-
-  You can also add custom words directly to the config file, it's an array under `dictionary` key.
-
-- Changing default language
-
-  By default Gramma uses
-
-<a id='io'></a>
-
-### I/O Redirection
-
-You can also use Gramma as standard shell tool by running it without arguments and working with stdin and stdout. There is no interactive mode in this approach. There are also no colors in the output, just plain text.
-
-When you simply type `gramma` and press Enter, Gramma will open an input stream where you can type your phrase. After accepting it with Enter, Gramma will list all potential mistakes. This behavior is not very useful by itself, but when you combine it with pipes and redirection it becomes a convenient tool for usage inside a CI pipeline, etc.
-
-#### Examples
+You can change your settings by manually editing configuration files or running:
 
 ```
-# check a string and print the result on the screen:
-echo "Some text" | gramma
+gramma config <setting> <value> [-g]
+```
 
-# check a string and save the result to a file:
-echo "Some text" | gramma > myFile.txt
+`-g` (`--global`) flag is optional and controls whether the global or the local config will be altered.
 
-# check a file and print the result on the screen:
-gramma < myInputFile.txt
+_Note: All examples below use global config, if you want to use a local one, skip the `-g` flag._
 
-# check a file and save the result to a file:
-gramma < myInputFile.txt > myOutputFile.txt
+<a id='config-checker'></a>
+
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Checker settings</h3>
+
+#### Adding a word to the dictionary
+
+Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
+
+```
+gramma config dictionary <your_word> -g
+```
+
+#### Changing default language
+
+```
+gramma config language <language_code> -g
+```
+
+<a id="available-languages"></a>
+
+<details>
+  <summary style="outline: none; cursor: pointer">Available languages (click to expand)</summary>
+  <ul>
+      <li><tt style="white-space: pre;">auto    </tt> - automatic language detection</li>
+      <li><tt style="white-space: pre;">ast-ES  </tt> - Asturian</li>
+      <li><tt style="white-space: pre;">be-BY   </tt> - Belarusian</li>
+      <li><tt style="white-space: pre;">br-FR   </tt> - Breton</li>
+      <li><tt style="white-space: pre;">ca-ES   </tt> - Catalan</li>
+      <li><tt style="white-space: pre;">zh-CN   </tt> - Chinese</li>
+      <li><tt style="white-space: pre;">da-DK   </tt> - Danish</li>
+      <li><tt style="white-space: pre;">nl      </tt> - Dutch</li>
+      <li><tt style="white-space: pre;">en      </tt> - English</li>
+      <li><tt style="white-space: pre;">en-AU   </tt> - English (Australian)</li>
+      <li><tt style="white-space: pre;">en-CA   </tt> - English (Canadian)</li>
+      <li><tt style="white-space: pre;">en-GB   </tt> - English (GB)</li>
+      <li><tt style="white-space: pre;">en-NZ   </tt> - English (New Zealand)</li>
+      <li><tt style="white-space: pre;">en-ZA   </tt> - English (South African)</li>
+      <li><tt style="white-space: pre;">en-US   </tt> - English (US)</li>
+      <li><tt style="white-space: pre;">eo      </tt> - Esperanto</li>
+      <li><tt style="white-space: pre;">fr      </tt> - French</li>
+      <li><tt style="white-space: pre;">gl-ES   </tt> - Galician</li>
+      <li><tt style="white-space: pre;">de      </tt> - German</li>
+      <li><tt style="white-space: pre;">de-AT   </tt> - German (Austria)</li>
+      <li><tt style="white-space: pre;">de-DE   </tt> - German (Germany)</li>
+      <li><tt style="white-space: pre;">de-CH   </tt> - German (Swiss)</li>
+      <li><tt style="white-space: pre;">el-GR   </tt> - Greek</li>
+      <li><tt style="white-space: pre;">it      </tt> - Italian</li>
+      <li><tt style="white-space: pre;">ja-JP   </tt> - Japanese</li>
+      <li><tt style="white-space: pre;">km-KH   </tt> - Khmer</li>
+      <li><tt style="white-space: pre;">fa      </tt> - Persian</li>
+      <li><tt style="white-space: pre;">pl-PL   </tt> - Polish</li>
+      <li><tt style="white-space: pre;">pt      </tt> - Portuguese</li>
+      <li><tt style="white-space: pre;">pt-AO   </tt> - Portuguese (Angola preAO)</li>
+      <li><tt style="white-space: pre;">pt-BR   </tt> - Portuguese (Brazil)</li>
+      <li><tt style="white-space: pre;">pt-MZ   </tt> - Portuguese (Moçambique preAO)</li>
+      <li><tt style="white-space: pre;">pt-PT   </tt> - Portuguese (Portugal)</li>
+      <li><tt style="white-space: pre;">ro-RO   </tt> - Romanian</li>
+      <li><tt style="white-space: pre;">ru-RU   </tt> - Russian</li>
+      <li><tt style="white-space: pre;">sk-SK   </tt> - Slovak</li>
+      <li><tt style="white-space: pre;">sl-SI   </tt> - Slovenian</li>
+      <li><tt style="white-space: pre;">es      </tt> - Spanish</li>
+      <li><tt style="white-space: pre;">sv      </tt> - Swedish</li>
+      <li><tt style="white-space: pre;">tl-PH   </tt> - Tagalog</li>
+      <li><tt style="white-space: pre;">ta-IN   </tt> - Tamil</li>
+      <li><tt style="white-space: pre;">uk-UA   </tt> - Ukrainian</li>
+  </ul>
+</details>
+
+_Note: By default, Gramma uses US English (`en-US`)._
+
+#### Enabling and disabling rules
+
+Enabling specific rule:
+
+```
+gramma config enable <rule_name> -g
+```
+
+Disabling specific rule:
+
+```
+gramma config disable <rule_name> -g
+```
+
+<a id="available-rules"></a>
+
+<details>
+  <summary style="outline: none; cursor: pointer">Available rules (click to expand)</summary>
+  <ul>
+      <li><tt style="white-space: pre;">casing</tt></li>
+      <li><tt style="white-space: pre;">colloquialisms</tt></li>
+      <li><tt style="white-space: pre;">compounding</tt></li>
+      <li><tt style="white-space: pre;">confused_words</tt></li>
+      <li><tt style="white-space: pre;">false_friends</tt></li>
+      <li><tt style="white-space: pre;">gender_neutrality</tt></li>
+      <li><tt style="white-space: pre;">grammar</tt></li>
+      <li><tt style="white-space: pre;">misc</tt></li>
+      <li><tt style="white-space: pre;">punctuation</tt></li>
+      <li><tt style="white-space: pre;">redundancy</tt></li>
+      <li><tt style="white-space: pre;">regionalisms</tt></li>
+      <li><tt style="white-space: pre;">repetitions</tt></li>
+      <li><tt style="white-space: pre;">semantics</tt></li>
+      <li><tt style="white-space: pre;">style</tt></li>
+      <li><tt style="white-space: pre;">typography</tt></li>
+      <li><tt style="white-space: pre;">typos</tt></li>
+  </ul>
+</details>
+
+You can find a description for each rule [here](https://languagetool.org/development/api/org/languagetool/rules/Categories.html).
+
+_Note: By default, all rules are enabled._
+
+<a id='config-server'></a>
+
+<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Customizing API server</h3>
+
+#### Defining custom API endpoint
+
+If you want to use remote LanguageTool server, or use one already installed in your system (not installed via `gramma server install`), you can define a custom API endpoint:
+
+```
+gramma config api_url <custom_api_endpoint> -g
+```
+
+Example
+
+```
+gramma config api_url http://my-custom-api-url.xyz/v2/check -g
+```
+
+#### Running local server only when needed
+
+If you do not want the local server to run all the time, you can configure Gramma to run it only when needed (`run -> check -> close`). It is useful when you run Gramma only from time to time, and want to lower the memory consumption:
+
+```
+gramma config server_once true -g
+```
+
+_Note: This setting requires the `-g` flag because all local API server settings are stored in the global config._
+
+#### Adding API key
+
+_Note: This option applies to grammarbot.io and languagetoolplus.com API only._
+
+If you use our default API (grammarbot.io), it comes with some limitations - 100 checks per day (which is fine for most users). You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free).
+
+You can also buy a paid option on grammarbot.io or languagetoolplus.com that offer some additional checks.
+
+In both cases, when you register, you will receive an API key that you can use in Gramma:
+
+```
+gramma config api_key <your_api_key> -g
 ```
 
 <a id='server'></a>
 
-### Managing custom API server
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Managing a local server</h2>
 
-If you [configured a custom API server](#config), Gramma will manage the server automatically, nevertheless there might be situations, when you want to manage server manually. Gramma simplifies this by integrating basic server commands:
+If you [configured a custom API server](#config), Gramma will manage the server automatically, nevertheless there might be situations, when you want to manage server manually. Gramma simplifies this by exposing basic server commands:
 
-- Starting server
+#### Starting server
 
-  ```
-  gramma server start -g
-  ```
+```
+gramma server start
+```
 
-  Note: When you use this command, Gramma will ignore `server_once` config option. This is the expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check.
+_Note: When you use this command, Gramma will ignore `server_once` config option. This is expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check._
 
-- Stopping server
+#### Stopping server
 
-  ```
-  gramma server stop -g
-  ```
+```
+gramma server stop
+```
 
-- Getting server PID
+#### Getting server PID
 
-  ```
-  gramma server pid -g
-  ```
+```
+gramma server pid
+```
 
-You should skip the `-g` flag if you want to manage a server dedicated to the project, not a global one.
+#### Opening built-in GUI
+
+```
+gramma server gui
+```
 
 <a id='js'></a>
 
-### JS API @todo update docs !!!!!!!!!!!!!!!!!!
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">JS API</h2>
 
-In addition to command-line usage, you can use two exposed methods if you want to handle mistakes yourself.
+In addition to command-line usage, you can use two exposed methods if you want to handle mistakes by yourself.
 
 #### check() method
 
@@ -352,13 +452,17 @@ const { check } = require("gramma")
 check("Some text to check.").then(console.log)
 ```
 
-You can also pass a second argument: an options object. Available options:
+You can also pass a second argument - an options object. Available options:
 
-- `api_url`: url to non-default API server
-- `api_key`: server API key
-- `dictionary`: array of words that should be whitelisted
-- `language`: language code to specify text language
-- `rules`: object defining which rules should be disabled
+- `api_url` - url to a non-default API server
+- `api_key` - server API key
+- `dictionary` - an array of words that should be whitelisted
+- `language` - language code to specify the text language
+- `rules` - object defining which rules should be disabled
+
+You can find all available values for each setting in the [configuration section](#config) of this document.
+
+Example with all options set:
 
 ```js
 const { check } = require("gramma")
@@ -415,6 +519,6 @@ main()
 
 <a id='license'></a>
 
-## License
+<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">License</h2>
 
 Project is under open, non-restrictive [ISC license](LICENSE).

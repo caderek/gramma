@@ -1,7 +1,7 @@
 [
   {
     "id": "CASING",
-    "description": "Rules about detecting uppercase words where lowercase is required and vice versa."
+    "description": "Detecting uppercase words where lowercase is required and vice versa."
   },
   {
     "id": "COLLOQUIALISMS",
