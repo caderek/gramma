@@ -5,14 +5,21 @@ const rimraf = require("rimraf")
 const downloadFile = require("../utils/downloadFile")
 const unzipFile = require("../utils/unzipFile")
 const configure = require("../actions/configure")
+const confirmServerReinstall = require("../prompts/confirmServerReinstall")
 
 const installServer = async (cfg) => {
   const serverDir = path.join(cfg.paths.home, ".languagetool")
   const zipPath = path.join(serverDir, "languagetool.zip")
 
   if (fs.existsSync(serverDir)) {
-    console.log(kleur.yellow("Server already installed! Removing..."))
-    rimraf.sync(serverDir)
+    const { reinstall } = await confirmServerReinstall()
+
+    if (reinstall) {
+      rimraf.sync(serverDir)
+    } else {
+      console.log("Aborting!")
+      process.exit()
+    }
   }
 
   fs.mkdirSync(serverDir)

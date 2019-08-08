@@ -69,7 +69,7 @@ yargs
     "manage local API server",
     (yargsCtx) => {
       yargsCtx.positional("action", {
-        describe: "action to take (start / stop / pid)",
+        describe: "action to take (install / start / stop / pid / gui)",
       })
     },
     load(server),
