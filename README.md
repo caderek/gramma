@@ -1,5 +1,4 @@
 <h1 align="center" style="border: none">Gramma - command-line grammar checker</h1>
-<hr style="background: linear-gradient(to right, #0066ff, #cc6699); height: 5px; margin-bottom: 30px;">
 <div align="center">
 <p align="center">Gramma is an interactive tool that helps you find and fix grammatical mistakes in files, strings, and input streams. You can also use it in a non-interactive way, as a simple linter for automation processes.</p>
 
@@ -21,6 +20,9 @@
 <img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
 <img src="https://img.shields.io/npm/dw/gramma.svg" alt="npm downloads per week">
 
+</div>
+<div align="center">
+
 <a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg" alt="CircleCI"></a>
 <img src="https://img.shields.io/david/caderek/gramma.svg" alt="dependencies status">
 <img src="https://img.shields.io/github/issues-raw/caderek/gramma.svg" alt="Github issues">
@@ -30,8 +32,9 @@
 <!-- <a href="https://www.codacy.com/app/caderek/gramma?utm_source=github.com&utm_medium=referral&utm_content=caderek/gramma&utm_campaign=Badge_Coverage" target="_blank"><img src="https://img.shields.io/codacy/coverage/47a1c8bb12644bd6a0303d642db1cdae.svg" alt="Codacy coverage"></a> -->
 <!-- <a href="https://discord.gg/6RjmNx6" target="_blank"><img src="https://img.shields.io/discord/602308081279303692.svg" alt="discord"></a> -->
 <!-- <img src="https://img.shields.io/github/languages/code-size/caderek/gramma.svg" alt="GitHub code size in bytes"> -->
-<br>
+</div>
 
+<div align="center">
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
