@@ -52,7 +52,7 @@
 
 ## Notes
 
-This package is in **beta stage**. It's fully functional, but still needs more testing, some refactoring, and some minor tweaks.
+This package is in **beta stage**. It's fully functional, but still needs more testing, some refactoring and some minor tweaks.
 Feel free to try it for non-critical applications.
 
 <a id='installation'></a>
@@ -191,9 +191,9 @@ _Note: This section describes options for grammar-checking commands only. Other 
 
 - `-p / --print` - check text in the non-interactive mode
 - `-n / --no-colors` - when paired with the `-p` flag, removes colors from the output
-- `-d / --disable <rule>` - disables specific [rule](#available-rules)
-- `-e / --enable <rule>` - enables specific [rule](#available-rules)
-- `-l / --language <language_code>` - marks a text as written in provided [language](#available-languages)
+- `-d / --disable <rule>` - disable specific [rule](#available-rules)
+- `-e / --enable <rule>` - enable specific [rule](#available-rules)
+- `-l / --language <language_code>` - mark a text as written in provided [language](#available-languages)
 
 You can enable or disable multiple rules in one command by using a corresponding option multiple times. You can also compound boolean options if you use their short version.
 
@@ -318,13 +318,13 @@ _Note: By default, Gramma uses US English (`en-US`)._
 
 #### Enabling and disabling rules
 
-Enabling specific rule:
+Enabling a specific rule:
 
 ```
 gramma config enable <rule_name> -g
 ```
 
-Disabling specific rule:
+Disabling a specific rule:
 
 ```
 gramma config disable <rule_name> -g
@@ -378,7 +378,7 @@ gramma config api_url http://my-custom-api-url.xyz/v2/check -g
 
 #### Running local server only when needed
 
-If you do not want the local server to run all the time, you can configure Gramma to run it only when needed (`run -> check -> close`). It is useful when you run Gramma only from time to time, and want to lower the memory consumption:
+If you do not want the local server to run all the time, you can configure Gramma to run it only when needed (`run -> check -> close`). It is useful when you run Gramma only from time to time and want to lower the memory consumption:
 
 ```
 gramma config server_once true -g
@@ -392,7 +392,7 @@ _Note: This option applies to grammarbot.io and languagetoolplus.com API only._
 
 If you use our default API (grammarbot.io), it comes with some limitations - 100 checks per day (which is fine for most users). You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free).
 
-You can also buy a paid option on grammarbot.io or languagetoolplus.com that offer some additional checks.
+You can also buy a paid option on grammarbot.io or languagetoolplus.com, which both offer some additional checks.
 
 In both cases, when you register, you will receive an API key that you can use in Gramma:
 
@@ -404,7 +404,7 @@ gramma config api_key <your_api_key> -g
 
 ## Managing a local server
 
-If you [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations, when you want to manage server manually. Gramma simplifies this by exposing basic server commands:
+If you have [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage server manually. Gramma simplifies this by exposing basic server commands:
 
 #### Starting server
 
@@ -507,7 +507,7 @@ check("Some text to check.", {
 
 #### replaceAll() method
 
-Replace words with provided ones. It takes an array of object in the following format:
+Replaces words with provided ones. It takes an array of objects in the following format:
 
 ```js
 const exampleReplacements = [
