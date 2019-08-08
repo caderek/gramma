@@ -4,7 +4,7 @@
 
 <p align="center">Gramma works on Linux, Windows, and macOS.</p>
 
-<p align="center">Gramma supports many languages, you can find a full list <a href="https://languagetool.org/languages">here</a>.</p>
+<p align="center">Gramma supports many languages. You can find a full list <a href="https://languagetool.org/languages">here</a>.</p>
 
 <p align="center">Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.</p>
 
@@ -25,17 +25,13 @@
 <img src="https://img.shields.io/github/issues-raw/caderek/gramma.svg" alt="Github issues">
 <img src="https://img.shields.io/github/last-commit/caderek/gramma.svg" alt="Github last commit">
 
-<!-- <a href="https://www.codacy.com/app/caderek/gramma?utm_source=github.com&utm_medium=referral&utm_content=caderek/gramma&utm_campaign=Badge_Grade" target="_blank"><img src="https://img.shields.io/codacy/grade/47a1c8bb12644bd6a0303d642db1cdae.svg" alt="Codacy grade"></a> -->
-<!-- <a href="https://www.codacy.com/app/caderek/gramma?utm_source=github.com&utm_medium=referral&utm_content=caderek/gramma&utm_campaign=Badge_Coverage" target="_blank"><img src="https://img.shields.io/codacy/coverage/47a1c8bb12644bd6a0303d642db1cdae.svg" alt="Codacy coverage"></a> -->
-<!-- <a href="https://discord.gg/6RjmNx6" target="_blank"><img src="https://img.shields.io/discord/602308081279303692.svg" alt="discord"></a> -->
-<!-- <img src="https://img.shields.io/github/languages/code-size/caderek/gramma.svg" alt="GitHub code size in bytes"> -->
 </div>
 
 <div align="center" style="margin-top: 30px;">
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Contents</h2>
+## Contents
 
 1. [Notes](#notes)
 1. [Installation](#installation)
@@ -54,18 +50,18 @@
 
 <a id='notes'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Notes</h2>
+## Notes
 
 This package is in **beta stage**. It's fully functional, but still needs more testing, some refactoring, and some minor tweaks.
 Feel free to try it for non-critical applications.
 
 <a id='installation'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Installation</h2>
+## Installation
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Via NPM</h3>
+### Via NPM
 
-This is a recommended way for people who have Node.js and NPM already installed (or are willing to do so).
+It is the recommended way if you have Node.js and NPM already installed (or you are willing to do it).
 
 #### Global installation:
 
@@ -79,7 +75,7 @@ npm i gramma -g
 npm i gramma -D
 ```
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Via binary package</h3>
+### Via binary package
 
 If you prefer a single binary file (Node.js included), you can download it for the most popular platforms:
 
@@ -89,7 +85,7 @@ If you prefer a single binary file (Node.js included), you can download it for t
 
 After downloading and unpacking the binary, add it to your PATH or create a symlink to your executable directory (depending on the platform).
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Installing local server</h3>
+### Installing local server
 
 If you don't want to use a public API, you can install a local LanguageTool server:
 
@@ -97,7 +93,7 @@ If you don't want to use a public API, you can install a local LanguageTool serv
 gramma server install
 ```
 
-For this to work, you have to install Java 1.8 or higher (you can find it [here](https://jdk.java.net/12/) or [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)). You can check if you have it already installed by running:
+For this to work, you have to install Java 1.8 or higher (you can find it [here](https://jdk.java.net/12/) or [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)). You can check if you have it installed already by running:
 
 ```
 java -version
@@ -107,11 +103,11 @@ That's it - Gramma will now use and manage the local server automatically.
 
 <a id='usage'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Usage</h2>
+## Usage
 
 <a id='usage-check'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Check file</h3>
+### Check file
 
 Interactive fix:
 
@@ -137,7 +133,7 @@ gramma check -p path/to/other/file.txt
 
 <a id='usage-listen'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Check string</h3>
+### Check string
 
 Interactive fix:
 
@@ -163,7 +159,7 @@ gramma listen -p "Suggestions for this sentence will be printed."
 
 <a id='usage-commit'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Git commit with grammar check</h3>
+### Git commit with grammar check
 
 Equivalent to `git commit -m [message]`:
 
@@ -189,12 +185,12 @@ gramma commit -a "Another commit message (files added)"
 
 <a id='usage-options'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Command-line options</h3>
+### Command-line options
 
-_Note: In this section, I describe options for grammar-checking commands only. Options specific to other commands are described in their respectful sections of this document._
+_Note: This section describes options for grammar-checking commands only. Other command-specific options are described in their respectful sections of this document._
 
 - `-p / --print` - check text in the non-interactive mode
-- `-n / --no-colors` - when paired with the `-p` flag, removes colors from output
+- `-n / --no-colors` - when paired with the `-p` flag, removes colors from the output
 - `-d / --disable <rule>` - disables specific [rule](#available-rules)
 - `-e / --enable <rule>` - enables specific [rule](#available-rules)
 - `-l / --language <language_code>` - marks a text as written in provided [language](#available-languages)
@@ -209,11 +205,11 @@ gramma listen "I like making mistkaes!" -pn -d typos -d typography -e casing -l 
 
 <a id='config'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Configuration</h2>
+## Configuration
 
 <a id='config-intro'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Introduction</h3>
+### Introduction
 
 With Gramma, you can use a global and local configuration file. Gramma will use a proper config file following their priority:
 
@@ -230,7 +226,7 @@ If you want to manually initialize local config with default options, you can ru
 gramma init
 ```
 
-By doing so, your project will not depend on your user's setting. It is useful when you want to share your project with others (i.e. via Git repository).
+By doing so, your project will not depend on your user's setting. It is useful when you want to share your project with others, for example via Git repository.
 
 You can check the path to the global configuration file (as well as other paths used by Gramma) via the following command:
 
@@ -238,7 +234,7 @@ You can check the path to the global configuration file (as well as other paths 
 gramma paths
 ```
 
-The local configuration file is created in your working directory under `.gramma.json` name.
+Gramma creates the local configuration in your working directory under `.gramma.json` name.
 
 You can change your settings by manually editing configuration files or running:
 
@@ -248,11 +244,11 @@ gramma config <setting> <value> [-g]
 
 `-g` (`--global`) flag is optional and controls whether the global or the local config will be altered.
 
-_Note: All examples below use global config, if you want to use a local one, skip the `-g` flag._
+_Note: All examples below use the global config. If you want to use a local one, skip the `-g` flag._
 
 <a id='config-checker'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Checker settings</h3>
+### Checker settings
 
 #### Adding a word to the dictionary
 
@@ -358,13 +354,13 @@ gramma config disable <rule_name> -g
   </ul>
 </details>
 
-You can find a description for each rule [here](https://languagetool.org/development/api/org/languagetool/rules/Categories.html).
+You can find a description of each rule [here](https://languagetool.org/development/api/org/languagetool/rules/Categories.html).
 
 _Note: By default, all rules are enabled._
 
 <a id='config-server'></a>
 
-<h3 style="color: black; background: linear-gradient(to right, #b3d1ff, #ecc6d9); padding: 5px 10px; margin-top: 30px;">Customizing API server</h3>
+### Customizing API server
 
 #### Defining custom API endpoint
 
@@ -406,9 +402,9 @@ gramma config api_key <your_api_key> -g
 
 <a id='server'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">Managing a local server</h2>
+## Managing a local server
 
-If you [configured a custom API server](#config), Gramma will manage the server automatically, nevertheless there might be situations, when you want to manage server manually. Gramma simplifies this by exposing basic server commands:
+If you [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations, when you want to manage server manually. Gramma simplifies this by exposing basic server commands:
 
 #### Starting server
 
@@ -438,7 +434,7 @@ gramma server gui
 
 <a id='js'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">JS API</h2>
+## JS API
 
 In addition to command-line usage, you can use two exposed methods if you want to handle mistakes by yourself.
 
@@ -549,6 +545,6 @@ main()
 
 <a id='license'></a>
 
-<h2 style="color: white; background: linear-gradient(to right, #0066ff, #cc6699); padding: 5px 10px; margin-top: 50px;">License</h2>
+## License
 
 Project is under open, non-restrictive [ISC license](LICENSE).
