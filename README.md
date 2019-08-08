@@ -83,9 +83,9 @@ npm i gramma -D
 
 If you prefer a single binary file (Node.js included), you can download it for the most popular platforms:
 
-- [gramma-linux64-v0.9.0.zip](https://github.com/caderek/gramma/releases/download/v0.9.0-beta.3/gramma-linux64-v0.9.0.zip)
-- [gramma-macos-v0.9.0.zip](https://github.com/caderek/gramma/releases/download/v0.9.0-beta.3/gramma-macos-v0.9.0.zip)
-- [gramma-windows64-v0.9.0.zip](https://github.com/caderek/gramma/releases/download/v0.9.0-beta.3/gramma-windows64-v0.9.0.zip)
+- [gramma-linux64-v0.9.1.zip](https://github.com/caderek/gramma/releases/download/v0.9.1-beta.3/gramma-linux64-v0.9.1.zip)
+- [gramma-macos-v0.9.1.zip](https://github.com/caderek/gramma/releases/download/v0.9.1-beta.3/gramma-macos-v0.9.1.zip)
+- [gramma-windows64-v0.9.1.zip](https://github.com/caderek/gramma/releases/download/v0.9.1-beta.3/gramma-windows64-v0.9.1.zip)
 
 After downloading and unpacking the binary, add it to your PATH or create a symlink to your executable directory (depending on the platform).
 
@@ -459,6 +459,36 @@ You can also pass a second argument - an options object. Available options:
 - `dictionary` - an array of words that should be whitelisted
 - `language` - language code to specify the text language
 - `rules` - object defining which rules should be disabled
+
+<details>
+<summary style="outline: none; cursor: pointer">Default options object (click to expand)</summary>
+<pre>
+{
+  "api_url": "http://api.grammarbot.io/v2/check",
+  "api_key": "",
+  "dictionary": [],
+  "language": "en-US",
+  "rules": {
+    "casing": true,
+    "colloquialisms": true,
+    "compounding": true,
+    "confused_words": true,
+    "false_friends": true,
+    "gender_neutrality": true,
+    "grammar": true,
+    "misc": true,
+    "punctuation": true,
+    "redundancy": true,
+    "regionalisms": true,
+    "repetitions": true,
+    "semantics": true,
+    "style": true,
+    "typography": true,
+    "typos": true
+  }
+}
+</pre>
+</details>
 
 You can find all available values for each setting in the [configuration section](#config) of this document.
 

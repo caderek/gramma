@@ -34,9 +34,9 @@ const removeFalsePositives = (matches, dictionary, disabledRules) => {
  * @param {string[]} options.dictionary
  * @returns {Promise<Object>}
  */
-const checkViaAPI = async (text, options) => {
+const checkViaAPI = async (text, options = {}) => {
   const cfg = { ...initialConfig, ...options }
-  const disabledRules = Object.entries(options.rules)
+  const disabledRules = Object.entries(cfg.rules)
     // eslint-disable-next-line no-unused-vars
     .filter(([rule, value]) => value === false)
     .map(([rule]) => rule.toUpperCase())
