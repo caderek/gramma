@@ -471,7 +471,7 @@ check("Some text to check.", {
   api_url: "http://my-custom-language-tool-server.xyz/v2/check",
   api_key: "SOME_API_KEY",
   dictionary: ["npm", "gramma"],
-  language: "pl_PL",
+  language: "pl-PL",
   rules: {
     typography: false,
     casing: false,
