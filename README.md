@@ -536,7 +536,7 @@ const fix = async (text) => {
   const { matches } = await check(text)
   const replacements = prepareReplacements(matches)
 
-  return replaceAll(replacements)
+  return replaceAll(text, replacements)
 }
 
 const main = () => {
