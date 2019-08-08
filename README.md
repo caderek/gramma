@@ -5,7 +5,7 @@
 
 <p align="center">Gramma works on Linux, Windows, and macOS.</p>
 
-<p align="center">Gramma supports many languages, you can find a full list <a fref="https://languagetool.org/languages">here</a>.</p>
+<p align="center">Gramma supports many languages, you can find a full list <a href="https://languagetool.org/languages">here</a>.</p>
 
 <p align="center">Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.</p>
 
