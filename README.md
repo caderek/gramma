@@ -1,6 +1,6 @@
 <h1 align="center" style="border: none">Gramma - command-line grammar checker</h1>
 <div align="center">
-<p align="center">Gramma is an interactive tool that helps you find and fix grammatical mistakes in files, strings, and input streams. You can also use it in a non-interactive way, as a simple linter for automation processes.</p>
+<p align="center">Gramma is an interactive tool that helps you find and fix grammatical mistakes in files and text strings. You can also use it in a non-interactive way, as a simple linter for automation processes.</p>
 
 <p align="center">Gramma works on Linux, Windows, and macOS.</p>
 
