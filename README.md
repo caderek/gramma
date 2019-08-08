@@ -8,9 +8,6 @@
 
 <p align="center">Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.</p>
 
-<br>
-<br>
-
 </div>
 
 <div align="center">
