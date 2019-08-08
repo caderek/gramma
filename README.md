@@ -10,7 +10,7 @@
 
 </div>
 
-<div align="center">
+<div align="center" style="margin-top: 30px;">
 
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
 <img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
