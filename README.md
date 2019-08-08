@@ -31,7 +31,7 @@
 <!-- <img src="https://img.shields.io/github/languages/code-size/caderek/gramma.svg" alt="GitHub code size in bytes"> -->
 </div>
 
-<div align="center">
+<div align="center" style="margin-top: 30px;">
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
