@@ -32,6 +32,7 @@
     "portfinder": "^1.0.21",
     "progress-stream": "^2.0.0",
     "prompts": "^2.1.0",
+    "rimraf": "^3.0.0",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
