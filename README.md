@@ -11,6 +11,7 @@ Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.
 <hr>
 </div>
 
+<div>
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
 <img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
 <img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
