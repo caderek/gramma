@@ -24,7 +24,7 @@ Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.
 
 </div>
 
-<div align="center" style="margin-top: 30px;">
+<div style="margin-top: 30px;">
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
