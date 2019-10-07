@@ -82,11 +82,21 @@ const checkInteractively = async (text, cfg) => {
         length: currentMatch.length,
       })
     } else {
-      transformations.push({
-        change: currentMatch.replacements[Number(option) - 1].value,
-        offset: currentMatch.offset,
-        length: currentMatch.length,
-      })
+      try {
+        transformations.push({
+          change: currentMatch.replacements[Number(option) - 1].value,
+          offset: currentMatch.offset,
+          length: currentMatch.length,
+        })
+      } catch (e) {
+        // It prevents from displaying error when users aborts with Ctrl-c
+        if (e.message === "Cannot read property 'value' of undefined") {
+          console.clear()
+          process.exit(0)
+        }
+
+        console.error(e)
+      }
     }
   }
 

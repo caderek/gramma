@@ -12,7 +12,7 @@ const check = async (argv, cfg) => {
     process.exit(1)
   }
 
-  if (!fs.existsSync(argv.file)) {
+  if (!fs.existsSync(argv.file) || argv.file === "." || argv.file === "..") {
     console.log(kleur.red("There is no such file!"))
     process.exit(1)
   }

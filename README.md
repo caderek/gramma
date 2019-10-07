@@ -1,24 +1,21 @@
 <h1 align="center" style="border: none">Gramma - command-line grammar checker</h1>
-<div align="center">
-<p align="center">Gramma is an interactive tool that helps you find and fix grammatical mistakes in files and text strings. You can also use it in a non-interactive way, as a simple linter for automation processes.</p>
 
-<p align="center">Gramma works on Linux, Windows, and macOS.</p>
+Gramma is an interactive tool that helps you find and fix grammatical mistakes in files and text strings. You can also use it in a non-interactive way, as a simple linter for automation processes.
 
-<p align="center">Gramma supports many languages. You can find a full list <a href="https://languagetool.org/languages">here</a>.</p>
+Gramma works on Linux, Windows, and macOS.
 
-<p align="center">Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.</p>
+Gramma supports many languages. You can find a full list <a href="https://languagetool.org/languages">here</a>.
+
+Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.
 
 </div>
 
-<div align="center" style="margin-top: 30px;">
+---
 
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
 <img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
 <img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
 <img src="https://img.shields.io/npm/dw/gramma.svg" alt="npm downloads per week">
-
-</div>
-<div align="center">
 
 <a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg" alt="CircleCI"></a>
 <img src="https://img.shields.io/david/caderek/gramma.svg" alt="dependencies status">
@@ -33,7 +30,6 @@
 
 ## Contents
 
-1. [Notes](#notes)
 1. [Installation](#installation)
 1. [Usage](#usage)
    - [Check file](#usage-check)
@@ -47,13 +43,6 @@
 1. [Managing a local server](#server)
 1. [JS API](#js)
 1. [License](#license)
-
-<a id='notes'></a>
-
-## Notes
-
-This package is in **beta stage**. It's fully functional, but still needs more testing, some refactoring and some minor tweaks.
-Feel free to try it for non-critical applications.
 
 <a id='installation'></a>
 
