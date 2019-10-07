@@ -49,9 +49,7 @@ const checkViaAPI = async (text, options = {}) => {
   const postData = querystring.stringify({
     api_key: cfg.api_key,
     language: cfg.language,
-    // Grammarbot API have problems with some special characters and requires additional encoding
-    text:
-      cfg.api_url === initialConfig.api_url ? encodeURIComponent(text) : text,
+    text,
     ...disabledRulesEntry,
   })
 
