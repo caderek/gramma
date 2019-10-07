@@ -1,5 +1,5 @@
 {
-  "api_url": "inherit",
+  "api_url": "http://api.grammarbot.io/v2/check",
   "api_key": "",
   "dictionary": [
     "Asturian",
