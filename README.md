@@ -13,14 +13,11 @@ Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.
 
 <div>
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
-<img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
-<img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
-<img src="https://img.shields.io/npm/dw/gramma.svg" alt="npm downloads per week">
-
 <a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg" alt="CircleCI"></a>
 <img src="https://img.shields.io/david/caderek/gramma.svg" alt="dependencies status">
-<img src="https://img.shields.io/github/issues-raw/caderek/gramma.svg" alt="Github issues">
-<img src="https://img.shields.io/github/last-commit/caderek/gramma.svg" alt="Github last commit">
+<img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
+<a href="https://packagequality.com/#?package=gramma"><img src="https://npm.packagequality.com/shield/gramma.svg" alt="Package quality"></a>
+<img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
 
 </div>
 
