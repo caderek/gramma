@@ -1,0 +1,9 @@
+_layouts
+assets
+node_modules
+.history
+.circleci
+example-responses
+example.txt
+coverage
+bin
