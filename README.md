@@ -9,7 +9,6 @@ Gramma supports many languages. You can find a full list <a href="https://langua
 Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.
 
 <hr>
-</div>
 
 <div>
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
@@ -21,7 +20,7 @@ Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.
 
 </div>
 
-<div style="margin-top: 30px;">
+<div style="margin-top: 30px;" align="center">
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
