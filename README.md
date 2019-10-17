@@ -10,7 +10,7 @@ Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.
 
 <hr>
 
-<div>
+<div align="center">
 <img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
 <a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg" alt="CircleCI"></a>
 <img src="https://img.shields.io/david/caderek/gramma.svg" alt="dependencies status">
