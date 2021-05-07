@@ -7,7 +7,7 @@ const FixOptions = (fixes) => {
   if (fixes.length === 1) {
     return kleur.bold().green("1") + kleur.reset(`: fix\n`)
   }
-  return kleur.bold().green(`1-${fixes.length}`) + kleur.reset(`: chose fix\n`)
+  return kleur.bold().green(`1-${fixes.length}`) + kleur.reset(`: choose fix\n`)
 }
 
 const FixMenu = (fixes, issue) => {
