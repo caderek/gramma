@@ -62,7 +62,23 @@ const checkViaAPI = async (text, options = {}) => {
     method: "POST",
   })
 
-  const result = await response.json()
+  const body = await response.text()
+
+  let result
+
+  try {
+    result = JSON.parse(body)
+  } catch (e) {
+    if (cfg.api_url.includes("grammarbot")) {
+      throw new Error(
+        "Language not available at grammarbot.io.\n" +
+          "Please consider installing a local LanguageTool server:\n" +
+          "https://github.com/caderek/gramma#installing-local-server",
+      )
+    } else {
+      throw new Error(body)
+    }
+  }
 
   const resultWithWords = {
     ...result,

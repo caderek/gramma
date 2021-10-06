@@ -1,7 +1,7 @@
 const replaceAll = require("./replaceAll")
 
 describe("Replace all", () => {
-  it("changes all places according to provided transformations", () => {
+  it.only("changes all places according to provided transformations", () => {
     const text = "Foo CHANGE_ONE baz CHANGE_TWO."
     const transformations = [
       {
