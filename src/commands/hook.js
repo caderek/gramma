@@ -3,6 +3,8 @@ const fs = require("fs")
 const checkInteractively = require("../actions/checkInteractively")
 const saveNow = require("../actions/saveNow")
 
+const hookCode = ``
+
 const hook = async (argv, cfg) => {
   if (!argv.file) {
     console.log(kleur.red("Please provide a file path."))
