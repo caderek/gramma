@@ -3,7 +3,7 @@ const fs = require("fs")
 const checkInteractively = require("../actions/checkInteractively")
 const saveNow = require("../actions/saveNow")
 
-const check = async (argv, cfg) => {
+const hook = async (argv, cfg) => {
   if (!argv.file) {
     console.log(kleur.red("Please provide a file path."))
     process.exit(1)
@@ -25,4 +25,4 @@ const check = async (argv, cfg) => {
   process.exit()
 }
 
-module.exports = check
+module.exports = hook
