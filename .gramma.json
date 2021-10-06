@@ -1,5 +1,5 @@
 {
-  "api_url": "http://api.grammarbot.io/v2/check",
+  "api_url": "http://localhost:8082/v2/check",
   "api_key": "",
   "dictionary": [
     "Asturian",
