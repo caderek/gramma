@@ -10,6 +10,7 @@ const init = require("./commands/init")
 const config = require("./commands/config")
 const paths = require("./commands/paths")
 const server = require("./commands/server")
+const hook = require("./commands/hook")
 
 // eslint-disable-next-line no-unused-expressions
 yargs
@@ -42,6 +43,16 @@ yargs
       })
     },
     load(commit),
+  )
+  .command(
+    "hook <file>",
+    "interactive checks to use with Git hook",
+    (yargsCtx) => {
+      yargsCtx.positional("text", {
+        describe: "commit message file",
+      })
+    },
+    load(hook),
   )
   .command(
     "init",
