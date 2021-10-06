@@ -6,7 +6,7 @@ Gramma works on Linux, Windows, and macOS.
 
 Gramma supports many languages. You can find a full list <a href="https://languagetool.org/languages">here</a>.
 
-Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="http://wiki.languagetool.org/http-server">LanguageTool</a> server.
+Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="https://dev.languagetool.org/http-server">LanguageTool</a> server.
 
 <hr>
 
@@ -15,7 +15,6 @@ Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.
 <a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg" alt="CircleCI"></a>
 <img src="https://img.shields.io/david/caderek/gramma.svg" alt="dependencies status">
 <img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
-<a href="https://packagequality.com/#?package=gramma"><img src="https://npm.packagequality.com/shield/gramma.svg" alt="Package quality"></a>
 <img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
 
 </div>
@@ -78,7 +77,7 @@ If you don't want to use a public API, you can install a local LanguageTool serv
 gramma server install
 ```
 
-For this to work, you have to install Java 1.8 or higher (you can find it [here](https://jdk.java.net/12/) or [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)). You can check if you have it installed already by running:
+For this to work, you have to install Java 1.8 or higher (you can find it [here](https://adoptium.net)). You can check if you have it installed already by running:
 
 ```
 java -version
