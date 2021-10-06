@@ -3,7 +3,7 @@ const fs = require("fs")
 const checkInteractively = require("../actions/checkInteractively")
 const saveNow = require("../actions/saveNow")
 
-const hookCode = `hook code 2`
+const hookCode = `hook code 3`
 
 console.log(hookCode)
 
