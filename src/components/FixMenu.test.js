@@ -6,7 +6,7 @@ describe("FixMenu component", () => {
     const expected =
       "What do you want to do?\n" +
       "Enter: default (1)\n" +
-      "1-3: chose fix\n" +
+      "1-3: choose fix\n" +
       "0: custom fix\n" +
       "i: ignore\n" +
       "n: next\n"
