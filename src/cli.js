@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const yargs = require("yargs")
-const { version } = require("../package")
+const { version } = require("../package.json")
 const load = require("./boot/load")
 
 const check = require("./commands/check")
@@ -45,7 +45,7 @@ yargs
     load(commit),
   )
   .command(
-    "hook <file>",
+    "hook [file]",
     "interactive checks to use with Git hook",
     (yargsCtx) => {
       yargsCtx.positional("text", {

@@ -4,7 +4,7 @@ const Mistake = require("../components/Mistake")
 const handleMistake = require("../prompts/handleMistake")
 const replaceAll = require("../text-manipulation/replaceAll")
 const equal = require("../utils/equal")
-const configure = require("../actions/configure")
+const configure = require("./configure")
 
 const checkInteractively = async (text, cfg) => {
   if (!text || text.trim().length === 0) {
