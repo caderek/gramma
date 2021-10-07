@@ -8,8 +8,8 @@ const appLocation = require("../utils/appLocation")
 
 const hookCode = {
   sh: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1`,
-    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1`,
+    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
+    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
   },
 }
 
@@ -33,7 +33,9 @@ const addHookCode = () => {
     const content = fs.readFileSync(hookFile).toString()
 
     if (content.includes(hookCode.sh.partial)) {
-      console.log(kleur.yellow("Hook already exists"))
+      const newContent = content.replace(hookCode.sh.partial, "")
+      fs.writeFileSync(hookFile, newContent)
+      console.log(kleur.green("Hook removed!"))
     } else {
       fs.appendFileSync(hookFile, hookCode.sh.partial)
       console.log(kleur.green("Hook created!"))
