@@ -678,7 +678,7 @@ gramma config api_url http://my-custom-api-url.xyz/v2/check -g
 
 #### Running local server only when needed
 
-If you do not want the local server to run all the time, you can configure Gramma to run it only when needed (`run -> check -> close`). It is useful when you run Gramma only from time to time and want to lower the memory consumption:
+If you do not want the local server to run all the time, you can configure Gramma to run it only when needed (`run → check → close`). It is useful when you run Gramma only from time to time and want to lower the memory consumption:
 
 ```
 gramma config server_once true -g
