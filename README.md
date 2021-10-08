@@ -64,9 +64,9 @@ If you prefer a single binary file (Node.js included), you can download it for t
 
 <!--BIN-->
 
-- [gramma-linux64-v1.0.2.zip](https://github.com/caderek/gramma/releases/download/v1.0.2/gramma-linux64-v1.0.2.zip)
-- [gramma-macos-v1.0.2.zip](https://github.com/caderek/gramma/releases/download/v1.0.2/gramma-macos-v1.0.2.zip)
-- [gramma-windows64-v1.0.2.zip](https://github.com/caderek/gramma/releases/download/v1.0.2/gramma-windows64-v1.0.2.zip)
+- [gramma-linux64-v1.1.0.zip](https://github.com/caderek/gramma/releases/download/v1.1.0/gramma-linux64-v1.1.0.zip)
+- [gramma-macos-v1.1.0.zip](https://github.com/caderek/gramma/releases/download/v1.1.0/gramma-macos-v1.1.0.zip)
+- [gramma-windows64-v1.1.0.zip](https://github.com/caderek/gramma/releases/download/v1.1.0/gramma-windows64-v1.1.0.zip)
 
 <!--/BIN-->
 
