@@ -76,12 +76,12 @@ const hook = async (argv, cfg) => {
     process.exit()
   }
 
-  const initialText = fs.readFileSync(argv.file).toString()
+  const initialText = fs.readFileSync(file).toString()
 
   const { changed, text } = await checkInteractively(initialText, cfg)
 
   if (changed) {
-    await saveNow(text, argv.file)
+    await saveNow(text, file)
   }
 
   process.exit()
