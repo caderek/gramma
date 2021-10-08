@@ -215,6 +215,14 @@ gramma init
 
 By doing so, your project will not depend on your user's setting. It is useful when you want to share your project with others, for example via Git repository.
 
+During initialization Gramma will ask you if you want to add a Git hook (`commit-msg`). It will create a hook (appending to the existing one or creating new).
+
+You can toggle Git hook via:
+
+```
+gramma hook
+```
+
 You can check the path to the global configuration file (as well as other paths used by Gramma) via the following command:
 
 ```
