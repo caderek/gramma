@@ -148,6 +148,8 @@ gramma listen -p "Suggestions for this sentence will be printed."
 
 ### Git commit with grammar check
 
+**TIP:** You can use `gramma hook` instead of the commands below, that way Gramma will be seamlessly integrated with Git.
+
 Equivalent to `git commit -m [message]`:
 
 ```
