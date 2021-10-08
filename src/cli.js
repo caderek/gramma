@@ -45,8 +45,8 @@ yargs
     load(commit),
   )
   .command(
-    "hook [file]",
-    "interactive checks to use with Git hook",
+    "hook",
+    "toggles Git hook",
     (yargsCtx) => {
       yargsCtx.positional("text", {
         describe: "commit message file",

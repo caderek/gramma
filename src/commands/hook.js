@@ -6,7 +6,6 @@ const checkInteractively = require("../actions/checkInteractively")
 const saveNow = require("../actions/saveNow")
 const appLocation = require("../utils/appLocation")
 
-
 const sys = os.platform()
 
 const hookCode = {
@@ -19,21 +18,32 @@ const hookCode = {
     partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
   },
   win32: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`.replace(/\\/g, '/'),
-    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`.replace(/\\/g, '/'),
+    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`.replace(
+      /\\/g,
+      "/",
+    ),
+    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`.replace(
+      /\\/g,
+      "/",
+    ),
   },
 }
 
 const addHookCode = () => {
   const gitRoot = path.join(process.cwd(), ".git")
-  const hasGitRoot = fs.existsSync(gitRoot)
+  const huskyRoot = path.join(process.cwd(), ".husky")
+  const hasGit = fs.existsSync(gitRoot)
+  const hasHusky = fs.existsSync(huskyRoot)
 
-  if (!hasGitRoot) {
+  if (!hasGit) {
     console.log(kleur.red("No .git in this directory"))
     process.exit(1)
   }
 
-  const hookFile = path.join(gitRoot, "hooks", "commit-msg")
+  const hookFile = hasHusky
+    ? path.join(huskyRoot, "commit-msg")
+    : path.join(gitRoot, "hooks", "commit-msg")
+
   if (fs.existsSync(hookFile)) {
     const content = fs.readFileSync(hookFile).toString()
 
@@ -55,7 +65,12 @@ const addHookCode = () => {
 }
 
 const hook = async (argv, cfg) => {
-  if (!argv.file) {
+  const file =
+    process.argv[process.argv.length - 1] !== "hook"
+      ? process.argv[process.argv.length - 1]
+      : null
+
+  if (!file) {
     addHookCode()
     process.exit()
   }

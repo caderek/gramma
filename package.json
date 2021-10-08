@@ -14,7 +14,8 @@
     "lint": "eslint src/**",
     "test": "jest",
     "test:ci": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage",
-    "check:langs": "node scripts/check-languages-support.js"
+    "check:langs": "node scripts/check-languages-support.js",
+    "prepare": "husky install"
   },
   "keywords": [
     "grammar",
@@ -49,7 +50,8 @@
     "jest": "^27.2.4",
     "pkg": "^5.3.3",
     "prettier": "^2.4.1",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "husky": "^7.0.0"
   },
   "bin": "src/cli.js",
   "jest": {
