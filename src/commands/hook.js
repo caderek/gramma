@@ -83,7 +83,7 @@ const hook = async (argv, cfg) => {
     process.exit()
   }
 
-  const initialText = fs.readFileSync(file).toString()
+  const initialText = fs.readFileSync(file).toString().replace(/#.*/g, "")
 
   const { changed, text } = await checkInteractively(initialText, cfg)
 
