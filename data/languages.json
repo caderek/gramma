@@ -3,282 +3,329 @@
     "name": "Arabic",
     "code": "ar",
     "longCode": "ar",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Asturian",
     "code": "ast",
     "longCode": "ast-ES",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Belarusian",
     "code": "be",
     "longCode": "be-BY",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Breton",
     "code": "br",
     "longCode": "br-FR",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Catalan",
     "code": "ca",
     "longCode": "ca-ES",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Catalan (Valencian)",
     "code": "ca",
     "longCode": "ca-ES-valencia",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Chinese",
     "code": "zh",
     "longCode": "zh-CN",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Danish",
     "code": "da",
     "longCode": "da-DK",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Dutch",
     "code": "nl",
     "longCode": "nl",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Dutch (Belgium)",
     "code": "nl",
     "longCode": "nl-BE",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "English",
     "code": "en",
     "longCode": "en",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "English (Australian)",
     "code": "en",
     "longCode": "en-AU",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "English (Canadian)",
     "code": "en",
     "longCode": "en-CA",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "English (GB)",
     "code": "en",
     "longCode": "en-GB",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "English (New Zealand)",
     "code": "en",
     "longCode": "en-NZ",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "English (South African)",
     "code": "en",
     "longCode": "en-ZA",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "English (US)",
     "code": "en",
     "longCode": "en-US",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Esperanto",
     "code": "eo",
     "longCode": "eo",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "French",
     "code": "fr",
     "longCode": "fr",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Galician",
     "code": "gl",
     "longCode": "gl-ES",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "German",
     "code": "de",
     "longCode": "de",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "German (Austria)",
     "code": "de",
     "longCode": "de-AT",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "German (Germany)",
     "code": "de",
     "longCode": "de-DE",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "German (Swiss)",
     "code": "de",
     "longCode": "de-CH",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Greek",
     "code": "el",
     "longCode": "el-GR",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Irish",
     "code": "ga",
     "longCode": "ga-IE",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Italian",
     "code": "it",
     "longCode": "it",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Japanese",
     "code": "ja",
     "longCode": "ja-JP",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Khmer",
     "code": "km",
     "longCode": "km-KH",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Persian",
     "code": "fa",
     "longCode": "fa",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Polish",
     "code": "pl",
     "longCode": "pl-PL",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Portuguese",
     "code": "pt",
     "longCode": "pt",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Portuguese (Angola preAO)",
     "code": "pt",
     "longCode": "pt-AO",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Portuguese (Brazil)",
     "code": "pt",
     "longCode": "pt-BR",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Portuguese (Moçambique preAO)",
     "code": "pt",
     "longCode": "pt-MZ",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Portuguese (Portugal)",
     "code": "pt",
     "longCode": "pt-PT",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Romanian",
     "code": "ro",
     "longCode": "ro-RO",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Russian",
     "code": "ru",
     "longCode": "ru-RU",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Simple German",
     "code": "de-DE-x-simple-language",
     "longCode": "de-DE-x-simple-language",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Slovak",
     "code": "sk",
     "longCode": "sk-SK",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Slovenian",
     "code": "sl",
     "longCode": "sl-SI",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Spanish",
     "code": "es",
     "longCode": "es",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Spanish (voseo)",
     "code": "es",
     "longCode": "es-AR",
-    "grammarbot": false
+    "grammarbotIo": false,
+    "languagetoolOrg": true
   },
   {
     "name": "Swedish",
     "code": "sv",
     "longCode": "sv",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Tagalog",
     "code": "tl",
     "longCode": "tl-PH",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Tamil",
     "code": "ta",
     "longCode": "ta-IN",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   },
   {
     "name": "Ukrainian",
     "code": "uk",
     "longCode": "uk-UA",
-    "grammarbot": true
+    "grammarbotIo": true,
+    "languagetoolOrg": true
   }
 ]

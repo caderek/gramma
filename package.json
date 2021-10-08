@@ -15,7 +15,7 @@
     "lint": "eslint src/**",
     "test": "jest",
     "test:ci": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage",
-    "check:langs": "node scripts/check-languages-support.js",
+    "check:langs": "node scripts/checkLanguagesSupport.js",
     "prepare": "husky install"
   },
   "keywords": [

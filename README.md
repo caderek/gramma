@@ -6,7 +6,7 @@ Gramma works on Linux, Windows, and macOS.
 
 Gramma supports many languages. You can find a full list <a href="https://languagetool.org/languages">here</a>.
 
-Gramma works out-of-the-box, communicating with <a href="https://www.grammarbot.io/">grammarbot.io</a>, but can also be easily configured to work with other compatible APIs, including local or remote <a href="https://dev.languagetool.org/http-server">LanguageTool</a> server.
+Gramma works out-of-the-box, communicating with [languagetool.org](https://languagetool.org), but can also be easily configured to work with other compatible APIs, including local or remote [LanguageTool server](https://dev.languagetool.org/http-server).
 
 <hr>
 
@@ -266,55 +266,351 @@ gramma config language <language_code> -g
 <details>
   <summary style="outline: none; cursor: pointer">Available languages (click to expand)</summary>
   <table>
-      <tr><th>Code</th><th>Name</th><th>Info</th></tr>
-      <tr><td><tt style="white-space: pre;">auto</tt></td><td>automatic language detection</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">ar</tt></td><td>Arabic</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">ast-ES</tt></td><td>Asturian</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">be-BY</tt></td><td>Belarusian</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">br-FR</tt></td><td>Breton</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">ca-ES</tt></td><td>Catalan</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">ca-ES-valencia</tt></td><td>Catalan (Valencian)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">zh-CN</tt></td><td>Chinese</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">da-DK</tt></td><td>Danish</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">nl</tt></td><td>Dutch</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">nl-BE</tt></td><td>Dutch (Belgium)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">en</tt></td><td>English</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">en-AU</tt></td><td>English (Australian)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">en-CA</tt></td><td>English (Canadian)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">en-GB</tt></td><td>English (GB)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">en-NZ</tt></td><td>English (New Zealand)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">en-ZA</tt></td><td>English (South African)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">en-US</tt></td><td>English (US)</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">eo</tt></td><td>Esperanto</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">fr</tt></td><td>French</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">gl-ES</tt></td><td>Galician</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">de</tt></td><td>German</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">de-AT</tt></td><td>German (Austria)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">de-DE</tt></td><td>German (Germany)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">de-CH</tt></td><td>German (Swiss)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">el-GR</tt></td><td>Greek</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">ga-IE</tt></td><td>Irish</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">it</tt></td><td>Italian</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">ja-JP</tt></td><td>Japanese</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">km-KH</tt></td><td>Khmer</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">fa</tt></td><td>Persian</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">pl-PL</tt></td><td>Polish</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">pt</tt></td><td>Portuguese</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">pt-AO</tt></td><td>Portuguese (Angola preAO)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">pt-BR</tt></td><td>Portuguese (Brazil)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">pt-MZ</tt></td><td>Portuguese (Moçambique preAO)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">pt-PT</tt></td><td>Portuguese (Portugal)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">ro-RO</tt></td><td>Romanian</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">ru-RU</tt></td><td>Russian</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">de-DE-x-simple-language</tt></td><td>Simple German</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">sk-SK</tt></td><td>Slovak</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">sl-SI</tt></td><td>Slovenian</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">es</tt></td><td>Spanish</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">es-AR</tt></td><td>Spanish (voseo)</td><td><i>(local server only)</i></td></tr>
-      <tr><td><tt style="white-space: pre;">sv</tt></td><td>Swedish</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">tl-PH</tt></td><td>Tagalog</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">ta-IN</tt></td><td>Tamil</td><td></td></tr>
-      <tr><td><tt style="white-space: pre;">uk-UA</tt></td><td>Ukrainian</td><td></td></tr>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>languagetool.org</th>
+        <th>local server</th>
+        <th>grammarbot.io</th>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">auto</tt></td>
+        <td>automatic language detection</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <!--LANG-->
+      <tr>
+        <td><tt style="white-space: pre;">ar</tt></td>
+        <td>Arabic</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ast-ES</tt></td>
+        <td>Asturian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">be-BY</tt></td>
+        <td>Belarusian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">br-FR</tt></td>
+        <td>Breton</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ca-ES</tt></td>
+        <td>Catalan</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ca-ES-valencia</tt></td>
+        <td>Catalan (Valencian)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">zh-CN</tt></td>
+        <td>Chinese</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">da-DK</tt></td>
+        <td>Danish</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">nl</tt></td>
+        <td>Dutch</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">nl-BE</tt></td>
+        <td>Dutch (Belgium)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en</tt></td>
+        <td>English</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en-AU</tt></td>
+        <td>English (Australian)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en-CA</tt></td>
+        <td>English (Canadian)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en-GB</tt></td>
+        <td>English (GB)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en-NZ</tt></td>
+        <td>English (New Zealand)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en-ZA</tt></td>
+        <td>English (South African)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">en-US</tt></td>
+        <td>English (US)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">eo</tt></td>
+        <td>Esperanto</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">fr</tt></td>
+        <td>French</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">gl-ES</tt></td>
+        <td>Galician</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">de</tt></td>
+        <td>German</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">de-AT</tt></td>
+        <td>German (Austria)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">de-DE</tt></td>
+        <td>German (Germany)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">de-CH</tt></td>
+        <td>German (Swiss)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">el-GR</tt></td>
+        <td>Greek</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ga-IE</tt></td>
+        <td>Irish</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">it</tt></td>
+        <td>Italian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ja-JP</tt></td>
+        <td>Japanese</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">km-KH</tt></td>
+        <td>Khmer</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">fa</tt></td>
+        <td>Persian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">pl-PL</tt></td>
+        <td>Polish</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">pt</tt></td>
+        <td>Portuguese</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">pt-AO</tt></td>
+        <td>Portuguese (Angola preAO)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">pt-BR</tt></td>
+        <td>Portuguese (Brazil)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">pt-MZ</tt></td>
+        <td>Portuguese (Moçambique preAO)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">pt-PT</tt></td>
+        <td>Portuguese (Portugal)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ro-RO</tt></td>
+        <td>Romanian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ru-RU</tt></td>
+        <td>Russian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">de-DE-x-simple-language</tt></td>
+        <td>Simple German</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">sk-SK</tt></td>
+        <td>Slovak</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">sl-SI</tt></td>
+        <td>Slovenian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">es</tt></td>
+        <td>Spanish</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">es-AR</tt></td>
+        <td>Spanish (voseo)</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">sv</tt></td>
+        <td>Swedish</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">tl-PH</tt></td>
+        <td>Tagalog</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">ta-IN</tt></td>
+        <td>Tamil</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <td><tt style="white-space: pre;">uk-UA</tt></td>
+        <td>Ukrainian</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <!--/LANG-->
   </table>
 </details>
 

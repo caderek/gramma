@@ -7,7 +7,7 @@ ruleOptions.forEach((rule) => {
 })
 
 const initialConfig = {
-  api_url: "http://api.grammarbot.io/v2/check",
+  api_url: "https://api.languagetool.org/v2/check",
   api_key: "",
   dictionary: [],
   language: "en-US",
