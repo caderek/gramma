@@ -29,28 +29,36 @@ const hookCode = {
   },
 }
 
-const addHookCode = () => {
+const addHookCode = (onlyCreate = false) => {
   const gitRoot = path.join(process.cwd(), ".git")
-  const huskyRoot = path.join(process.cwd(), ".husky")
   const hasGit = fs.existsSync(gitRoot)
-  const hasHusky = fs.existsSync(huskyRoot)
 
   if (!hasGit) {
     console.log(kleur.red("No .git in this directory"))
     process.exit(1)
   }
 
-  const hookFile = hasHusky
-    ? path.join(huskyRoot, "commit-msg")
-    : path.join(gitRoot, "hooks", "commit-msg")
+  const hooksConfig = fs
+    .readFileSync(path.join(gitRoot, "config"))
+    .toString()
+    .match(/hooksPath *=.*/gi)
+
+  const hooksFolder = hooksConfig && hooksConfig[0].split("=")[1].trim()
+
+  const hookFile = hooksFolder
+    ? path.resolve(process.cwd(), hooksFolder, "commit-msg")
+    : path.resolve(process.cwd(), ".git", "hooks", "commit-msg")
 
   if (fs.existsSync(hookFile)) {
     const content = fs.readFileSync(hookFile).toString()
+    const alreadyExists = content.includes(hookCode[sys].partial)
 
-    if (content.includes(hookCode[sys].partial)) {
+    if (alreadyExists && !onlyCreate) {
       const newContent = content.replace(hookCode[sys].partial, "")
       fs.writeFileSync(hookFile, newContent)
       console.log(kleur.green("Hook removed!"))
+    } else if (alreadyExists) {
+      console.log(kleur.yellow("Hook already exists!"))
     } else {
       fs.appendFileSync(hookFile, hookCode[sys].partial)
       console.log(kleur.green("Hook created!"))
@@ -62,7 +70,6 @@ const addHookCode = () => {
   fs.writeFileSync(hookFile, hookCode[sys].full)
   fs.chmodSync(hookFile, "755")
   console.log(kleur.green("Hook created!"))
-  process.exit()
 }
 
 const hook = async (argv, cfg) => {
@@ -87,4 +94,5 @@ const hook = async (argv, cfg) => {
   process.exit()
 }
 
-module.exports = hook
+exports.addHookCode = addHookCode
+exports.hook = hook

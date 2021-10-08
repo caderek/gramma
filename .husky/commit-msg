@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec < /dev/tty
+
+/home/maciek/Projects/gramma/bin/linux64/gramma hook $1

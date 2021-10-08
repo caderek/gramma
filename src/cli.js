@@ -10,7 +10,7 @@ const init = require("./commands/init")
 const config = require("./commands/config")
 const paths = require("./commands/paths")
 const server = require("./commands/server")
-const hook = require("./commands/hook")
+const { hook } = require("./commands/hook")
 
 // eslint-disable-next-line no-unused-expressions
 yargs
@@ -88,6 +88,7 @@ yargs
   .alias("help", "h")
   .version(`v${version}`)
   .alias("version", "v")
+  .hide("paths")
   .option("print", {
     alias: "p",
     type: "boolean",
