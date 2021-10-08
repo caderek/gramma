@@ -7,3 +7,5 @@ example-responses
 example.txt
 coverage
 bin
+.husky
+.github
