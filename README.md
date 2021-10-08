@@ -270,7 +270,7 @@ gramma config language <language_code> -g
         <th>Code</th>
         <th>Name</th>
         <th>languagetool.org</th>
-        <th>local server</th>
+        <th>local</th>
         <th>grammarbot.io</th>
       </tr>
       <tr>
