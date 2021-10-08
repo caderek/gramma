@@ -1,1 +1,5 @@
 #!/bin/sh
+
+exec < /dev/tty
+
+/home/maciek/Projects/gramma/src/cli.js hook $1

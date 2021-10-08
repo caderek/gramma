@@ -60,6 +60,7 @@ const addHookCode = () => {
   }
 
   fs.writeFileSync(hookFile, hookCode[sys].full)
+  fs.chmodSync(hookFile, "755")
   console.log(kleur.green("Hook created!"))
   process.exit()
 }
