@@ -2,7 +2,9 @@
   "extends": ["airbnb", "prettier"],
   "rules": {
     "no-console": 0,
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "no-restricted-syntax": 0,
+    "no-await-in-loop": 0
   },
   "env": {
     "jest": true,

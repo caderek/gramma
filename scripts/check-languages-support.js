@@ -1,7 +1,7 @@
+const fs = require("fs")
 const querystring = require("querystring")
 const fetch = require("node-fetch")
 const config = require("../src/initialConfig")
-const fs = require("fs")
 
 const LOCAL_API_URL = "http://localhost:8082/v2/languages"
 
@@ -35,9 +35,6 @@ const checkSupport = async (language) => {
 const main = async () => {
   const res = await fetch(LOCAL_API_URL)
   const languages = await res.json()
-
-  const nameMaxLength = Math.max(...languages.map((l) => l.name.length))
-  const codeMaxLength = Math.max(...languages.map((l) => l.longCode.length))
 
   for (const language of languages) {
     language.grammarbot = await checkSupport(language.longCode)

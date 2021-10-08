@@ -1,12 +1,13 @@
 {
   "name": "gramma",
   "version": "1.0.2",
+  "license": "ISC",
   "repository": "https://github.com/caderek/gramma",
   "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",
   "main": "src/index.js",
   "scripts": {
-    "build": "yarn run build:win64; yarn run build:macos; yarn run build:linux64",
+    "build": "rm -rf bin; yarn run build:win64; yarn run build:macos; yarn run build:linux64; node scripts/zipBinaries.js",
     "build:win64": "pkg -c package.json -t node14-win-x64 --out-path bin/windows64 src/cli.js",
     "build:macos": "pkg -c package.json -t node14-macos-x64 --out-path bin/macos src/cli.js",
     "build:linux64": "pkg -c package.json -t node14-linux-x64 --out-path bin/linux64 src/cli.js",
@@ -23,7 +24,6 @@
     "checker"
   ],
   "author": "Maciej Cąderek | maciej.caderek@gmail.com",
-  "license": "ISC",
   "dependencies": {
     "cli-progress": "^3.9.1",
     "decompress": "^4.2.1",
