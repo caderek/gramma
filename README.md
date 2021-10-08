@@ -270,8 +270,8 @@ gramma config language <language_code> -g
         <th>Code</th>
         <th>Name</th>
         <th>languagetool.org</th>
-        <th>local</th>
         <th>grammarbot.io</th>
+        <th>local</th>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">auto</tt></td>
@@ -285,8 +285,8 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">ar</tt></td>
         <td>Arabic</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">ast-ES</tt></td>
@@ -327,8 +327,8 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">zh-CN</tt></td>
         <td>Chinese</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">da-DK</tt></td>
@@ -348,8 +348,8 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">nl-BE</tt></td>
         <td>Dutch (Belgium)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">en</tt></td>
@@ -411,8 +411,8 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">fr</tt></td>
         <td>French</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">gl-ES</tt></td>
@@ -425,29 +425,29 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">de</tt></td>
         <td>German</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">de-AT</tt></td>
         <td>German (Austria)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">de-DE</tt></td>
         <td>German (Germany)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">de-CH</tt></td>
         <td>German (Swiss)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">el-GR</tt></td>
@@ -460,15 +460,15 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">ga-IE</tt></td>
         <td>Irish</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">it</tt></td>
         <td>Italian</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">ja-JP</tt></td>
@@ -502,36 +502,36 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">pt</tt></td>
         <td>Portuguese</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">pt-AO</tt></td>
         <td>Portuguese (Angola preAO)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">pt-BR</tt></td>
         <td>Portuguese (Brazil)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">pt-MZ</tt></td>
         <td>Portuguese (Moçambique preAO)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">pt-PT</tt></td>
         <td>Portuguese (Portugal)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">ro-RO</tt></td>
@@ -544,8 +544,8 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">ru-RU</tt></td>
         <td>Russian</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">de-DE-x-simple-language</tt></td>
@@ -572,15 +572,15 @@ gramma config language <language_code> -g
         <td><tt style="white-space: pre;">es</tt></td>
         <td>Spanish</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">es-AR</tt></td>
         <td>Spanish (voseo)</td>
         <td>✔</td>
-        <td>✔</td>
         <td>-</td>
+        <td>✔</td>
       </tr>
       <tr>
         <td><tt style="white-space: pre;">sv</tt></td>

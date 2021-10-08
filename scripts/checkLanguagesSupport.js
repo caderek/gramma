@@ -62,8 +62,8 @@ const main = async () => {
         <td><tt style="white-space: pre;">${longCode}</tt></td>
         <td>${name}</td>
         <td>${languagetoolOrg ? "✔" : "-"}</td>
-        <td>✔</td>
         <td>${grammarbotIo ? "✔" : "-"}</td>
+        <td>✔</td>
       </tr>
         `,
     )
