@@ -2,4 +2,4 @@
 
 exec < /dev/tty
 
-/home/maciek/.fnm/node-versions/v14.18.0/installation/lib/node_modules/gramma/src/cli.js hook $1
+./node_modules/gramma/src/cli.js hook $1
