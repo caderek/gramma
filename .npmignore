@@ -9,3 +9,5 @@ coverage
 bin
 .husky
 .github
+.vscode
+lib
