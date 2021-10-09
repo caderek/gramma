@@ -10,7 +10,10 @@ const checkWithFallback = async (text, cfg) => {
   try {
     response = await checkViaAPI(text, session)
 
-    if (cfg.session.api_url.includes("localhost")) {
+    if (
+      cfg.session.api_url.includes("localhost") &&
+      cfg.session.server_once === "true"
+    ) {
       await stopServer(cfg)
     }
   } catch (error) {
