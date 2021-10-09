@@ -25,6 +25,7 @@
   ],
   "author": "Maciej Cąderek | maciej.caderek@gmail.com",
   "dependencies": {
+    "annotatedtext-remark": "^1.0.1",
     "cli-progress": "^3.9.1",
     "decompress": "^4.2.1",
     "decompress-unzip": "^4.0.1",
@@ -47,11 +48,11 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
     "gramma": "^1.0.1",
+    "husky": "^7.0.0",
     "jest": "^27.2.4",
     "pkg": "^5.3.3",
     "prettier": "^2.4.1",
-    "shelljs": "^0.8.4",
-    "husky": "^7.0.0"
+    "shelljs": "^0.8.4"
   },
   "bin": "src/cli.js",
   "jest": {

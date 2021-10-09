@@ -131,4 +131,10 @@ yargs
     default: false,
     describe: "Use global configuration file with 'config' command",
   })
+  .option("markdown", {
+    alias: "m",
+    type: "boolean",
+    default: false,
+    describe: "Treat the text as markdown",
+  })
   .demandCommand().argv
