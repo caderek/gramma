@@ -9,3 +9,8 @@ First stable release.
 - Added Git hook integration
 - Updated dependencies and documentation
 - Improved error handling
+
+## 1.2.0
+
+- Added Markdown support
+- Used api.langagetool.org as the default API
