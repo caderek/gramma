@@ -1,6 +1,8 @@
 const querystring = require("querystring")
 const fetch = require("node-fetch")
 const initialConfig = require("../initialConfig")
+const context = require("../context")
+const prepareMarkdown = require("../utils/prepareMarkdown").default
 
 const addWordFields = (matches) => {
   return matches.map((match) => {
@@ -46,10 +48,14 @@ const checkViaAPI = async (text, options = {}) => {
       ? {}
       : { disabledCategories: disabledRules.join(",") }
 
+  const input = context.argv.markdown
+    ? { data: prepareMarkdown(text) }
+    : { text }
+
   const postData = querystring.stringify({
     api_key: cfg.api_key,
     language: cfg.language,
-    text,
+    ...input,
     ...disabledRulesEntry,
   })
 

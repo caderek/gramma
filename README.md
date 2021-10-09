@@ -217,7 +217,7 @@ gramma init
 
 By doing so, your project will not depend on your user's setting. It is useful when you want to share your project with others, for example via Git repository.
 
-During initialization Gramma will ask you if you want to add a Git hook (`commit-msg`). It will create a hook (appending to the existing one or creating new).
+During initialization, Gramma will ask you if you want to add a Git hook (`commit-msg`). It will create a hook (appending to the existing one or creating new).
 
 You can toggle Git hook via:
 
@@ -704,7 +704,7 @@ gramma config api_key <your_api_key> -g
 
 ## Managing a local server
 
-If you have [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage server manually. Gramma simplifies this by exposing basic server commands:
+If you have [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage the server manually. Gramma simplifies this by exposing basic server commands:
 
 #### Starting server
 
@@ -807,7 +807,7 @@ check("Some text to check.", {
 
 #### replaceAll() method
 
-Replaces words with provided ones. It takes an array of objects in the following format:
+Replace words with provided ones. It takes an array of objects in the following format:
 
 ```js
 const exampleReplacements = [
@@ -847,4 +847,4 @@ main()
 
 ## License
 
-Project is under open, non-restrictive [ISC license](LICENSE).
+The project is under open, non-restrictive [ISC license](LICENSE).
