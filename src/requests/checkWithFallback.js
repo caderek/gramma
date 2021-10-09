@@ -1,6 +1,7 @@
 const kleur = require("kleur")
 const startServer = require("../server/startServer")
 const checkViaAPI = require("./checkViaAPI")
+const stopServer = require("../server/stopServer")
 
 const checkWithFallback = async (text, cfg) => {
   const { session, global } = cfg
@@ -8,10 +9,13 @@ const checkWithFallback = async (text, cfg) => {
 
   try {
     response = await checkViaAPI(text, session)
+
+    if (cfg.session.api_url.includes("localhost")) {
+      await stopServer(cfg)
+    }
   } catch (error) {
     if (error.code === "ECONNREFUSED" || cfg.session.api_url === "localhost") {
       if (global.server_path) {
-        // eslint-disable-next-line camelcase
         const { server, api_url } = await startServer(cfg)
         console.clear()
         const updatedSession = { ...session, api_url }

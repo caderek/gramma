@@ -45,6 +45,11 @@ const prepareArgvConfig = ({ language, disable, enable, global }) => {
 const prepareConfig = (paths) => (argv) => {
   const globalConfig = prepareFileConfig(paths.globalConfigFile)
   const localConfig = prepareFileConfig(paths.localConfigFile)
+
+  if (localConfig && localConfig.api_url === "localhost") {
+    localConfig.api_url = "inherit"
+  }
+
   const argvConfig = prepareArgvConfig(argv)
 
   const fileConfig = localConfig || globalConfig || {}
