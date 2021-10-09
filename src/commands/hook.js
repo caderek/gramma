@@ -8,26 +8,23 @@ const appLocation = require("../utils/appLocation")
 
 const sys = os.platform()
 
-const hookCode = {
+const getHookCode = (command) => ({
   linux: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
-    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
+    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${command} hook $1\n`,
+    partial: `\n\nexec < /dev/tty\n\n${command} hook $1\n`,
   },
   darwin: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
-    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`,
+    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${command} hook $1\n`,
+    partial: `\n\nexec < /dev/tty\n\n${command} hook $1\n`,
   },
   win32: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`.replace(
+    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${command} hook $1\n`.replace(
       /\\/g,
       "/",
     ),
-    partial: `\n\nexec < /dev/tty\n\n${appLocation} hook $1\n`.replace(
-      /\\/g,
-      "/",
-    ),
+    partial: `\n\nexec < /dev/tty\n\n${command} hook $1\n`.replace(/\\/g, "/"),
   },
-}
+})
 
 const addHookCode = (onlyCreate = false) => {
   const gitRoot = path.join(process.cwd(), ".git")
@@ -48,6 +45,10 @@ const addHookCode = (onlyCreate = false) => {
   const hookFile = hooksFolder
     ? path.resolve(process.cwd(), hooksFolder, "commit-msg")
     : path.resolve(process.cwd(), ".git", "hooks", "commit-msg")
+
+  const command = fs.existsSync("node_modules") ? "npx gramma" : appLocation
+
+  const hookCode = getHookCode(command)
 
   if (fs.existsSync(hookFile)) {
     const content = fs.readFileSync(hookFile).toString()
