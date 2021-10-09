@@ -689,13 +689,9 @@ _Note: This setting requires the `-g` flag because all local API server settings
 
 #### Adding API key
 
-_Note: This option applies to grammarbot.io and languagetoolplus.com API only._
+_Note: This option applies to grammarbot.io and languagetool.org API only._
 
-If you use our default API (grammarbot.io), it comes with some limitations - 100 checks per day (which is fine for most users). You can increase that limit to 250 by registering on [grammarbot.io/signup](https://www.grammarbot.io/signup) (it's free).
-
-You can also buy a paid option on grammarbot.io or languagetoolplus.com, which both offer some additional checks.
-
-In both cases, when you register, you will receive an API key that you can use in Gramma:
+If you use a paid option on [grammarbot.io](https://www.grammarbot.io/) or [languagetool.org](https://languagetool.org), you will receive an API key that you can use in Gramma:
 
 ```
 gramma config api_key <your_api_key> -g
