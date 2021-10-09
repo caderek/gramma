@@ -64,9 +64,9 @@ If you prefer a single binary file (Node.js included), you can download it for t
 
 <!--BIN-->
 
-- [gramma-linux64-v1.1.0.zip](https://github.com/caderek/gramma/releases/download/v1.1.0/gramma-linux64-v1.1.0.zip)
-- [gramma-macos-v1.1.0.zip](https://github.com/caderek/gramma/releases/download/v1.1.0/gramma-macos-v1.1.0.zip)
-- [gramma-windows64-v1.1.0.zip](https://github.com/caderek/gramma/releases/download/v1.1.0/gramma-windows64-v1.1.0.zip)
+- [gramma-linux64-v1.2.0.zip](https://github.com/caderek/gramma/releases/download/v1.2.0/gramma-linux64-v1.2.0.zip)
+- [gramma-macos-v1.2.0.zip](https://github.com/caderek/gramma/releases/download/v1.2.0/gramma-macos-v1.2.0.zip)
+- [gramma-windows64-v1.2.0.zip](https://github.com/caderek/gramma/releases/download/v1.2.0/gramma-windows64-v1.2.0.zip)
 
 <!--/BIN-->
 
@@ -183,6 +183,7 @@ _Note: This section describes options for grammar-checking commands only. Other 
 - `-d / --disable <rule>` - disable specific [rule](#available-rules)
 - `-e / --enable <rule>` - enable specific [rule](#available-rules)
 - `-l / --language <language_code>` - mark a text as written in provided [language](#available-languages)
+- `-m / --markdown` - treat the input as markdown (removes some false-positives)
 
 You can enable or disable multiple rules in one command by using a corresponding option multiple times. You can also compound boolean options if you use their short version.
 
