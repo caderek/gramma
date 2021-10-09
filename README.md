@@ -1,20 +1,25 @@
-<h1 align="center" style="border: none">Gramma - command-line grammar checker</h1>
+<div align="center">
+    <img src="assets/gramma-logo.png" alt="gramma-logo" />
+</div>
+<div align="center">
+    <img src="assets/gramma-text.png" alt="gramma-title" />
+</div>
 
-Gramma is an interactive tool that helps you find and fix grammatical mistakes in files and text strings. You can also use it in a non-interactive way, as a simple linter for automation processes.
+<!-- Gramma is an interactive tool that helps you find and fix grammatical mistakes in files and text strings. You can also use it in a non-interactive way, as a simple linter for automation processes.
 
 Gramma works on Linux, Windows, and macOS.
 
 Gramma supports many languages. You can find a full list <a href="https://languagetool.org/languages">here</a>.
 
-Gramma works out-of-the-box, communicating with [languagetool.org](https://languagetool.org), but can also be easily configured to work with other compatible APIs, including local or remote [LanguageTool server](https://dev.languagetool.org/http-server).
+Gramma works out-of-the-box, communicating with [languagetool.org](https://languagetool.org), but can also be easily configured to work with other compatible APIs, including local or remote [LanguageTool server](https://dev.languagetool.org/http-server). -->
 
 <hr>
 
 <div align="center">
-<img src="https://img.shields.io/npm/v/gramma.svg" alt="npm version">
-<a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg" alt="CircleCI"></a>
-<img src="https://img.shields.io/node/v/gramma.svg" alt="node version">
-<img src="https://img.shields.io/npm/l/gramma.svg" alt="npm license">
+<a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg?labelColor=024160" alt="CircleCI"></a>
+<img src="https://img.shields.io/npm/v/gramma.svg?labelColor=024160&color=0081B8" alt="npm version">
+<img src="https://img.shields.io/node/v/gramma.svg?labelColor=024160&color=0081B8" alt="node version">
+<img src="https://img.shields.io/npm/l/gramma.svg?labelColor=024160&color=0081B8" alt="npm license">
 
 </div>
 
