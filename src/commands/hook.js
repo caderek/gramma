@@ -99,8 +99,10 @@ const hook = async (argv, cfg) => {
   }
 
   if (cfg.paths.localConfigFile) {
+    const command = `git add ${cfg.paths.localConfigFile}`
+    console.log(command)
     try {
-      execSync(`git add ${cfg.paths.localConfigFile}`)
+      execSync(command)
     } catch (e) {} // eslint-disable-line
   }
 
