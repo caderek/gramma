@@ -28,11 +28,16 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
 
+<div>&nbsp;</div>
 <div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## Contents
 
 1. [Installation](#installation)
+   - [Via NPM (global)](#installation-npm)
+   - [Standalone binary](#installation-binary)
+   - [Dev tool for JS/TS projects](#installation-dev)
+   - [Local LanguageTool server (optional)](#installation-server)
 1. [Usage](#usage)
    - [Check file](#usage-check)
    - [Check string](#usage-listen)
@@ -40,8 +45,11 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
    - [Command-line options](#usage-options)
 1. [Configuration](#config)
    - [Introduction](#config-intro)
+   - [Local config](#config-local)
+   - [Git integration](#config-git)
    - [Checker settings](#config-checker)
    - [Customizing API server](#config-server)
+   - [Security](#config-security)
 1. [Managing a local server](#server)
 1. [JS API](#js)
 1. [License](#license)
@@ -52,23 +60,21 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 
 ## Installation
 
+<a id='installation-npm'></a>
+
 ### Via NPM
 
-It is the recommended way if you have Node.js and NPM already installed (or you are willing to do it).
-
-#### Global installation:
+It is the recommended way if you have Node.js already installed (or you are willing to do so).
 
 ```
 npm i gramma -g
 ```
 
-#### Local installation (as a dev tool for your project):
+<hr/>
 
-```
-npm i gramma -D
-```
+<a id='installation-binary'></a>
 
-### Via binary package
+### Standalone binary
 
 If you prefer a single binary file (Node.js included), you can download it for the most popular platforms:
 
@@ -82,18 +88,50 @@ If you prefer a single binary file (Node.js included), you can download it for t
 
 After downloading and unpacking the binary, add it to your PATH or create a symlink to your executable directory (depending on the platform).
 
-### Installing local server
+<hr/>
 
-If you don't want to use a public API, you can install a local LanguageTool server:
+<a id='installation-dev'></a>
+
+### Dev tool for JS/TS projects
+
+You can install Gramma locally for your JS/TS project - this methods gives you a separate, project specific config
 
 ```
-gramma server install
+npm i gramma -D
 ```
+
+or
+
+```
+yarn add gramma -D
+```
+
+Then create the local config file:
+
+```
+npx gramma init
+```
+
+You will be asked if you want to integrate Gramma with Git (via hook). You can later manually toggle git hook via `npx gramma hook` command.
+
+Git hook also works with a non-default hooks path (Husky etc.).
+
+<hr/>
+
+<a id='installation-server'></a>
+
+### Local LanguageTool server (optional)
 
 For this to work, you have to install Java 1.8 or higher (you can find it [here](https://adoptium.net)). You can check if you have it installed already by running:
 
 ```
 java -version
+```
+
+To install the local server use:
+
+```
+gramma server install
 ```
 
 That's it - Gramma will now use and manage the local server automatically.
@@ -130,6 +168,8 @@ gramma check path/to/my_file.txt
 gramma check -p path/to/other/file.txt
 ```
 
+<hr/>
+
 <a id='usage-listen'></a>
 
 ### Check string
@@ -156,11 +196,13 @@ gramma listen "This sentence will be checked interactively."
 gramma listen -p "Suggestions for this sentence will be printed."
 ```
 
+<hr/>
+
 <a id='usage-commit'></a>
 
 ### Git commit with grammar check
 
-**TIP:** You can use `gramma hook` instead of the commands below, that way Gramma will be seamlessly integrated with Git.
+_**TIP:** Instead of the commands below, you can use [Git integration](#config-git)._
 
 Equivalent to `git commit -m [message]`:
 
@@ -184,11 +226,13 @@ gramma commit "My commit message"
 gramma commit -a "Another commit message (files added)"
 ```
 
+<hr/>
+
 <a id='usage-options'></a>
 
 ### Command-line options
 
-_Note: This section describes options for grammar-checking commands only. Other command-specific options are described in their respectful sections of this document._
+_Note: This section describes options for grammar-checking commands only. Other command-specific options are described in their specific sections of this document._
 
 - `-p / --print` - check text in the non-interactive mode
 - `-n / --no-colors` - when paired with the `-p` flag, removes colors from the output
@@ -220,25 +264,8 @@ With Gramma, you can use a global and local configuration file. Gramma will use 
 1. Command-line options
 2. Local config
 3. Global config
-4. Default config
 
-Gramma will automatically generate configuration files when you add something to your config via `gramma config` command.
-
-If you want to manually initialize local config with default options, you can run the following command in your project's root directory:
-
-```
-gramma init
-```
-
-By doing so, your project will not depend on your user's setting. It is useful when you want to share your project with others, for example via Git repository.
-
-During initialization, Gramma will ask you if you want to add a Git hook (`commit-msg`). It will create a hook (appending to the existing one or creating new).
-
-You can toggle Git hook via:
-
-```
-gramma hook
-```
+Gramma will automatically generate a global configuration file on the first run.
 
 You can check the path to the global configuration file (as well as other paths used by Gramma) via the following command:
 
@@ -246,17 +273,45 @@ You can check the path to the global configuration file (as well as other paths 
 gramma paths
 ```
 
-Gramma creates the local configuration in your working directory under `.gramma.json` name.
-
 You can change your settings by manually editing configuration files or running:
 
 ```
 gramma config <setting> <value> [-g]
 ```
 
-`-g` (`--global`) flag is optional and controls whether the global or the local config will be altered.
+_Note: `-g` (`--global`) flag should be used when you want to alter the global config._
 
-_Note: All examples below use the global config. If you want to use a local one, skip the `-g` flag._
+<hr/>
+
+<a id='config-local'></a>
+
+### Local config
+
+You can initialize local config by running the following command in your project's root directory:
+
+```
+gramma init
+```
+
+Gramma creates the local configuration file in your working directory under `.gramma.json` name.
+
+<hr/>
+
+<a id='config-git'></a>
+
+### Git integration
+
+You can toggle Git hook via:
+
+```
+gramma hook
+```
+
+It will add/remove an entry in `commit-msg` hook.
+
+Gramma follows the Git configuration file, so it should work with a non-standard hooks location.
+
+<hr/>
 
 <a id='config-checker'></a>
 
@@ -267,13 +322,27 @@ _Note: All examples below use the global config. If you want to use a local one,
 Usually, you will add custom words to the local or global dictionary via interactive menu during the fix process, but you can also make it via separate command:
 
 ```
-gramma config dictionary <your_word> -g
+gramma config dictionary <your_word> [-g]
+```
+
+Examples:
+
+```
+gramma config dictionary aws
+gramma config dictionary figma -g
 ```
 
 #### Changing default language
 
 ```
-gramma config language <language_code> -g
+gramma config language <language_code> [-g]
+```
+
+Examples:
+
+```
+gramma config language en-GB
+gramma config language pl-PL -g
 ```
 
 <a id="available-languages"></a>
@@ -636,13 +705,23 @@ _Note: By default, Gramma uses US English (`en-US`)._
 Enabling a specific rule:
 
 ```
-gramma config enable <rule_name> -g
+gramma config enable <rule_name> [-g]
 ```
 
 Disabling a specific rule:
 
 ```
-gramma config disable <rule_name> -g
+gramma config disable <rule_name> [-g]
+```
+
+Examples:
+
+```
+gramma config enable punctuation
+gramma config enable casing -g
+
+gramma config disable typography
+gramma config disable style -g
 ```
 
 <a id="available-rules"></a>
@@ -672,22 +751,25 @@ gramma config disable <rule_name> -g
 
 _Note: By default, all rules are enabled._
 
+<hr/>
+
 <a id='config-server'></a>
 
 ### Customizing API server
 
 #### Defining custom API endpoint
 
-If you want to use remote LanguageTool server, or use one already installed in your system (not installed via `gramma server install`), you can define a custom API endpoint:
+If you want to use remote LanguageTool server, or use the one already installed in your system (not installed via `gramma server install`), you can define a custom API endpoint:
 
 ```
-gramma config api_url <custom_api_endpoint> -g
+gramma config api_url <custom_api_endpoint> [-g]
 ```
 
-Example
+Examples:
 
 ```
-gramma config api_url http://my-custom-api-url.xyz/v2/check -g
+gramma config api_url https://my-custom-api-url.xyz/v2/check
+gramma config api_url http://localhost:8081/v2/check -g
 ```
 
 #### Running local server only when needed
@@ -696,19 +778,42 @@ If you do not want the local server to run all the time, you can configure Gramm
 
 ```
 gramma config server_once true -g
+
 ```
 
-_Note: This setting requires the `-g` flag because all local API server settings are stored in the global config._
+Revert:
+
+```
+gramma config server_once false -g
+```
 
 #### Adding API key
-
-_Note: This option applies to grammarbot.io and languagetool.org API only._
 
 If you use a paid option on [grammarbot.io](https://www.grammarbot.io/) or [languagetool.org](https://languagetool.org), you will receive an API key that you can use in Gramma:
 
 ```
-gramma config api_key <your_api_key> -g
+gramma config api_key <your_api_key> [-g]
 ```
+
+<hr/>
+
+<a id='config-security'></a>
+
+### Security
+
+If you need to store some sensitive data in your local config file (API key etc.) you can use environment variables directly in the config file.
+
+Example:
+
+```json
+{
+  "api_url": "https://my-language-tool-api.com/v2/check",
+  "api_key": "${MY_ENV_VARIABLE}",
+  ...other_settings
+}
+```
+
+_Note: The default API (`api.languagetool.org`) is generally [safe and does not store your texts](https://languagetool.org/pl/legal/privacy), but if you want to be extra careful, you should use a [local server](#installation-server) or custom API endpoint._
 
 <a id='server'></a>
 
@@ -718,7 +823,7 @@ gramma config api_key <your_api_key> -g
 
 If you have [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage the server manually. Gramma simplifies this by exposing basic server commands:
 
-#### Starting server
+#### Starting the server
 
 ```
 gramma server start
@@ -726,19 +831,19 @@ gramma server start
 
 _Note: When you use this command, Gramma will ignore `server_once` config option. This is expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check._
 
-#### Stopping server
+#### Stopping the server
 
 ```
 gramma server stop
 ```
 
-#### Getting server PID
+#### Getting the server PID
 
 ```
 gramma server pid
 ```
 
-#### Opening built-in GUI
+#### Opening the built-in GUI
 
 ```
 gramma server gui

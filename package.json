@@ -25,7 +25,6 @@
   ],
   "author": "Maciej Cąderek | maciej.caderek@gmail.com",
   "dependencies": {
-    "annotatedtext-remark": "^1.0.1",
     "cli-progress": "^3.9.1",
     "decompress": "^4.2.1",
     "decompress-unzip": "^4.0.1",
