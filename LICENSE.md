@@ -1,4 +1,4 @@
-Copyright 2019 Maciej Cąderek
+Copyright 2021 Maciej Cąderek
 
 Permission to use, copy, modify, and/or distribute this software
 for any purpose with or without fee is hereby granted,
