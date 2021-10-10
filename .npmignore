@@ -11,4 +11,6 @@ bin
 .vscode
 lib
 assets/css
+assets/gramma-logo.svg
+assets/gramma-text.svg
 scripts
