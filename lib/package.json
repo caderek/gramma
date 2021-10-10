@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "annotatedtext-remark": "^1.0.1",
+    "find-up": "^6.2.0"
+  }
 }

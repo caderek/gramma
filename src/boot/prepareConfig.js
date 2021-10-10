@@ -1,6 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 const { platform, homedir } = require("os")
+const findUpSync = require("../utils/findUpSync").default
 const initialConfig = require("../initialConfig")
 
 const configBasePath = {
@@ -12,11 +13,42 @@ const configBasePath = {
 const home = homedir()
 const globalConfigDir = path.join(home, configBasePath[platform()], "gramma")
 const globalConfigFile = path.join(globalConfigDir, "gramma.json")
-const localConfigFile = path.join(process.cwd(), ".gramma.json")
+const localConfigFile = findUpSync(".gramma.json")
+
+if (!fs.existsSync(globalConfigDir)) {
+  fs.mkdirSync(globalConfigDir, { recursive: true })
+}
+
+if (!fs.existsSync(globalConfigFile)) {
+  fs.writeFileSync(globalConfigFile, JSON.stringify(initialConfig, null, 2))
+}
+
+const loadEnvironmentVariables = (configText) => {
+  const items = configText.match(/\${[a-z0-9\-_.]*}/gi)
+
+  if (!items) {
+    return configText
+  }
+
+  let text = configText
+
+  items.forEach((item) => {
+    const envVarName = item.slice(2, -1)
+    const envVar = process.env[envVarName]
+
+    if (envVar) {
+      text = text.replace(item, envVar)
+    }
+  })
+
+  return text
+}
 
 const prepareFileConfig = (filePath) => {
+  if (!filePath) return null
+
   return fs.existsSync(filePath)
-    ? JSON.parse(fs.readFileSync(filePath).toString())
+    ? JSON.parse(loadEnvironmentVariables(fs.readFileSync(filePath).toString()))
     : null
 }
 

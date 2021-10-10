@@ -26,6 +26,8 @@ const removeFalsePositives = (matches, dictionary, disabledRules) => {
   )
 }
 
+const MAX_REPLACEMENTS = 30
+
 /**
  * @param {string} text text to check
  * @param {Object} options session config
@@ -48,9 +50,10 @@ const checkViaAPI = async (text, options = {}) => {
       ? {}
       : { disabledCategories: disabledRules.join(",") }
 
-  const input = context.argv.markdown
-    ? { data: prepareMarkdown(text) }
-    : { text }
+  const input =
+    context.argv.markdown || context.ext === ".md"
+      ? { data: prepareMarkdown(text) }
+      : { text }
 
   const postData = querystring.stringify({
     api_key: cfg.api_key,
@@ -94,6 +97,12 @@ const checkViaAPI = async (text, options = {}) => {
       cfg.api_url === initialConfig.api_url ? disabledRules : [],
     ),
   }
+
+  resultWithWords.matches.forEach((match) => {
+    if (match.replacements.length > MAX_REPLACEMENTS) {
+      match.replacements.length = MAX_REPLACEMENTS // eslint-disable-line
+    }
+  })
 
   return resultWithWords
 }

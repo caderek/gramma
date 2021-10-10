@@ -1,20 +1,25 @@
 const kleur = require("kleur")
 const fs = require("fs")
+const path = require("path")
 const initialConfig = require("../initialConfig")
-const confirmHook = require("../prompts/confirmHook")
-const { addHookCode } = require("./hook")
+const confirmInit = require("../prompts/confirmInit")
+const { addHookCode, checkGit } = require("./hook")
+
+const localConfigFile = path.join(process.cwd(), ".gramma.json")
 
 const init = async (argv, cfg) => {
   if (!fs.existsSync(cfg.paths.localConfigFile)) {
-    const { hook } = await confirmHook()
+    const hasGit = checkGit()
+    const { hook, api } = await confirmInit(hasGit)
 
-    const content = JSON.stringify(
-      { ...initialConfig, api_url: "inherit" },
-      null,
-      2,
-    )
+    if (!api) {
+      console.log(kleur.yellow("Aborting!"))
+      process.exit(1)
+    }
 
-    fs.writeFileSync(cfg.paths.localConfigFile, content)
+    const content = JSON.stringify({ ...initialConfig, api_url: api }, null, 2)
+
+    fs.writeFileSync(localConfigFile, content)
     console.log(kleur.green("Gramma config created!"))
 
     if (hook) {

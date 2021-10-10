@@ -1,2 +1,3 @@
 lib/prepareMarkdown.mjs
 src/utils/prepareMarkdown.js
+src/utils/findUpSync.js

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+require("dotenv").config()
+
 const yargs = require("yargs")
 const { version } = require("../package.json")
 const load = require("./boot/load")

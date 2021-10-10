@@ -2,7 +2,6 @@ const fs = require("fs")
 const kleur = require("kleur")
 const { isRule, ruleOptions } = require("../validators/rules")
 const { isLanguage, languageOptions } = require("../validators/languages")
-const initialConfig = require("../initialConfig")
 
 const availableOptions = [
   "api_key",
@@ -57,32 +56,21 @@ const configure = (key, value, cfg, isGlobal = false, internal = false) => {
     console.log(kleur.red(`There is no '${key}' option!`))
     console.log("Available options:")
     console.log(availableOptions.join("\n"))
-    return
+    process.exit(1)
   }
 
   if (key === "server_once" && !isGlobal) {
     console.log(
       kleur.red("This setting can be used only with -g (--global) flag"),
     )
-    return
+    process.exit(1)
   }
 
-  if (isGlobal && !fs.existsSync(cfg.paths.globalConfigDir)) {
-    fs.mkdirSync(cfg.paths.globalConfigDir, { recursive: true })
-  }
+  const currentConfig = isGlobal ? cfg.global : cfg.local
 
-  let currentConfig = isGlobal ? cfg.global : cfg.local
   const configFilePath = isGlobal
     ? cfg.paths.globalConfigFile
     : cfg.paths.localConfigFile
-
-  if (Object.keys(currentConfig).length === 0) {
-    currentConfig = initialConfig
-
-    if (!isGlobal) {
-      currentConfig = { ...currentConfig, api_url: "inherit" }
-    }
-  }
 
   const entry = prepareEntry(key, value, currentConfig)
 

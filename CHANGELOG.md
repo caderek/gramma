@@ -14,3 +14,11 @@ First stable release.
 
 - Added Markdown support
 - Used api.langagetool.org as the default API
+
+## 1.3.0
+
+- Support for environment variables in config files
+- Local config works in subdirectories
+- Automatic markdown support for .md files
+- Better error handling
+- Improved documentation

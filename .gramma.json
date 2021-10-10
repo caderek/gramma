@@ -1,5 +1,5 @@
 {
-  "api_url": "https://api.languagetool.org/v2/check",
+  "api_url": "inherit",
   "api_key": "",
   "dictionary": [
     "Asturian",
@@ -36,6 +36,7 @@
     "de-DE",
     "dev",
     "el-GR",
+    "elo",
     "eo",
     "exampleReplacements",
     "false_friends",
@@ -94,7 +95,7 @@
     "repetitions": true,
     "semantics": true,
     "style": true,
-    "typography": true,
+    "typography": false,
     "typos": true
   }
 }

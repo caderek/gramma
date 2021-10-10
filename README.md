@@ -94,7 +94,7 @@ After downloading and unpacking the binary, add it to your PATH or create a syml
 
 ### Dev tool for JS/TS projects
 
-You can install Gramma locally for your JS/TS project - this methods gives you a separate, project specific config
+You can install Gramma locally for your JS/TS project - this method gives you a separate, project specific config.
 
 ```
 npm i gramma -D
@@ -114,7 +114,7 @@ npx gramma init
 
 You will be asked if you want to integrate Gramma with Git (via hook). You can later manually toggle git hook via `npx gramma hook` command.
 
-Git hook also works with a non-default hooks path (Husky etc.).
+Git hook also works with a non-default hooks path (Husky, etc.).
 
 <hr/>
 
@@ -128,7 +128,7 @@ For this to work, you have to install Java 1.8 or higher (you can find it [here]
 java -version
 ```
 
-To install the local server use:
+To install the local server, use:
 
 ```
 gramma server install
@@ -829,7 +829,7 @@ If you have [configured a custom API server](#config), Gramma will manage the se
 gramma server start
 ```
 
-_Note: When you use this command, Gramma will ignore `server_once` config option. This is expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check._
+_Note: When you use this command, Gramma will ignore the `server_once` config option. This is expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check._
 
 #### Stopping the server
 
@@ -935,7 +935,7 @@ const exampleReplacements = [
 ]
 ```
 
-You can find proper `offset` and `length` values in the object returned by `check()` method.
+You can find proper `offset` and `length` values in the object returned by the `check()` method.
 
 Example usage:
 

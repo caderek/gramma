@@ -26,9 +26,14 @@ const getHookCode = (command) => ({
   },
 })
 
+const gitRoot = path.join(process.cwd(), ".git")
+
+const checkGit = () => {
+  return fs.existsSync(gitRoot)
+}
+
 const addHookCode = (onlyCreate = false) => {
-  const gitRoot = path.join(process.cwd(), ".git")
-  const hasGit = fs.existsSync(gitRoot)
+  const hasGit = checkGit()
 
   if (!hasGit) {
     console.log(kleur.red("No .git in this directory"))
@@ -95,5 +100,6 @@ const hook = async (argv, cfg) => {
   process.exit()
 }
 
+exports.checkGit = checkGit
 exports.addHookCode = addHookCode
 exports.hook = hook
