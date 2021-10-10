@@ -57,6 +57,7 @@
     "linter",
     "nl",
     "npm",
+    "npmignore",
     "pid",
     "preAO",
     "prepareReplacements",
