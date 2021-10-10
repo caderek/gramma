@@ -1,5 +1,6 @@
 node_modules
 .history
+.vscode
 example-responses
 example.txt
 coverage

@@ -2,6 +2,7 @@ const kleur = require("kleur")
 const fs = require("fs")
 const path = require("path")
 const os = require("os")
+const { execSync } = require("child_process")
 const checkInteractively = require("../actions/checkInteractively")
 const saveNow = require("../actions/saveNow")
 const appLocation = require("../utils/appLocation")
@@ -95,6 +96,12 @@ const hook = async (argv, cfg) => {
 
   if (changed) {
     await saveNow(text, file)
+  }
+
+  if (cfg.paths.localConfigFile) {
+    try {
+      execSync(`git add ${cfg.paths.localConfigFile}`)
+    } catch (e) {} // eslint-disable-line
   }
 
   process.exit()
