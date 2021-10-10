@@ -1,5 +1,4 @@
 _layouts
-assets
 node_modules
 .history
 .circleci
@@ -11,3 +10,5 @@ bin
 .github
 .vscode
 lib
+assets/css
+scripts
