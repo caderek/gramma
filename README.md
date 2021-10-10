@@ -33,9 +33,9 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 
 ## Features
 
-- Advanced grammar checks via LanguageTool (remote API or local server).
+- Provides advanced grammar checks via LanguageTool (remote API or local server).
 - Supports global and local (per-project) configuration.
-- Supports markdown.
+- Supports plain text and markdown.
 - Git integration!
 - Fully interactive!
 
