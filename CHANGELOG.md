@@ -23,6 +23,7 @@ First stable release.
 - Better error handling
 - Improved documentation
 
-## 1.3.1
+## 1.4.0
 
-- Include changes to .gramma.json when executing Git hook
+- Automatically include changes to .gramma.json when executing Git hook
+- Standalone binaries migrated to Node 16

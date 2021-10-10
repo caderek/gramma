@@ -31,6 +31,16 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 <div>&nbsp;</div>
 <div><img src="assets/divider.png" width="838" alt="---" /></div>
 
+## Features
+
+- Advanced grammar checks via LanguageTool (remote API or local server).
+- Supports global and local (per-project) configuration.
+- Supports markdown.
+- Git integration!
+- Fully interactive!
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
+
 ## Contents
 
 1. [Installation](#installation)
@@ -76,7 +86,7 @@ npm i gramma -g
 
 ### Standalone binary
 
-If you prefer a single binary file (Node.js included), you can download it for the most popular platforms:
+If you prefer a single binary file, you can download it for the most popular platforms:
 
 <!--BIN-->
 

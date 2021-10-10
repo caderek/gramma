@@ -8,9 +8,9 @@
   "main": "src/index.js",
   "scripts": {
     "build": "rm -rf bin; yarn run build:win64; yarn run build:macos; yarn run build:linux64; node scripts/zipBinaries.js",
-    "build:win64": "pkg -c package.json -t node14-win-x64 --out-path bin/windows64 src/cli.js",
-    "build:macos": "pkg -c package.json -t node14-macos-x64 --out-path bin/macos src/cli.js",
-    "build:linux64": "pkg -c package.json -t node14-linux-x64 --out-path bin/linux64 src/cli.js",
+    "build:win64": "pkg -c package.json -t node16-win-x64 --out-path bin/windows64 src/cli.js",
+    "build:macos": "pkg -c package.json -t node16-macos-x64 --out-path bin/macos src/cli.js",
+    "build:linux64": "pkg -c package.json -t node16-linux-x64 --out-path bin/linux64 src/cli.js",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**",
     "test": "jest",
