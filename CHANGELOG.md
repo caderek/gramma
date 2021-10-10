@@ -13,7 +13,7 @@ First stable release.
 ## 1.2.0
 
 - Added Markdown support
-- Used api.langagetool.org as the default API
+- Used api.languagetool.org as the default API
 
 ## 1.3.0
 
