@@ -13,19 +13,22 @@ Gramma supports many languages. You can find a full list <a href="https://langua
 
 Gramma works out-of-the-box, communicating with [languagetool.org](https://languagetool.org), but can also be easily configured to work with other compatible APIs, including local or remote [LanguageTool server](https://dev.languagetool.org/http-server). -->
 
-<hr>
+<div>&nbsp;</div>
 
 <div align="center">
 <a href="https://circleci.com/gh/caderek/gramma/tree/master" target="_blank"><img src="https://img.shields.io/circleci/build/github/caderek/gramma.svg?labelColor=024160" alt="CircleCI"></a>
 <img src="https://img.shields.io/npm/v/gramma.svg?labelColor=024160&color=0081B8" alt="npm version">
 <img src="https://img.shields.io/node/v/gramma.svg?labelColor=024160&color=0081B8" alt="node version">
 <img src="https://img.shields.io/npm/l/gramma.svg?labelColor=024160&color=0081B8" alt="npm license">
-
 </div>
+ 
+<div>&nbsp;</div>
 
-<div style="margin-top: 30px;" align="center">
+<div align="center">
 <img src="docs/example.gif" alt="Example" style="border-radius: 10px;">
 </div>
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## Contents
 
@@ -44,6 +47,8 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 1. [License](#license)
 
 <a id='installation'></a>
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## Installation
 
@@ -94,6 +99,8 @@ java -version
 That's it - Gramma will now use and manage the local server automatically.
 
 <a id='usage'></a>
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## Usage
 
@@ -199,6 +206,8 @@ gramma listen "I like making mistkaes!" -pn -d typos -d typography -e casing -l 
 ```
 
 <a id='config'></a>
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## Configuration
 
@@ -640,27 +649,26 @@ gramma config disable <rule_name> -g
 
 <details>
   <summary style="outline: none; cursor: pointer">Available rules (click to expand)</summary>
-  <ul>
-      <li><tt style="white-space: pre;">casing</tt></li>
-      <li><tt style="white-space: pre;">colloquialisms</tt></li>
-      <li><tt style="white-space: pre;">compounding</tt></li>
-      <li><tt style="white-space: pre;">confused_words</tt></li>
-      <li><tt style="white-space: pre;">false_friends</tt></li>
-      <li><tt style="white-space: pre;">gender_neutrality</tt></li>
-      <li><tt style="white-space: pre;">grammar</tt></li>
-      <li><tt style="white-space: pre;">misc</tt></li>
-      <li><tt style="white-space: pre;">punctuation</tt></li>
-      <li><tt style="white-space: pre;">redundancy</tt></li>
-      <li><tt style="white-space: pre;">regionalisms</tt></li>
-      <li><tt style="white-space: pre;">repetitions</tt></li>
-      <li><tt style="white-space: pre;">semantics</tt></li>
-      <li><tt style="white-space: pre;">style</tt></li>
-      <li><tt style="white-space: pre;">typography</tt></li>
-      <li><tt style="white-space: pre;">typos</tt></li>
-  </ul>
+  <table>
+    <tr><th>Rule</th><th>Description</th></tr>
+    <tr><td><tt style="white-space: pre;">casing</tt></td><td>Rules about detecting uppercase words where lowercase is required and vice versa.</td></tr>
+    <tr><td><tt style="white-space: pre;">colloquialisms</tt></td><td>Colloquial style.</td></tr>
+    <tr><td><tt style="white-space: pre;">compounding</tt></td><td>Rules about spelling terms as one word or as as separate words.</td></tr>
+    <tr><td><tt style="white-space: pre;">confused_words</tt></td><td>Words that are easily confused, like 'there' and 'their' in English.</td></tr>
+    <tr><td><tt style="white-space: pre;">false_friends</tt></td><td>False friends: words easily confused by language learners because a similar word exists in their native language.</td></tr>
+    <tr><td><tt style="white-space: pre;">gender_neutrality</tt></td><td>Helps to ensure gender-neutral terms.</td></tr>
+    <tr><td><tt style="white-space: pre;">grammar</tt></td><td>Basic grammar check.</td></tr>
+    <tr><td><tt style="white-space: pre;">misc</tt></td><td>Miscellaneous rules that don't fit elsewhere.</td></tr>
+    <tr><td><tt style="white-space: pre;">punctuation</tt></td><td>Punctuation mistakes.</td></tr>
+    <tr><td><tt style="white-space: pre;">redundancy</tt></td><td>Redundant words.</td></tr>
+    <tr><td><tt style="white-space: pre;">regionalisms</tt></td><td>Regionalisms: words used only in another language variant or used with different meanings.</td></tr>
+    <tr><td><tt style="white-space: pre;">repetitions</tt></td><td>Repeated words.</td></tr>
+    <tr><td><tt style="white-space: pre;">semantics</tt></td><td>Logic, content, and consistency problems.</td></tr>
+    <tr><td><tt style="white-space: pre;">style</tt></td><td>General style issues not covered by other categories, like overly verbose wording.</td></tr>
+    <tr><td><tt style="white-space: pre;">typography</tt></td><td>Problems like incorrectly used dash or quote characters.</td></tr>
+    <tr><td><tt style="white-space: pre;">typos</tt></td><td>Spelling issues.</td></tr>
+  </table>
 </details>
-
-You can find a description of each rule [here](https://languagetool.org/development/api/org/languagetool/rules/Categories.html).
 
 _Note: By default, all rules are enabled._
 
@@ -704,6 +712,8 @@ gramma config api_key <your_api_key> -g
 
 <a id='server'></a>
 
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
+
 ## Managing a local server
 
 If you have [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage the server manually. Gramma simplifies this by exposing basic server commands:
@@ -735,6 +745,8 @@ gramma server gui
 ```
 
 <a id='js'></a>
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## JS API
 
@@ -846,6 +858,8 @@ main()
 ```
 
 <a id='license'></a>
+
+<div><img src="assets/divider.png" width="838" alt="---" /></div>
 
 ## License
 
