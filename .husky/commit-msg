@@ -2,4 +2,4 @@
 
 exec < /dev/tty
 
-/home/maciek/Projects/gramma/src/cli.js hook $1
+npx gramma hook $1

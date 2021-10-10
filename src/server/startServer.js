@@ -28,7 +28,7 @@ const startServer = async (cfg, viaCommand = false) => {
     console.log(
       kleur.red(`Please install local server via: gramma server install`),
     )
-    return false
+    process.exit(1)
   }
 
   console.log("Starting local API server...")
@@ -44,7 +44,7 @@ const startServer = async (cfg, viaCommand = false) => {
     path.join(cfg.global.server_path, "languagetool-server.jar"),
     "org.languagetool.server.HTTPServer",
     "--port",
-    PORT,
+    String(PORT),
     "--allow-origin",
     "'*'",
   ]

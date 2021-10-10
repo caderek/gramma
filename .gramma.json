@@ -77,7 +77,8 @@
     "uk-UA",
     "url",
     "usedCfg",
-    "zh-CN"
+    "zh-CN",
+    "foo"
   ],
   "language": "en-US",
   "rules": {

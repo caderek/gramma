@@ -9,23 +9,26 @@ const appLocation = require("../utils/appLocation")
 
 const sys = os.platform()
 
-const getHookCode = (command) => ({
-  linux: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${command} hook $1\n`,
-    partial: `\n\nexec < /dev/tty\n\n${command} hook $1\n`,
-  },
-  darwin: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${command} hook $1\n`,
-    partial: `\n\nexec < /dev/tty\n\n${command} hook $1\n`,
-  },
-  win32: {
-    full: `#!/bin/sh\n\nexec < /dev/tty\n\n${command} hook $1\n`.replace(
-      /\\/g,
-      "/",
-    ),
-    partial: `\n\nexec < /dev/tty\n\n${command} hook $1\n`.replace(/\\/g, "/"),
-  },
-})
+const REDIRECT_STDIN = "\n\nexec < /dev/tty"
+
+const getHookCode = (command, stdin = true) => {
+  const stdinCode = stdin ? REDIRECT_STDIN : ""
+
+  return {
+    linux: {
+      full: `#!/bin/sh${stdinCode}\n\n${command}\n`,
+      partial: `${stdinCode}\n\n${command}\n`,
+    },
+    darwin: {
+      full: `#!/bin/sh${stdinCode}\n\n${command}\n`,
+      partial: `${stdinCode}\n\n${command}\n`,
+    },
+    win32: {
+      full: `#!/bin/sh${stdinCode}\n\n${command}\n`.replace(/\\/g, "/"),
+      partial: `${stdinCode}\n\n${command}\n`.replace(/\\/g, "/"),
+    },
+  }
+}
 
 const gitRoot = path.join(process.cwd(), ".git")
 
@@ -33,7 +36,35 @@ const checkGit = () => {
   return fs.existsSync(gitRoot)
 }
 
-const addHookCode = (onlyCreate = false) => {
+const createEmptyFile = (file) => {
+  if (!fs.existsSync(file)) {
+    fs.closeSync(fs.openSync(file, "w"))
+  }
+}
+
+const addHookCode = (hookFile, hookCode, onlyCreate, name) => {
+  if (fs.existsSync(hookFile)) {
+    const content = fs.readFileSync(hookFile).toString()
+    const alreadyExists = content.includes(hookCode[sys].partial)
+
+    if (alreadyExists && !onlyCreate) {
+      const newContent = content.replace(hookCode[sys].partial, "")
+      fs.writeFileSync(hookFile, newContent)
+      console.log(kleur.green(`Hook (${name}) removed!`))
+    } else if (alreadyExists) {
+      console.log(kleur.yellow(`Hook (${name}) already exists!`))
+    } else {
+      fs.appendFileSync(hookFile, hookCode[sys].partial)
+      console.log(kleur.green(`Hook (${name}) created!`))
+    }
+  } else {
+    fs.writeFileSync(hookFile, hookCode[sys].full)
+    fs.chmodSync(hookFile, "755")
+    console.log(kleur.green(`Hook (${name}) created!`))
+  }
+}
+
+const addHooksCode = (onlyCreate = false) => {
   const hasGit = checkGit()
 
   if (!hasGit) {
@@ -48,47 +79,63 @@ const addHookCode = (onlyCreate = false) => {
 
   const hooksFolder = hooksConfig && hooksConfig[0].split("=")[1].trim()
 
-  const hookFile = hooksFolder
+  const hookFileCommitMsg = hooksFolder
     ? path.resolve(process.cwd(), hooksFolder, "commit-msg")
     : path.resolve(process.cwd(), ".git", "hooks", "commit-msg")
 
-  const command = fs.existsSync("node_modules") ? "npx gramma" : appLocation
+  const hookFilePostCommit = hooksFolder
+    ? path.resolve(process.cwd(), hooksFolder, "post-commit")
+    : path.resolve(process.cwd(), ".git", "hooks", "post-commit")
 
-  const hookCode = getHookCode(command)
+  const commandCommitMsg = fs.existsSync("node_modules")
+    ? "npx gramma hook $1"
+    : `${appLocation} hook $1`
 
-  if (fs.existsSync(hookFile)) {
-    const content = fs.readFileSync(hookFile).toString()
-    const alreadyExists = content.includes(hookCode[sys].partial)
+  const commandPostCommit = fs.existsSync("node_modules")
+    ? "npx gramma hook cleanup"
+    : `${appLocation} hook cleanup`
 
-    if (alreadyExists && !onlyCreate) {
-      const newContent = content.replace(hookCode[sys].partial, "")
-      fs.writeFileSync(hookFile, newContent)
-      console.log(kleur.green("Hook removed!"))
-    } else if (alreadyExists) {
-      console.log(kleur.yellow("Hook already exists!"))
-    } else {
-      fs.appendFileSync(hookFile, hookCode[sys].partial)
-      console.log(kleur.green("Hook created!"))
+  const hookCodeCommitMsg = getHookCode(commandCommitMsg)
+  const hookCodePostCommit = getHookCode(commandPostCommit, false)
+
+  addHookCode(hookFileCommitMsg, hookCodeCommitMsg, onlyCreate, "commit-msg")
+  addHookCode(hookFilePostCommit, hookCodePostCommit, onlyCreate, "post-commit")
+}
+
+const hook = async (argv, cfg) => {
+  const arg =
+    process.argv[process.argv.length - 1] !== "hook"
+      ? process.argv[process.argv.length - 1]
+      : null
+
+  // No arg - execute the default command
+  if (!arg) {
+    addHooksCode()
+    process.exit()
+  }
+
+  // Temporary file to coordinate git hooks
+  // See: https://stackoverflow.com/a/12802592/4713502
+  const tempFile = path.join(cfg.paths.globalConfigDir, ".commit")
+
+  // Code executed by `post-commit` hook
+  if (arg === "cleanup") {
+    if (cfg.paths.localConfigFile && fs.existsSync(tempFile)) {
+      fs.unlinkSync(tempFile)
+
+      try {
+        execSync(`git add ${cfg.paths.localConfigFile}`)
+        execSync(`git commit --amend --no-edit --no-verify`)
+      } catch (e) {} // eslint-disable-line
     }
 
     process.exit()
   }
 
-  fs.writeFileSync(hookFile, hookCode[sys].full)
-  fs.chmodSync(hookFile, "755")
-  console.log(kleur.green("Hook created!"))
-}
+  // Code executed by `commit-msg` hook
+  createEmptyFile(tempFile)
 
-const hook = async (argv, cfg) => {
-  const file =
-    process.argv[process.argv.length - 1] !== "hook"
-      ? process.argv[process.argv.length - 1]
-      : null
-
-  if (!file) {
-    addHookCode()
-    process.exit()
-  }
+  const file = arg
 
   const initialText = fs.readFileSync(file).toString().replace(/#.*/g, "")
 
@@ -98,17 +145,9 @@ const hook = async (argv, cfg) => {
     await saveNow(text, file)
   }
 
-  if (cfg.paths.localConfigFile) {
-    const command = `git add ${cfg.paths.localConfigFile}`
-    console.log(command)
-    try {
-      execSync(command)
-    } catch (e) {} // eslint-disable-line
-  }
-
   process.exit()
 }
 
 exports.checkGit = checkGit
-exports.addHookCode = addHookCode
+exports.addHookCode = addHooksCode
 exports.hook = hook
