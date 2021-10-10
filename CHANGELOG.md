@@ -22,3 +22,7 @@ First stable release.
 - Automatic markdown support for .md files
 - Better error handling
 - Improved documentation
+
+## 1.3.1
+
+- Include changes to .gramma.json when executing Git hook
