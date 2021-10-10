@@ -801,7 +801,7 @@ gramma config api_key <your_api_key> [-g]
 
 ### Security
 
-If you need to store some sensitive data in your local config file (API key etc.) you can use environment variables directly in the config file.
+If you need to store some sensitive data in your local config file (API key etc.) you can use environment variables directly in the config file (supports `.env` files).
 
 Example:
 

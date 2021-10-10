@@ -14,7 +14,7 @@ const save = async (text, mode, filePath = null) => {
   if (saveOption === "replace") {
     fs.writeFileSync(filePath, text)
     console.clear()
-    console.log(`---------------------------------\n\nSaved!`)
+    console.log(kleur.green("Saved!"))
   } else if (saveOption === "save-as") {
     const resolvedFileName = fileName.replace("~", homedir())
     const newPath = path.resolve(process.cwd(), resolvedFileName)
@@ -22,7 +22,7 @@ const save = async (text, mode, filePath = null) => {
     fs.writeFileSync(newPath, text)
 
     console.clear()
-    console.log(`---------------------------------\n\nSaved as ${newPath}`)
+    console.log(kleur.green(`Saved as ${newPath}`))
   } else {
     console.clear()
     console.log(
