@@ -1,3 +1,3 @@
 #!/bin/sh
 
-npx gramma hook cleanup
+/home/maciek/Projects/gramma/src/cli.js hook cleanup

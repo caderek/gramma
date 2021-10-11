@@ -137,9 +137,13 @@ const hook = async (argv, cfg) => {
 
   const file = arg
 
-  const initialText = fs.readFileSync(file).toString().replace(/#.*/g, "")
+  const commitText = fs
+    .readFileSync(file)
+    .toString()
+    .replace(/# ------------------------ >8[\S\s]*/m, "") // Remove diff part on --verbose
+    .replace(/#.*/g, "") // Remove other comments
 
-  const { changed, text } = await checkInteractively(initialText, cfg)
+  const { changed, text } = await checkInteractively(commitText, cfg)
 
   if (changed) {
     await saveNow(text, file)
