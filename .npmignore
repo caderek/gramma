@@ -13,5 +13,7 @@ lib
 assets/css
 assets/gramma-logo.svg
 assets/gramma-text.svg
-assets/baner.png
+assets/banner.png
+assets/banner-small.png
 scripts
+examples
