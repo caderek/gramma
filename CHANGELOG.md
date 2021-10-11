@@ -27,3 +27,8 @@ First stable release.
 
 - Automatically include changes to .gramma.json when executing Git hook
 - Standalone binaries migrated to Node 16
+
+## 1.4.1
+
+- Fixed JS API, added type definitions
+- Fixed hooks behavior with commit --verbose flag
