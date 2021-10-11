@@ -831,7 +831,7 @@ _Note: The default API (`api.languagetool.org`) is generally [safe and does not 
 
 ## Managing a local server
 
-If you have [configured a custom API server](#config), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage the server manually. Gramma simplifies this by exposing basic server commands:
+If you have [configured a local server](#installation-server), Gramma will manage the server automatically - nevertheless, there might be situations when you want to manage the server manually. Gramma simplifies this by exposing basic server commands:
 
 #### Starting the server
 
