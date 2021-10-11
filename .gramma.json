@@ -37,8 +37,10 @@
     "dev",
     "el-GR",
     "eo",
+    "eslintignore",
     "exampleReplacements",
     "false_friends",
+    "foo",
     "fr",
     "gender_neutrality",
     "gl-ES",
@@ -77,8 +79,7 @@
     "uk-UA",
     "url",
     "usedCfg",
-    "zh-CN",
-    "foo"
+    "zh-CN"
   ],
   "language": "en-US",
   "rules": {
