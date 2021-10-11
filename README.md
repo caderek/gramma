@@ -90,9 +90,9 @@ If you prefer a single binary file, you can download it for the most popular pla
 
 <!--BIN-->
 
-- [gramma-linux64-v1.4.0.zip](https://github.com/caderek/gramma/releases/download/v1.4.0/gramma-linux64-v1.4.0.zip)
-- [gramma-macos-v1.4.0.zip](https://github.com/caderek/gramma/releases/download/v1.4.0/gramma-macos-v1.4.0.zip)
-- [gramma-windows64-v1.4.0.zip](https://github.com/caderek/gramma/releases/download/v1.4.0/gramma-windows64-v1.4.0.zip)
+- [gramma-linux64-v1.4.1.zip](https://github.com/caderek/gramma/releases/download/v1.4.1/gramma-linux64-v1.4.1.zip)
+- [gramma-macos-v1.4.1.zip](https://github.com/caderek/gramma/releases/download/v1.4.1/gramma-macos-v1.4.1.zip)
+- [gramma-windows64-v1.4.1.zip](https://github.com/caderek/gramma/releases/download/v1.4.1/gramma-windows64-v1.4.1.zip)
 
 <!--/BIN-->
 
