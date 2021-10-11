@@ -29,14 +29,13 @@ const removeFalsePositives = (matches, dictionary, disabledRules) => {
 const MAX_REPLACEMENTS = 30
 
 /**
+ * Calls the provided LanguageTool API
+ * and returns grammar checker suggestions.
+ *
  * @param {string} text text to check
- * @param {Object} options session config
- * @param {string} options.api_url
- * @param {string} options.api_key
- * @param {string} options.language
- * @param {Object} options.rules
- * @param {string[]} options.dictionary
- * @returns {Promise<Object>}
+ * @param {Object} options request config
+ *
+ * @returns {Promise<Object>} grammar checker suggestions
  */
 const checkViaAPI = async (text, options = {}) => {
   const cfg = { ...initialConfig, ...options }
@@ -50,10 +49,12 @@ const checkViaAPI = async (text, options = {}) => {
       ? {}
       : { disabledCategories: disabledRules.join(",") }
 
-  const input =
-    context.argv.markdown || context.ext === ".md"
-      ? { data: prepareMarkdown(text) }
-      : { text }
+  const isMarkdown =
+    options.markdown ||
+    context.ext === ".md" ||
+    (context.argv && context.argv.markdown)
+
+  const input = isMarkdown ? { data: prepareMarkdown(text) } : { text }
 
   const postData = querystring.stringify({
     api_key: cfg.api_key,

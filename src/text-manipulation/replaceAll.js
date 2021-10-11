@@ -1,8 +1,10 @@
 const replace = require("./replace")
 
 /**
- * @param {string} text base text
- * @param {Object[]} transformations descriptions of changes to the text
+ * Modifies provided text with specified transformations.
+ *
+ * @param text base text
+ * @param transformations descriptions of changes to the text
  */
 const replaceAll = (text, transformations) => {
   return transformations
