@@ -64,8 +64,7 @@ const checkViaAPI = async (text, options = {}) => {
     ...disabledRulesEntry,
   })
 
-  console.log(postData)
-
+  // eslint-disable-next-line
   const response = await fetch(cfg.api_url, {
     credentials: "include",
     headers: {
