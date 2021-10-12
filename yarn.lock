@@ -2327,21 +2327,22 @@ graceful-fs@^4.1.10, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0,
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
 
-gramma@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/gramma/-/gramma-1.4.1.tgz#3a934986b7ccc3575ba9b3aa3cf6917d28b0e145"
-  integrity sha512-4RxZsFv6fjhuKJEPhAulnENAoP53g27gzT4hvxbjvXsxS6bprL+gx/+7JB9eWas0KJMjYEeu4FA1LTYUyHH4+g==
+gramma@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/gramma/-/gramma-1.4.7.tgz#865d0fe77047ad0b575ab7f80b3c7b5d95753896"
+  integrity sha512-oDdTsnoWiqQ7hrsGdPlbGCR5XAuXbpHcQS02m9xHbpumx1Swz6JtQBgy3cWwIpm5TlNEBOS/jPUqXgYELrW/hw==
   dependencies:
     cli-progress "^3.9.1"
     decompress "^4.2.1"
     decompress-unzip "^4.0.1"
     dotenv "^10.0.0"
     intercept-stdout "^0.1.2"
+    isomorphic-fetch "^3.0.0"
     kleur "^4.1.4"
-    node-fetch "2.6.5"
     portfinder "^1.0.28"
     progress-stream "^2.0.0"
     prompts "^2.4.1"
+    query-string "^7.0.1"
     rimraf "^3.0.2"
     yargs "^17.2.1"
 
@@ -3651,7 +3652,7 @@ node-abi@^2.7.0:
   dependencies:
     semver "^5.4.1"
 
-node-fetch@2.6.5, node-fetch@^2.6.1:
+node-fetch@^2.6.1:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.5.tgz#42735537d7f080a7e5f78b6c549b7146be1742fd"
   integrity sha512-mmlIVHJEu5rnIxgEgez6b9GgWXbkZj5YZ7fx+2r94a2E+Uirsp6HsPTPlomfdHtpt/B0cdKviwkoaM6pyvUOpQ==
