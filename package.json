@@ -7,12 +7,23 @@
   "description": "Command line grammar checker",
   "main": "src/index.js",
   "bin": "src/cli.js",
+  "exports": {
+    ".": "src/index.js",
+    "./esm": "bundle/gramma.esm.js",
+    "./esm-min": "bundle.gramma.esm.min.js",
+    "./iife": "bundle.gramma.min.js"
+  },
   "types": "src/index.d.ts",
   "scripts": {
-    "build": "rm -rf bin; yarn run build:win64; yarn run build:macos; yarn run build:linux64; node scripts/zipBinaries.js",
+    "build": "rm -rf bin; yarn run build:win64; yarn run build:macos; yarn run build:linux64; yarn run build:zip: yarn run build:bundles",
     "build:win64": "pkg -c package.json -t node16-win-x64 --out-path bin/windows64 src/cli.js",
     "build:macos": "pkg -c package.json -t node16-macos-x64 --out-path bin/macos src/cli.js",
     "build:linux64": "pkg -c package.json -t node16-linux-x64 --out-path bin/linux64 src/cli.js",
+    "build:bundles": "yarn run build:esm; yarn run build:esm-min; yarn run build:iife",
+    "build:esm": "esbuild src/index.js --bundle --outfile=bundle/gramma.esm.js --format=esm",
+    "build:esm-min": "esbuild src/index.js --bundle --outfile=bundle/gramma.esm.min.js --format=esm --minify",
+    "build:iife": "esbuild src/index.js --bundle --outfile=bundle/gramma.min.js --format=iife --minify --global-name=gramma",
+    "bild:zip": "node scripts/zipBinaries.js",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint src/**",
     "test": "jest",
@@ -45,6 +56,7 @@
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "codacy-coverage": "^3.4.0",
+    "esbuild": "^0.13.4",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

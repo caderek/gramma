@@ -40,3 +40,7 @@ First stable release.
 ## 1.4.5
 
 - Fixed CORS in JS API (browser)
+
+## 1.4.6
+
+- Bundles (esm, esm-min, iife)
