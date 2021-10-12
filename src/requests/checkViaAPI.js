@@ -1,5 +1,6 @@
-const querystring = require("querystring")
-const fetch = require("node-fetch")
+require("isomorphic-fetch")
+const queryString = require("query-string")
+
 const initialConfig = require("../initialConfig")
 const context = require("../context")
 const prepareMarkdown = require("../utils/prepareMarkdown").default
@@ -56,12 +57,14 @@ const checkViaAPI = async (text, options = {}) => {
 
   const input = isMarkdown ? { data: prepareMarkdown(text) } : { text }
 
-  const postData = querystring.stringify({
+  const postData = queryString.stringify({
     api_key: cfg.api_key,
     language: cfg.language,
     ...input,
     ...disabledRulesEntry,
   })
+
+  console.log(postData)
 
   const response = await fetch(cfg.api_url, {
     credentials: "include",
