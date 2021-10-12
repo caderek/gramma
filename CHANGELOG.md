@@ -33,6 +33,6 @@ First stable release.
 - Fixed JS API, added type definitions
 - Fixed hooks behavior with commit --verbose flag
 
-## 1.4.2 - 1.4.5
+## 1.4.2 - 1.4.4
 
 - Isomorphic JS API (works on browser)
