@@ -893,6 +893,8 @@ You can also import ESM bundle directly from CDN:
 </script>
 ```
 
+<hr/>
+
 #### check() method
 
 Returns a promise with a check result.
@@ -961,6 +963,8 @@ gramma
   })
   .then(console.log)
 ```
+
+<hr/>
 
 #### replaceAll() method
 
