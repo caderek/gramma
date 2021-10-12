@@ -36,3 +36,7 @@ First stable release.
 ## 1.4.2 - 1.4.4
 
 - Isomorphic JS API (works on browser)
+
+## 1.4.5
+
+- Fixed CORS in JS API (browser)
