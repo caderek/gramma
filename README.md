@@ -867,14 +867,40 @@ gramma server gui
 
 In addition to command-line usage, you can use two exposed methods if you want to handle mistakes by yourself.
 
+#### Imports
+
+If you use Node.js or a bundler for your browser build, you can use CommonJS or esm:
+
+```js
+const gramma = require("gramma")
+```
+
+```js
+import gramma from "gramma"
+```
+
+If you don't use a bundler and want to use gramma in the browser, there are some prebuild packages in [/bundle](/bundle) directory:
+
+`gramma.esm.js` - ES Modules bundle
+`gramma.esm.min.js` - minified ES Modules bundle
+`gramma.min.js` - IIFE bundle exposing global `gramma` variable
+
+You can also import ESM bundle directly from CDN:
+
+```html
+<script type="module">
+  import gramma from "https://cdn.skypack.dev/gramma"
+</script>
+```
+
 #### check() method
 
 Returns a promise with a check result.
 
 ```js
-const { check } = require("gramma")
+const gramma = require("gramma")
 
-check("Some text to check.").then(console.log)
+gramma.check("Some text to check.").then(console.log)
 ```
 
 You can also pass a second argument - an options object. Available options:
@@ -920,18 +946,20 @@ You can find all available values for each setting in the [configuration section
 Example with all options set:
 
 ```js
-const { check } = require("gramma")
+const gramma = require("gramma")
 
-check("Some text to check.", {
-  api_url: "http://my-custom-language-tool-server.xyz/v2/check",
-  api_key: "SOME_API_KEY",
-  dictionary: ["npm", "gramma"],
-  language: "pl-PL",
-  rules: {
-    typography: false,
-    casing: false,
-  },
-}).then(console.log)
+gramma
+  .check("Some text to check.", {
+    api_url: "http://my-custom-language-tool-server.xyz/v2/check",
+    api_key: "SOME_API_KEY",
+    dictionary: ["npm", "gramma"],
+    language: "pl-PL",
+    rules: {
+      typography: false,
+      casing: false,
+    },
+  })
+  .then(console.log)
 ```
 
 #### replaceAll() method
@@ -950,7 +978,7 @@ You can find proper `offset` and `length` values in the object returned by the `
 Example usage:
 
 ```js
-const { check, replaceAll } = require("gramma")
+const gramma = require("gramma")
 
 /** Your custom function **/
 const prepareReplacements = (matches) => {
@@ -958,10 +986,10 @@ const prepareReplacements = (matches) => {
 }
 
 const fix = async (text) => {
-  const { matches } = await check(text)
+  const { matches } = await gramma.check(text)
   const replacements = prepareReplacements(matches)
 
-  return replaceAll(text, replacements)
+  return gramma.replaceAll(text, replacements)
 }
 
 const main = () => {
