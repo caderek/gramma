@@ -1,3 +1,5 @@
+require("isomorphic-fetch")
+
 const check = require("./requests/checkViaAPI")
 const replaceAll = require("./text-manipulation/replaceAll")
 

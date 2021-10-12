@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 require("dotenv").config()
+require("isomorphic-fetch")
 
 const yargs = require("yargs")
 const { version } = require("../package.json")
