@@ -1,5 +1,4 @@
 const fs = require("fs")
-const fetch = require("node-fetch")
 const progressStream = require("progress-stream")
 const cliProgress = require("cli-progress")
 

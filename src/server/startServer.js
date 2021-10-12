@@ -1,7 +1,6 @@
 const { spawn } = require("child_process")
 const path = require("path")
 const kleur = require("kleur")
-const fetch = require("node-fetch")
 const portfinder = require("portfinder")
 const configure = require("../actions/configure")
 

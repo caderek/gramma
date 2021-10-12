@@ -10,5 +10,8 @@
   "env": {
     "jest": true,
     "node": true
+  },
+  "globals": {
+    "fetch": true
   }
 }
