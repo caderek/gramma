@@ -6,6 +6,11 @@
   "homepage": "https://caderek.github.io/gramma/",
   "description": "Command line grammar checker",
   "main": "src/index.js",
+  "exports": {
+    ".": "src/index.js",
+    "./esm": "bundle/gramma.js",
+    "./esm-min": "bundle/gramma.min.js"
+  },
   "types": "src/index.d.ts",
   "scripts": {
     "build": "rm -rf bin; yarn run build:win64; yarn run build:macos; yarn run build:linux64; node scripts/zipBinaries.js",

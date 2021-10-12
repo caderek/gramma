@@ -1,6 +1,6 @@
 require("isomorphic-fetch")
-const queryString = require("query-string")
 
+const queryString = require("query-string")
 const initialConfig = require("../initialConfig")
 const context = require("../context")
 const prepareMarkdown = require("../utils/prepareMarkdown").default
