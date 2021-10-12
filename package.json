@@ -8,10 +8,10 @@
   "main": "src/index.js",
   "bin": "src/cli.js",
   "exports": {
-    ".": "src/index.js",
-    "./esm": "bundle/gramma.esm.js",
-    "./esm-min": "bundle.gramma.esm.min.js",
-    "./iife": "bundle.gramma.min.js"
+    ".": "./src/index.js",
+    "./esm": "./bundle/gramma.esm.js",
+    "./esm-min": "./bundle.gramma.esm.min.js",
+    "./iife": "./bundle.gramma.min.js"
   },
   "types": "src/index.d.ts",
   "scripts": {
