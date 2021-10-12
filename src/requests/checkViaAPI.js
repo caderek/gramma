@@ -64,7 +64,6 @@ const checkViaAPI = async (text, options = {}) => {
 
   // eslint-disable-next-line
   const response = await fetch(cfg.api_url, {
-    credentials: "include",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
