@@ -875,7 +875,7 @@ const gramma = require("gramma")
 import gramma from "gramma"
 ```
 
-If you don't use a bundler and want to use gramma in the browser, there are some prebuild packages in [/bundle](/bundle) directory:
+If you don't use a bundler and want to use gramma in the browser, there are some prebuild packages in [/bundle](https://github.com/caderek/gramma/tree/master/bundle) directory:
 
 - `gramma.esm.js` - ES Modules bundle
 - `gramma.esm.min.js` - minified ES Modules bundle
