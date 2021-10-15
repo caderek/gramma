@@ -29,7 +29,7 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 </div>
 
 <div>&nbsp;</div>
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## Features
 
@@ -39,7 +39,7 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 - Git integration!
 - Fully interactive!
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## Contents
 
@@ -66,7 +66,7 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
 
 <a id='installation'></a>
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## Installation
 
@@ -148,7 +148,7 @@ That's it - Gramma will now use and manage the local server automatically.
 
 <a id='usage'></a>
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## Usage
 
@@ -261,7 +261,7 @@ gramma listen "I like making mistkaes!" -pn -d typos -d typography -e casing -l 
 
 <a id='config'></a>
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## Configuration
 
@@ -827,7 +827,7 @@ _Note: The default API (`api.languagetool.org`) is generally [safe and does not 
 
 <a id='server'></a>
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## Managing a local server
 
@@ -861,7 +861,7 @@ gramma server gui
 
 <a id='js'></a>
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## JS API
 
@@ -1006,7 +1006,7 @@ main()
 
 <a id='license'></a>
 
-<div><img src="assets/divider.png" width="838" alt="---" /></div>
+<div><img src="assets/divider.png" width="838" alt="---" class="divider" /></div>
 
 ## License
 
