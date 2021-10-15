@@ -17,11 +17,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
   </head>
   <body>
     <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+      <h1 class="download">
+        <h3 class="download__header">DOWNLOAD</h3>
+        <a class="download__link" href="https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-linux64-v1.4.6.zip">
+          <i class="devicon-linux-plain download__icon"></i>
+        </a>
+        <a class="download__link" href="https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-windows64-v1.4.6.zip">
+          <i class="devicon-windows8-original download__icon"></i>
+        </a>
+        <a class="download__link" href="https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-macos-v1.4.6.zip">
+          <i class="devicon-apple-original download__icon"></i>
+        </a>
+        <h3 class="download__header">OR</h3>
+      </h1>
       <h2 class="project-tagline">npm i gramma -g</h2>
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
