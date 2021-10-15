@@ -913,7 +913,7 @@ You can also pass a second argument - an options object. Available options:
 <summary style="outline: none; cursor: pointer">Default options object (click to expand)</summary>
 <pre>
 {
-  "api_url": "http://api.grammarbot.io/v2/check",
+  "api_url": "https://api.languagetool.org/v2/check",
   "api_key": "",
   "dictionary": [],
   "language": "en-US",
