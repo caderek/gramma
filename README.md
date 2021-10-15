@@ -88,13 +88,9 @@ npm i gramma -g
 
 If you prefer a single binary file, you can download it for the most popular platforms:
 
-<!--BIN-->
-
-- [gramma-linux64-v1.4.6.zip](https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-linux64-v1.4.6.zip)
-- [gramma-macos-v1.4.6.zip](https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-macos-v1.4.6.zip)
-- [gramma-windows64-v1.4.6.zip](https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-windows64-v1.4.6.zip)
-
-<!--/BIN-->
+- [gramma-linux64-v1.4.7.zip](https://github.com/caderek/gramma/releases/download/v1.4.7/gramma-linux64-v1.4.7.zip)
+- [gramma-macos-v1.4.7.zip](https://github.com/caderek/gramma/releases/download/v1.4.7/gramma-macos-v1.4.7.zip)
+- [gramma-windows64-v1.4.7.zip](https://github.com/caderek/gramma/releases/download/v1.4.7/gramma-windows64-v1.4.7.zip)
 
 After downloading and unpacking the binary, add it to your PATH or create a symlink to your executable directory (depending on the platform).
 

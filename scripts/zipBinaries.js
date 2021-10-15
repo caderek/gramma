@@ -16,22 +16,23 @@ const main = () => {
     console.log(`Zip file for ${folder} created!`)
   })
 
-  const links = folders
-    .map(
-      (name) =>
-        `- [gramma-${name}-v${version}.zip](https://github.com/caderek/gramma/releases/download/v${version}/gramma-${name}-v${version}.zip)`,
-    )
-    .join("\n")
-
-  const docs = `<!--BIN-->\n\n${links}\n\n<!--/BIN-->`
+  const versionRegex = /v\d\.\d\.\d/g
 
   const readme = fs
     .readFileSync("README.md")
     .toString()
-    .replace(/<!--BIN-->(.|\n)+<!--\/BIN-->/, docs)
+    .replace(versionRegex, `v${version}`)
 
   fs.writeFileSync("README.md", readme)
   console.log("README links updated!")
+
+  const website = fs
+    .readFileSync("_layouts/default.html")
+    .toString()
+    .replace(versionRegex, `v${version}`)
+
+  fs.writeFileSync("_layouts/default.html", website)
+  console.log("Website links updated!")
 }
 
 main()

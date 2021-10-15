@@ -6,3 +6,4 @@ example.txt
 coverage
 bin
 assets/css/*.css
+assets/css/*.css.map
