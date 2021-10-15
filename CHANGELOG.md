@@ -44,3 +44,7 @@ First stable release.
 ## 1.4.6 - 1.4.7
 
 - Bundles (esm, esm-min, iife)
+
+## 1.4.8
+
+- Fixed links in README
