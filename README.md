@@ -1010,4 +1010,4 @@ main()
 
 ## License
 
-The project is under open, non-restrictive [ISC license](LICENSE).
+The project is under open, non-restrictive [ISC license](https://github.com/caderek/gramma/blob/master/LICENSE.md).
