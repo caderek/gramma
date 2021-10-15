@@ -17,18 +17,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"> -->
+    <link rel="stylesheet" href="https://caderek.github.io/gramma/assets/css/style.css?v=01079cd29d3372d7dd9bcddd99fefd1985c256e0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
   </head>
   <body>
     <header class="page-header" role="banner">
-      <h2 class="project-tagline">npm i gramma -g</h2>
-      {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
-      {% endif %}
-      {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
-      {% endif %}
+      <a href="https://github.com/caderek/gramma" class="download__link">
+      <div class="download">
+        <i class="devicon-github-original"></i>
+        <p>View on GitHub</p>
+      </div>
+      </a>
+      <a href="https://www.npmjs.com/package/gramma" class="download__link">
+      <div class="download">
+        <i class="devicon-npm-original-wordmark"></i>
+        <p>View on NPM</p>
+      </div>
+      </a>
+      <a href="https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-linux64-v1.4.6.zip" class="download__link">
+      <div class="download">
+        <i class="devicon-linux-plain"></i>
+        <p>Download for Linux</p>
+      </div>
+      </a>
+      <a href="https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-macos-v1.4.6.zip" class="download__link">
+      <div class="download">
+        <i class="devicon-windows8-original"></i>
+        <p>Download for Windows</p>
+      </div>
+      </a>
+      <a href="https://github.com/caderek/gramma/releases/download/v1.4.6/gramma-macos-v1.4.6.zip" class="download__link">
+      <div class="download">
+        <i class="devicon-apple-original"></i>
+        <p>Download for MacOS</p>
+      </div>
+      </a>
     </header>
 
     <main id="content" class="main-content" role="main">
