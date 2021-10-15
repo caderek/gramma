@@ -5,3 +5,4 @@ example-responses
 example.txt
 coverage
 bin
+assets/css/*.css
