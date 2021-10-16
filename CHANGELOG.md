@@ -48,3 +48,7 @@ First stable release.
 ## 1.4.8
 
 - Fixed links in README
+
+## 1.5.0
+
+- When local server is installed but not running, Gramma will now try to use command-line interface for LanguageTool communication instead of spawning HTTP server (if possible).
