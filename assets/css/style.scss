@@ -72,6 +72,27 @@ body {
   color: white;
 }
 
+@media only screen and (max-width: 411px) {
+  .download {
+    display: block;
+    width: auto;
+    height: auto;
+    text-align: left;
+    margin: 0;
+  }
+
+  .download i {
+    font-size: 30px;
+    margin: 0 10px;
+  }
+
+  p {
+    display: initial;
+    position: relative;
+    top: -8px;
+  }
+}
+
 .divider {
   display: none;
 }
