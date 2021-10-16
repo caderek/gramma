@@ -12,8 +12,6 @@ const checkInteractively = async (text, cfg) => {
     return { changed: false }
   }
 
-  console.info(`Checking via ${cfg.session.api_url}...`)
-
   const result = await checkWithFallback(text, cfg)
 
   if (result.matches.length === 0) {

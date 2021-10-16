@@ -1,7 +1,7 @@
-const queryString = require("query-string")
+const fs = require("fs")
+const path = require("path")
+const { execSync } = require("child_process")
 const initialConfig = require("../initialConfig")
-// @ts-ignore
-const prepareMarkdown = require("../utils/prepareMarkdown").default
 
 const addWordFields = (matches) => {
   return matches.map((match) => {
@@ -25,6 +25,14 @@ const removeFalsePositives = (matches, dictionary, disabledRules) => {
   )
 }
 
+const createTempFile = (file, text) => {
+  fs.writeFileSync(file, text)
+}
+
+const removeTempFile = (file) => {
+  fs.unlinkSync(file)
+}
+
 const MAX_REPLACEMENTS = 30
 
 /**
@@ -36,53 +44,39 @@ const MAX_REPLACEMENTS = 30
  *
  * @returns {Promise<Object>} grammar checker suggestions
  */
-const checkViaAPI = async (text, options = {}) => {
+const checkViaCmd = (text, options = {}, serverDirPath, configDirPath) => {
   const cfg = { ...initialConfig, ...options }
+  // console.log({ cfg, serverDirPath, configDirPath })
+
   const disabledRules = Object.entries(cfg.rules)
     // eslint-disable-next-line no-unused-vars
     .filter(([rule, value]) => value === false)
     .map(([rule]) => rule.toUpperCase())
 
-  const disabledRulesEntry =
-    disabledRules.length === 0 || cfg.api_url.includes("grammarbot")
-      ? {}
-      : { disabledCategories: disabledRules.join(",") }
+  const tempFile = path.join(configDirPath, ".temp")
 
-  const input = options.markdown ? { data: prepareMarkdown(text) } : { text }
+  createTempFile(tempFile, text)
 
-  const postData = queryString.stringify({
-    api_key: cfg.api_key,
-    language: cfg.language,
-    ...input,
-    ...disabledRulesEntry,
-  })
+  const jar = path.join(serverDirPath, "languagetool-commandline.jar")
+  const lang = cfg.language === "auto" ? " -adl" : ` -l ${cfg.language}`
+  const disabled =
+    disabledRules.length === 0 ? "" : ` -d ${disabledRules.join(",")}`
 
-  // eslint-disable-next-line
-  const response = await fetch(cfg.api_url, {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: postData,
-    method: "POST",
-  })
+  const cmd = `java -jar ${jar}${lang}${disabled} --json ${tempFile}`
 
-  const body = await response.text()
-
-  let result
+  let response
 
   try {
-    result = JSON.parse(body)
+    response = execSync(cmd, { stdio: "pipe" })
+    response = response.toString()
   } catch (e) {
-    if (cfg.api_url.includes("grammarbot")) {
-      throw new Error(
-        "Language not available at grammarbot.io.\n" +
-          "Please consider installing a local LanguageTool server:\n" +
-          "https://github.com/caderek/gramma#installing-local-server",
-      )
-    } else {
-      throw new Error(body)
-    }
+    removeTempFile(tempFile)
+    throw new Error("Cannot execute command via local LanguageTool cmd")
   }
+
+  removeTempFile(tempFile)
+
+  const result = JSON.parse(response)
 
   const resultWithWords = {
     ...result,
@@ -102,4 +96,4 @@ const checkViaAPI = async (text, options = {}) => {
   return resultWithWords
 }
 
-module.exports = checkViaAPI
+module.exports = checkViaCmd

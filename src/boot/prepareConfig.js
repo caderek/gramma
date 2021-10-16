@@ -52,7 +52,7 @@ const prepareFileConfig = (filePath) => {
     : null
 }
 
-const prepareArgvConfig = ({ language, disable, enable, global }) => {
+const prepareArgvConfig = ({ language, disable, enable, global, markdown }) => {
   const disabledRules = Array.isArray(disable) ? disable : [disable]
   const enabledRules = Array.isArray(enable) ? enable : [enable]
   const rules = {}
@@ -68,6 +68,7 @@ const prepareArgvConfig = ({ language, disable, enable, global }) => {
   return {
     language,
     rules,
+    markdown,
     modifiers: {
       global,
     },
@@ -112,6 +113,7 @@ const prepareConfig = (paths) => (argv) => {
     rules: { ...cfg.rules, ...argvConfig.rules },
     modifiers: argvConfig.modifiers,
     api_url,
+    markdown: argvConfig.markdown,
   }
 
   return {

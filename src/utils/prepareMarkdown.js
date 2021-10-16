@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Generated via:
  * esbuild lib/prepareMarkdown.mjs --bundle --outfile=src/utils/prepareMarkdown.js --format=cjs

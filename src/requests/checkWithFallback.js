@@ -1,6 +1,7 @@
 const kleur = require("kleur")
 const startServer = require("../server/startServer")
 const checkViaAPI = require("./checkViaAPI")
+const checkViaCmd = require("./checkViaCmd")
 const stopServer = require("../server/stopServer")
 
 const checkWithFallback = async (text, cfg) => {
@@ -8,6 +9,8 @@ const checkWithFallback = async (text, cfg) => {
   let response
 
   try {
+    console.info(`Checking via ${cfg.session.api_url}...`)
+
     response = await checkViaAPI(text, session)
 
     if (
@@ -19,13 +22,24 @@ const checkWithFallback = async (text, cfg) => {
   } catch (error) {
     if (error.code === "ECONNREFUSED" || cfg.session.api_url === "localhost") {
       if (global.server_path) {
-        const { server, api_url } = await startServer(cfg)
-        console.clear()
-        const updatedSession = { ...session, api_url }
-        response = await checkViaAPI(text, updatedSession)
+        if (!session.markdown) {
+          console.info(`Checking via local LanguageTool cmd...`)
 
-        if (global.server_once === "true") {
-          server.kill()
+          response = checkViaCmd(
+            text,
+            session,
+            global.server_path,
+            cfg.paths.globalConfigDir,
+          )
+        } else {
+          const { server, api_url } = await startServer(cfg)
+          console.clear()
+          const updatedSession = { ...session, api_url }
+          response = await checkViaAPI(text, updatedSession)
+
+          if (global.server_once === "true") {
+            server.kill()
+          }
         }
       } else {
         console.log(kleur.red(`API server ${session.api_url} not available!`))

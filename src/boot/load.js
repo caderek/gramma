@@ -1,8 +1,10 @@
 const prepareConfig = require("./prepareConfig")
-const context = require("../context")
 
 const load = (action) => (argv) => {
-  context.argv = argv
+  if (argv.file && argv.file.endsWith(".md")) {
+    argv.markdown = true // eslint-disable-line
+  }
+
   const cfg = prepareConfig(argv)
   action(argv, cfg)
 }

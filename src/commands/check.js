@@ -1,12 +1,10 @@
 const intercept = require("intercept-stdout")
 const kleur = require("kleur")
 const fs = require("fs")
-const path = require("path")
 const checkNonInteractively = require("../actions/checkNonInteractively")
 const checkInteractively = require("../actions/checkInteractively")
 const save = require("../actions/save")
 const stripStyles = require("../utils/stripStyles")
-const context = require("../context")
 
 const check = async (argv, cfg) => {
   if (!argv.file) {
@@ -18,8 +16,6 @@ const check = async (argv, cfg) => {
     console.log(kleur.red("There is no such file!"))
     process.exit(1)
   }
-
-  context.ext = path.parse(argv.file).ext
 
   const initialText = fs.readFileSync(argv.file).toString()
 

@@ -24,8 +24,6 @@ const checkNonInteractively = async (text, cfg, styles = true) => {
     return 0
   }
 
-  console.info(`Checking via ${cfg.session.api_url}...`)
-
   const result = await checkWithFallback(text, cfg)
   console.log(`Language: ${result.language.name}`)
 
