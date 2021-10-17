@@ -15,6 +15,9 @@ const paths = require("./commands/paths")
 const server = require("./commands/server")
 const { hook } = require("./commands/hook")
 
+const { languageOptions } = require("./validators/languages")
+const { ruleOptions } = require("./validators/rules")
+
 // eslint-disable-next-line no-unused-expressions
 yargs
   .command(
@@ -109,18 +112,21 @@ yargs
     type: "string",
     default: "config",
     describe: "Set the language of the text",
+    choices: languageOptions,
   })
   .option("disable", {
     alias: "d",
     type: "string",
     describe: "Disable specific rule",
     default: [],
+    choices: ruleOptions,
   })
   .option("enable", {
     alias: "e",
     type: "string",
     describe: "Enable specific rule",
     default: [],
+    choices: ruleOptions,
   })
   .option("all", {
     alias: "a",

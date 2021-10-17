@@ -25,7 +25,7 @@ const checkWithFallback = async (text, cfg) => {
         if (!session.markdown) {
           console.info(`Checking via local LanguageTool cmd...`)
 
-          response = checkViaCmd(
+          response = await checkViaCmd(
             text,
             session,
             global.server_path,

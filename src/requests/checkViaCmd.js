@@ -1,5 +1,6 @@
 const fs = require("fs")
 const path = require("path")
+const kleur = require("kleur")
 const { execSync } = require("child_process")
 const initialConfig = require("../initialConfig")
 
@@ -44,7 +45,12 @@ const MAX_REPLACEMENTS = 30
  *
  * @returns {Promise<Object>} grammar checker suggestions
  */
-const checkViaCmd = (text, options = {}, serverDirPath, configDirPath) => {
+const checkViaCmd = async (
+  text,
+  options = {},
+  serverDirPath,
+  configDirPath,
+) => {
   const cfg = { ...initialConfig, ...options }
   // console.log({ cfg, serverDirPath, configDirPath })
 
@@ -65,18 +71,21 @@ const checkViaCmd = (text, options = {}, serverDirPath, configDirPath) => {
   const cmd = `java -jar ${jar}${lang}${disabled} --json ${tempFile}`
 
   let response
+  let result
 
   try {
     response = execSync(cmd, { stdio: "pipe" })
-    response = response.toString()
+    response = response.toString().split("\n")
+    result = JSON.parse(response[response.length - 1])
   } catch (e) {
     removeTempFile(tempFile)
-    throw new Error("Cannot execute command via local LanguageTool cmd")
+
+    console.log(kleur.red("Cannot execute command via local LanguageTool cmd"))
+    console.log("Please check if your command if valid.")
+    process.exit(1)
   }
 
   removeTempFile(tempFile)
-
-  const result = JSON.parse(response)
 
   const resultWithWords = {
     ...result,
