@@ -1,5 +1,5 @@
 {
-  "api_url": "localhost",
+  "api_url": "https://api.languagetool.org/v2/check",
   "api_key": "",
   "dictionary": [
     "Asturian",

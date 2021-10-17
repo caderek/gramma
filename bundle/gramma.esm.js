@@ -1061,17 +1061,6 @@ var require_initialConfig = __commonJS({
   }
 });
 
-// src/context.js
-var require_context = __commonJS({
-  "src/context.js"(exports, module) {
-    var context = {
-      argv: null,
-      ext: null
-    };
-    module.exports = context;
-  }
-});
-
 // src/utils/prepareMarkdown.js
 var require_prepareMarkdown = __commonJS({
   "src/utils/prepareMarkdown.js"(exports) {
@@ -6704,7 +6693,6 @@ var require_checkViaAPI = __commonJS({
   "src/requests/checkViaAPI.js"(exports, module) {
     var queryString = require_query_string();
     var initialConfig = require_initialConfig();
-    var context = require_context();
     var prepareMarkdown = require_prepareMarkdown().default;
     var addWordFields = (matches) => {
       return matches.map((match) => {
@@ -6719,9 +6707,8 @@ var require_checkViaAPI = __commonJS({
     var checkViaAPI = async (text, options = {}) => {
       const cfg = { ...initialConfig, ...options };
       const disabledRules = Object.entries(cfg.rules).filter(([rule, value]) => value === false).map(([rule]) => rule.toUpperCase());
-      const disabledRulesEntry = disabledRules.length === 0 || cfg.api_url === initialConfig.api_url ? {} : { disabledCategories: disabledRules.join(",") };
-      const isMarkdown = options.markdown || context.ext === ".md" || context.argv && context.argv.markdown;
-      const input = isMarkdown ? { data: prepareMarkdown(text) } : { text };
+      const disabledRulesEntry = disabledRules.length === 0 || cfg.api_url.includes("grammarbot") ? {} : { disabledCategories: disabledRules.join(",") };
+      const input = options.markdown ? { data: prepareMarkdown(text) } : { text };
       const postData = queryString.stringify({
         api_key: cfg.api_key,
         language: cfg.language,
