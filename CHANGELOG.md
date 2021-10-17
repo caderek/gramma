@@ -52,3 +52,4 @@ First stable release.
 ## 1.5.0
 
 - When local server is installed but not running, Gramma will now try to use command-line interface for LanguageTool communication instead of spawning HTTP server (if possible).
+- Gramma will now automatically check for updates once a day.
