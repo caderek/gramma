@@ -47,7 +47,7 @@ const checkWithFallback = async (text, cfg) => {
         console.log(
           "TIP: Gramma is able to automatically start local API server if you install it via: gramma server install",
         )
-        process.exit()
+        process.exit(1)
       }
     } else {
       console.log("Gramma was unable to get a response from API server.")

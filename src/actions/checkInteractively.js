@@ -5,6 +5,7 @@ const handleMistake = require("../prompts/handleMistake")
 const replaceAll = require("../text-manipulation/replaceAll")
 const equal = require("../utils/equal")
 const configure = require("./configure")
+const { displayUpdates } = require("../requests/updates")
 
 const checkInteractively = async (text, cfg) => {
   if (!text || text.trim().length === 0) {
@@ -16,6 +17,7 @@ const checkInteractively = async (text, cfg) => {
 
   if (result.matches.length === 0) {
     console.log(kleur.green("No mistakes found!"))
+    await displayUpdates(cfg.paths.globalConfigDir)
     return { changed: false, text }
   }
   console.log(

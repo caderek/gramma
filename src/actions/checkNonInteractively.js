@@ -1,6 +1,7 @@
 const kleur = require("kleur")
 const checkWithFallback = require("../requests/checkWithFallback")
 const Mistake = require("../components/Mistake")
+const { displayUpdates } = require("../requests/updates")
 
 const print = (result, styles) => {
   if (result.matches.length === 0) {
@@ -28,6 +29,8 @@ const checkNonInteractively = async (text, cfg, styles = true) => {
   console.log(`Language: ${result.language.name}`)
 
   print(result, styles)
+
+  await displayUpdates(cfg.paths.globalConfigDir)
 
   return result.matches.length === 0 ? 0 : 1
 }
