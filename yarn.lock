@@ -2327,10 +2327,10 @@ graceful-fs@^4.1.10, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0,
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
 
-gramma@^1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/gramma/-/gramma-1.4.7.tgz#865d0fe77047ad0b575ab7f80b3c7b5d95753896"
-  integrity sha512-oDdTsnoWiqQ7hrsGdPlbGCR5XAuXbpHcQS02m9xHbpumx1Swz6JtQBgy3cWwIpm5TlNEBOS/jPUqXgYELrW/hw==
+gramma@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/gramma/-/gramma-1.5.0.tgz#5572c2288155c85b26c0dd8932a16c5a1d2eed80"
+  integrity sha512-OkQVWfpTQ72H3XbniwRDpGLIBRfc689Ol1/LIP66DubjIQTgNcJIN65hDShACMx2rilwnJeFpHNYDzidmiq2sA==
   dependencies:
     cli-progress "^3.9.1"
     decompress "^4.2.1"
