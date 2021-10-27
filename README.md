@@ -53,6 +53,7 @@ Gramma works out-of-the-box, communicating with [languagetool.org](https://langu
    - [Check string](#usage-listen)
    - [Git commit with grammar check](#usage-commit)
    - [Command-line options](#usage-options)
+   - [Usage inside VIM](#usage-vim)
 1. [Configuration](#config)
    - [Introduction](#config-intro)
    - [Local config](#config-local)
@@ -254,6 +255,33 @@ Example:
 ```
 gramma listen "I like making mistkaes!" -pn -d typos -d typography -e casing -l en-GB
 ```
+
+<hr/>
+
+<a id='usage-vim'></a>
+
+### Usage inside VIM
+
+If you are a VIM/Neovim user, you can use Gramma directly inside the editor:
+
+Print the potential mistakes:
+
+```
+:w !gramma check /dev/stdin -pn
+```
+
+Interactive fix of the current file:
+
+```
+:terminal gramma check %
+```
+
+It will open the interactive terminal inside VIM - to handle Gramma suggestions, enter the interactive mode (`a` or `i`) and use Gramma as usual. After you fix the mistakes and replace a file, press `Enter` to return to the editor.
+
+<details>
+  <summary style="outline: none; cursor: pointer">Example GIF (click to expand)</summary>
+  <img src="https://raw.githubusercontent.com/caderek/gramma/master/docs/gramma-vim.gif" alt="Gramma VIM example" />
+</details>
 
 <a id='config'></a>
 
