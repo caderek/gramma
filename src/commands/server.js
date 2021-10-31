@@ -22,7 +22,10 @@ const server = async (argv, cfg) => {
   }
 
   if (argv.action === "start") {
-    await startServer(cfg, true)
+    await startServer(cfg, {
+      port: argv.port,
+      viaCommand: true,
+    })
     process.exit()
   }
 

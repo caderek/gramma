@@ -22,7 +22,7 @@ const pingServer = async (url) => {
   await pingServer(url)
 }
 
-const startServer = async (cfg, viaCommand = false) => {
+const startServer = async (cfg, {port, viaCommand = false} = {}) => {
   if (!cfg.global.server_path) {
     console.log(
       kleur.red(`Please install local server via: gramma server install`),
@@ -31,9 +31,8 @@ const startServer = async (cfg, viaCommand = false) => {
   }
 
   console.log("Starting local API server...")
-
   const PORT = await portfinder.getPortPromise({
-    port: 8081,
+    port: port !== undefined ? port : 8081,
   })
 
   const command = "java"
@@ -68,7 +67,7 @@ const startServer = async (cfg, viaCommand = false) => {
     configure("server_pid", server.pid, cfg, true, true)
   }
 
-  console.log(kleur.green(`API server started! PID: ${server.pid}`))
+  console.log(kleur.green(`API server started! PID: ${server.pid}, API URL: ${api_url}`))
 
   return { server, api_url }
 }

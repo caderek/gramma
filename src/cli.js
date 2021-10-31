@@ -146,4 +146,8 @@ yargs
     default: false,
     describe: "Treat the text as markdown",
   })
+  .option("port", {
+    type: "number",
+    describe: "Set the port number of local API server",
+  })
   .demandCommand().argv
