@@ -3,10 +3,11 @@ const installServer = require("../server/installServer")
 const startServer = require("../server/startServer")
 const stopServer = require("../server/stopServer")
 const getServerPID = require("../server/getServerPID")
+const getServerInfo = require("../server/getServerInfo")
 const showServerGUI = require("../server/showServerGUI")
 
 const server = async (argv, cfg) => {
-  const availableOptions = ["install", "start", "stop", "pid", "gui"]
+  const availableOptions = ["install", "start", "stop", "pid", "info", "gui"]
 
   if (!availableOptions.includes(argv.action)) {
     console.log(kleur.red("There is no such command!"))
@@ -36,6 +37,11 @@ const server = async (argv, cfg) => {
 
   if (argv.action === "pid") {
     getServerPID(cfg)
+    process.exit()
+  }
+
+  if (argv.action === "info") {
+    getServerInfo(cfg)
     process.exit()
   }
 

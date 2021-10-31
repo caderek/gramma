@@ -54,3 +54,8 @@ First stable release.
 - When local server is installed but not running, Gramma will now try to use command-line interface for LanguageTool communication instead of spawning HTTP server (if possible).
 - Gramma will now automatically check for updates once a day.
 - Added validation for languages and rules parameters.
+
+## 1.6.0
+
+- Added `gramma server info` command.
+- Added option to set custom port when managing local server manually.

@@ -863,6 +863,12 @@ If you have [configured a local server](#installation-server), Gramma will manag
 gramma server start
 ```
 
+You can also specify a custom port:
+
+```
+gramma server start --port <port_number>
+```
+
 _Note: When you use this command, Gramma will ignore the `server_once` config option. This is expected behavior - I assume that if you use this command, you want the server to actually run, not stop after the first check._
 
 #### Stopping the server
@@ -871,11 +877,19 @@ _Note: When you use this command, Gramma will ignore the `server_once` config op
 gramma server stop
 ```
 
+#### Getting the server info
+
+```
+gramma server info
+```
+
 #### Getting the server PID
 
 ```
 gramma server pid
 ```
+
+_Note: You can use `gramma server info` instead - this command is kept to not break backward compatibility._
 
 #### Opening the built-in GUI
 

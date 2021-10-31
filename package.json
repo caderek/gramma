@@ -51,6 +51,7 @@
     "prompts": "^2.4.1",
     "query-string": "^7.0.1",
     "rimraf": "^3.0.2",
+    "tcp-port-used": "^1.0.2",
     "yargs": "^17.2.1"
   },
   "devDependencies": {

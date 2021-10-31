@@ -2,7 +2,9 @@ const { spawn } = require("child_process")
 const path = require("path")
 const kleur = require("kleur")
 const portfinder = require("portfinder")
+const tcpPortUsed = require("tcp-port-used")
 const configure = require("../actions/configure")
+const confirmPort = require("../prompts/confirmPort")
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -22,7 +24,7 @@ const pingServer = async (url) => {
   await pingServer(url)
 }
 
-const startServer = async (cfg, {port, viaCommand = false} = {}) => {
+const startServer = async (cfg, { port = null, viaCommand = false } = {}) => {
   if (!cfg.global.server_path) {
     console.log(
       kleur.red(`Please install local server via: gramma server install`),
@@ -30,9 +32,23 @@ const startServer = async (cfg, {port, viaCommand = false} = {}) => {
     process.exit(1)
   }
 
+  if (port !== null) {
+    const inUse = tcpPortUsed.check(port)
+
+    if (inUse) {
+      const { autoPort } = await confirmPort()
+
+      if (!autoPort) {
+        console.log(kleur.yellow("Aborted!"))
+        process.exit(1)
+      }
+    }
+  }
+
   console.log("Starting local API server...")
+
   const PORT = await portfinder.getPortPromise({
-    port: port !== undefined ? port : 8081,
+    port: port || 8081,
   })
 
   const command = "java"
@@ -67,7 +83,9 @@ const startServer = async (cfg, {port, viaCommand = false} = {}) => {
     configure("server_pid", server.pid, cfg, true, true)
   }
 
-  console.log(kleur.green(`API server started! PID: ${server.pid}, API URL: ${api_url}`))
+  console.log(
+    kleur.green(`API server started!\nPID: ${server.pid}\nAPI URL: ${api_url}`),
+  )
 
   return { server, api_url }
 }
