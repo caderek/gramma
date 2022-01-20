@@ -16,7 +16,7 @@ const mainMenu = () => {
     {
       type: (prev) => (prev === "check" ? "text" : null),
       name: "fileName",
-      message: "Chose file path (relative or absolute)",
+      message: "Choose file path (relative or absolute)",
     },
   ])
 }
