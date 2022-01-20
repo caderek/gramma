@@ -1,6 +1,7 @@
 const path = require("path")
 const fs = require("fs")
 const kleur = require("kleur")
+const clipboard = require('clipboardy');
 const { homedir } = require("os")
 const handleSave = require("../prompts/handleSave")
 
@@ -23,6 +24,11 @@ const save = async (text, mode, filePath = null) => {
 
     console.clear()
     console.log(kleur.green(`Saved as ${newPath}`))
+  } else if (saveOption === "copy-cb") {
+    clipboard.writeSync(text);
+
+    console.clear()
+    console.log(kleur.green("Copied to clipboard!"))
   } else {
     console.clear()
     console.log(
