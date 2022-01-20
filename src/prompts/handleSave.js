@@ -15,6 +15,7 @@ const handleSave = (mode, originalFile = null) => {
     ...(mode === "FILE" ? [{ title: "replace file", value: "replace" }] : []),
     { title: "save as", value: "save-as" },
     { title: "print on screen", value: "print" },
+    { title: "copy to clipboard", value: "copy-cb" },
   ]
 
   const initialInput = mode === "FILE" ? 0 : 1
