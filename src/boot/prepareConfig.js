@@ -6,6 +6,7 @@ const initialConfig = require("../initialConfig")
 
 const configBasePath = {
   linux: ".config",
+  android: ".config",
   darwin: "Library/Preferences",
   win32: "AppData/Roaming",
 }
