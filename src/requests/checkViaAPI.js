@@ -1,3 +1,4 @@
+const fetch = require("node-fetch")
 const queryString = require("query-string")
 const initialConfig = require("../initialConfig")
 // @ts-ignore
