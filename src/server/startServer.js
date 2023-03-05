@@ -3,6 +3,7 @@ const path = require("path")
 const kleur = require("kleur")
 const portfinder = require("portfinder")
 const tcpPortUsed = require("tcp-port-used")
+const fetch = require("node-fetch")
 const configure = require("../actions/configure")
 const confirmPort = require("../prompts/confirmPort")
 
