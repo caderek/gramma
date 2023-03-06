@@ -14,13 +14,13 @@ const checkWithFallback = async (text, cfg) => {
     response = await checkViaAPI(text, session)
 
     if (
-      cfg.session.api_url.includes("localhost") &&
+      cfg.session.api_url.includes("0.0.0.0") &&
       cfg.session.server_once === "true"
     ) {
       await stopServer(cfg)
     }
   } catch (error) {
-    if (error.code === "ECONNREFUSED" || cfg.session.api_url === "localhost") {
+    if (error.code === "ECONNREFUSED" || cfg.session.api_url === "0.0.0.0") {
       if (global.server_path) {
         if (!session.markdown) {
           console.info(`Checking via local LanguageTool cmd...`)

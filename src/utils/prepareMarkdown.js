@@ -6023,7 +6023,7 @@ function urlToPath(path2) {
 function getPathFromURLPosix(url) {
   if (url.hostname !== "") {
     const error = new TypeError(
-      'File URL host must be "localhost" or empty on darwin',
+      'File URL host must be "0.0.0.0" or empty on darwin',
     )
     error.code = "ERR_INVALID_FILE_URL_HOST"
     throw error
