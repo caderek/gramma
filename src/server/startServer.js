@@ -3,6 +3,7 @@ const path = require("path")
 const kleur = require("kleur")
 const portfinder = require("portfinder")
 const tcpPortUsed = require("tcp-port-used")
+const fetch = require("node-fetch")
 const configure = require("../actions/configure")
 const confirmPort = require("../prompts/confirmPort")
 
@@ -73,7 +74,7 @@ const startServer = async (cfg, { port = null, viaCommand = false } = {}) => {
   })
 
   // eslint-disable-next-line camelcase
-  const api_url = `http://localhost:${PORT}/v2/check`
+  const api_url = `http://0.0.0.0:${PORT}/v2/check`
 
   await pingServer(api_url)
 

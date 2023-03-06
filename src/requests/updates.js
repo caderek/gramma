@@ -1,6 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 const kleur = require("kleur")
+const fetch = require("node-fetch")
 const { version } = require("../../package.json")
 
 const checkForUpdates = async (configDir) => {

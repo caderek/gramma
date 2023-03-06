@@ -79,7 +79,7 @@ const prepareConfig = (paths) => (argv) => {
   const globalConfig = prepareFileConfig(paths.globalConfigFile)
   const localConfig = prepareFileConfig(paths.localConfigFile)
 
-  if (localConfig && localConfig.api_url === "localhost") {
+  if (localConfig && localConfig.api_url === "0.0.0.0") {
     localConfig.api_url = "inherit"
   }
 

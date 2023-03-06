@@ -41,7 +41,7 @@ const installServer = async (cfg) => {
   const serverPath = path.join(serverDir, unpackedDirName)
 
   configure("server_path", serverPath, cfg, true, true)
-  configure("api_url", "localhost", cfg, true, true)
+  configure("api_url", "0.0.0.0", cfg, true, true)
 
   console.log(kleur.green(`Server installed in: ${serverDir}`))
 }
